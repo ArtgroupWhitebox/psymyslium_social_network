@@ -1,0 +1,33 @@
+.sidebar {
+    grid-area: s;
+    background-color: rgba(59, 59, 60, 1);
+    padding: 20px;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    height: 100%;
+    text-decoration: none;
+}
+
+.itemFriends a {
+    color: white;
+    text-decoration: none;
+    font-size: x-large;
+}
+
+.itemFriends a.activeLink {
+    color: red;
+    text-decoration: none;
+    font-size: x-large;
+}
+
+
+
+
+/* .item.it {
+    color: red;
+} */
+
