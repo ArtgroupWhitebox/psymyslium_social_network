@@ -4,10 +4,13 @@ console.log(classes)
 const MessageItem = (props) => {
 
     return (
-        <div className={classes.message}>
-            { props.message }
+        <div>
+            <div className={classes.message}>
+                {props.message}
+            </div>            
         </div>
     );
 }
 
 export default MessageItem;
+
