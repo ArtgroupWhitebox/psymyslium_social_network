@@ -10,9 +10,9 @@ let store = {
                 { id: 4, message: 'Oк!)' },
                 { id: 5, message: 'Отлично!)' }
             ],
-    
+
             newMessageText: 'newTextMessage',
-    
+
             dialogsData: [
                 { id: 1, name: 'Daniil', avatar: <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4kEFai4OtMt1thJnUEvnOndgjMyHCdvpfxg&usqp=CAU' /> },
                 { id: 2, name: 'Sveta', avatar: <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyt5zdiEKFSF0GtUOyoJ1RtSEbjt5wWigVzA&usqp=CAUа' /> },
@@ -20,25 +20,25 @@ let store = {
                 { id: 4, name: 'Sasha', avatar: <img src='https://avatarko.ru/img/kartinka/31/muzhchina_30867.jpg' /> },
             ]
         },
-    
+
         profilePage: {
-    
+
             postsData: [
                 { id: 1, message: 'Привет, как дела?', like: 7 },
                 { id: 2, message: 'Я учу React', like: 12 },
                 { id: 3, message: 'Мне нравится React', like: 22 }
             ],
-    
+
             newPostText: 'newText',
         },
-    
+
         newsPage: {
             newsData: [
                 { id: 1, message: 'Сегодня я освоила state и props' },
                 { id: 2, message: 'В феврале вышел фильм "Северное сияние" ' },
             ]
         },
-    
+
         sidebar: {
             friendsData: [
                 { id: 1, name: 'Max', avatar: <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_iwI0e3vUAZ1KlxOqz87mBTYP_Ik5se65AA&usqp=CAU' /> },
@@ -58,44 +58,44 @@ let store = {
             id: 5,
             message: this._state.profilePage.newPostText,
             like: 0
-            }
-            this._state.profilePage.postsData.push(newPost)
-            this._state.profilePage.newPostText = ''
-            this._rerenderTree2(this._state)
-        },
-    
-    
+        }
+        this._state.profilePage.postsData.push(newPost)
+        this._state.profilePage.newPostText = ''
+        this._subscriber(this._state)
+    },
+
+
     updatePostText(newText) {
-        
+
         this._state.profilePage.newPostText = newText;
-        this._rerenderTree2(this._state)
-        },
-    
+        this._subscriber(this._state)
+    },
+
     addMessage() {
         let newMessage = {
             id: 6,
             message: this._state.dialogsPage.newMessageText,
-            }
-            this._state.dialogsPage.messagesData.push(newMessage)
-            this._state.dialogsPage.newMessageText = ''
-            this._rerenderTree2(this._state)
-        },
-    
-    updateMessageText(newTextMessage) { 
-    
+        }
+        this._state.dialogsPage.messagesData.push(newMessage)
+        this._state.dialogsPage.newMessageText = ''
+        this._subscriber(this._state)
+    },
+
+    updateMessageText(newTextMessage) {
+
         this._state.dialogsPage.newMessageText = newTextMessage
-        this._rerenderTree2(this._state)
-        },
-    
-    
-    _rerenderTree2() {
+        this._subscriber(this._state)
+    },
+
+
+    _subscriber() {
         console.log('rerenderTree')
     },
-    
+
     subscribe(rerenderTree) {
-        this._rerenderTree2 = rerenderTree
+        this._subscriber = rerenderTree
     }
-    
+
 }
 
 
