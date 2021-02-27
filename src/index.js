@@ -12,7 +12,7 @@ const rerenderTree = () => {
 
     <BrowserRouter>
       <React.StrictMode>
-        <App state={store.getState()} addPost={store.addPost.bind(store)} updatePostText={store.updatePostText.bind(store)} addMessage={store.addMessage.bind(store)} updateMessageText={store.updateMessageText.bind(store)} />
+        <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
       </React.StrictMode>
     </BrowserRouter>,
   

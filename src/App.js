@@ -17,9 +17,8 @@ const App = (props) => {
             <Nav />
             <div className='app_psymyslium-content'>
                 <Route path='/dialogs' render={() => <Dialogs dialogsPage={props.state.dialogsPage}
-                    addMessage={props.addMessage}
-                    updateMessageText={props.updateMessageText} newMessageText={props.state.dialogsPage.newMessageText} />} />
-                <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage} addPost={props.addPost} updatePostText={props.updatePostText} />} />
+                    dispatch={props.dispatch} newMessageText={props.state.dialogsPage.newMessageText} />} />
+                <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />} />
                 <Route path='/news' render={() => <News newsPage={props.state.newsPage} />} />
                 <Route path='/music' component={Music} />
                 <Route path='/settings' component={Settings} />

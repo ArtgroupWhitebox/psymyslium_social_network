@@ -7,18 +7,24 @@ const MyPosts = (props) => {
 
     let postsElements = props.postsData.map(
         el => <Post id={el.id} message={el.message} like={el.like} />
-    );
+    )
 
-    let newPostElement= React.createRef(); 
+    let newPostElement= React.createRef()
 
     let addPostButton = () => {
-        props.addPost();
-              
+        let action = {
+            type: 'ADD-POST'
+        }
+        props.dispatch(action)             
     }
 
     let onChangePostText = () => {
-        let newText = newPostElement.current.value;
-        props.updatePostText(newText);
+        let newText = newPostElement.current.value
+        let action = {
+            type: 'UPDATE-POST-TEXT',
+            text: newText
+        }
+        props.dispatch(action)
     }
 
     return (
