@@ -1,3 +1,10 @@
+
+const ADD_POST = 'ADD-POST'
+const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT'
+
+const ADD_MESSAGE = 'ADD-MESSAGE'
+const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT'
+
 let store = {
 
     _state: {
@@ -11,7 +18,7 @@ let store = {
                 { id: 5, message: 'Отлично!)' }
             ],
 
-            newMessageText: 'newTextMessage',
+            newMessageText: '',
 
             dialogsData: [
                 { id: 1, name: 'Daniil', avatar: <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4kEFai4OtMt1thJnUEvnOndgjMyHCdvpfxg&usqp=CAU' /> },
@@ -29,7 +36,7 @@ let store = {
                 { id: 3, message: 'Мне нравится React', like: 22 }
             ],
 
-            newPostText: 'newText',
+            newPostText: '',
         },
 
         newsPage: {
@@ -97,15 +104,21 @@ let store = {
 
     dispatch(action) {
         switch (action.type) {
-            case 'ADD-POST': this._addPost(); break;
-            case 'UPDATE-POST-TEXT': this._updatePostText(action.text); break;
-            case 'ADD-MESSAGE': this._addMessage(); break;
-            case 'UPDATE-MESSAGE-TEXT': this._updateMessageText(action.textMessage); break;
+            case ADD_POST: this._addPost(); break;
+            case UPDATE_POST_TEXT: this._updatePostText(action.text); break;
+            case ADD_MESSAGE: this._addMessage(); break;
+            case UPDATE_MESSAGE_TEXT: this._updateMessageText(action.textMessage); break;
         }
     }
 }
-
 export default store
+
+export const addPostActionCreator = () => ({ type: ADD_POST })
+export const updatePostTextActionCreator = (newText) => ({ type: UPDATE_POST_TEXT, text: newText })
+
+export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
+export const updateMessageTextActionCreator = (newTextMessage) =>
+    ({ type: UPDATE_MESSAGE_TEXT, textMessage: newTextMessage })
 
 window.store = store
 
