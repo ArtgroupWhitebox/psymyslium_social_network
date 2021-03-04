@@ -5,6 +5,9 @@ const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT'
 const ADD_MESSAGE = 'ADD-MESSAGE'
 const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT'
 
+const ADD_NEWS = 'ADD-NEWS'
+const UPDATE_NEWS_BODY = 'UPDATE-NEWS-BODY'
+
 let store = {
 
     _state: {
@@ -43,7 +46,9 @@ let store = {
             newsData: [
                 { id: 1, message: 'Сегодня я освоила state и props' },
                 { id: 2, message: 'В феврале вышел фильм "Северное сияние" ' },
-            ]
+            ],
+
+            newNewsBody: '',
         },
 
         sidebar: {
@@ -104,12 +109,21 @@ let store = {
 
     dispatch(action) {
         switch (action.type) {
-            case ADD_POST: this._addPost(); break;
-            case UPDATE_POST_TEXT: this._updatePostText(action.text); break;
-            case ADD_MESSAGE: this._addMessage(); break;
-            case UPDATE_MESSAGE_TEXT: this._updateMessageText(action.textMessage); break;
+            case ADD_POST: this._addPost(); break
+            case UPDATE_POST_TEXT: this._updatePostText(action.text); break
+            case ADD_MESSAGE: this._addMessage(); break
+            case UPDATE_MESSAGE_TEXT: this._updateMessageText(action.textMessage); break
+            case ADD_NEWS: 
+                let newNewsText={ id: 3, message: this._state.newsPage.newNewsBody }
+                this._state.newsPage.newsData.push(newNewsText)
+                this._state.newsPage.newNewsBody=''
+                this._callSubscriber(this._state); break
+            case UPDATE_NEWS_BODY: 
+                this._state.newsPage.newNewsBody = action.body
+                this._callSubscriber(this._state); break
         }
     }
+    
 }
 export default store
 
@@ -119,6 +133,10 @@ export const updatePostTextActionCreator = (newText) => ({ type: UPDATE_POST_TEX
 export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
 export const updateMessageTextActionCreator = (newTextMessage) =>
     ({ type: UPDATE_MESSAGE_TEXT, textMessage: newTextMessage })
+
+export const addNewsCreator = () => ({ type: ADD_NEWS })
+export const updateNewsBodyCreator = (newBody) =>
+    ({ type: UPDATE_NEWS_BODY, body: newBody })
 
 window.store = store
 
