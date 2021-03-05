@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './MyPosts.module.css'
 import Post from './Post/Post'
-import {addPostActionCreator, updatePostTextActionCreator} from '../../../redux/state'
+import {addPostActionCreator, updatePostTextActionCreator} from '../../../redux/profile_reducer'
 console.log(classes)
 
 
@@ -41,7 +41,6 @@ const MyPosts = (props) => {
             </div>
             
         </div>
-    );
+    )
 }
-
 export default MyPosts;

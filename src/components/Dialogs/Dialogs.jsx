@@ -2,7 +2,7 @@ import DialogItem from './DialogItem/DialogItem';
 import classes from './Dialogs.module.css';
 import MessageItem from './MessageItem/MessageItem';
 import React from 'react'
-import { addMessageActionCreator, updateMessageTextActionCreator } from '../../redux/state'
+import { addMessageActionCreator, updateMessageTextActionCreator } from '../../redux/dialogs_reducer'
 console.log(classes)
 
 const Dialogs = (props) => {
@@ -48,8 +48,7 @@ const Dialogs = (props) => {
                 </div>
             </div>
         </div>
-    );
+    )
 }
-
 export default Dialogs;
 

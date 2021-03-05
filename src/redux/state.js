@@ -1,12 +1,8 @@
+import dialogsReducer from "./dialogs_reducer"
+import newsReducer from "./news_reducer"
+import profileReducer from "./profile_reducer"
+import sidebarReducer from "./sidebar_reducer"
 
-const ADD_POST = 'ADD-POST'
-const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT'
-
-const ADD_MESSAGE = 'ADD-MESSAGE'
-const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT'
-
-const ADD_NEWS = 'ADD-NEWS'
-const UPDATE_NEWS_BODY = 'UPDATE-NEWS-BODY'
 
 let store = {
 
@@ -72,71 +68,18 @@ let store = {
     subscribe(rerenderTree) {
         this._callSubscriber = rerenderTree
     },
-
-    _addPost() {
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            like: 0
-        }
-        this._state.profilePage.postsData.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this._callSubscriber(this._state)
-    },
-
-
-    _updatePostText(newText) {
-
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state)
-    },
-
-    _addMessage() {
-        let newMessage = {
-            id: 6,
-            message: this._state.dialogsPage.newMessageText,
-        }
-        this._state.dialogsPage.messagesData.push(newMessage)
-        this._state.dialogsPage.newMessageText = ''
-        this._callSubscriber(this._state)
-    },
-
-    _updateMessageText(newTextMessage) {
-
-        this._state.dialogsPage.newMessageText = newTextMessage
-        this._callSubscriber(this._state)
-    },
-
+     
     dispatch(action) {
-        switch (action.type) {
-            case ADD_POST: this._addPost(); break
-            case UPDATE_POST_TEXT: this._updatePostText(action.text); break
-            case ADD_MESSAGE: this._addMessage(); break
-            case UPDATE_MESSAGE_TEXT: this._updateMessageText(action.textMessage); break
-            case ADD_NEWS: 
-                let newNewsText={ id: 3, message: this._state.newsPage.newNewsBody }
-                this._state.newsPage.newsData.push(newNewsText)
-                this._state.newsPage.newNewsBody=''
-                this._callSubscriber(this._state); break
-            case UPDATE_NEWS_BODY: 
-                this._state.newsPage.newNewsBody = action.body
-                this._callSubscriber(this._state); break
-        }
-    }
-    
+
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.newsPage =  newsReducer(this._state.newsPage, action)
+        this._state.sidebarPage =  sidebarReducer(this._state.sidebarPage, action)
+        
+        this._callSubscriber(this._state)        
+    }    
 }
 export default store
-
-export const addPostActionCreator = () => ({ type: ADD_POST })
-export const updatePostTextActionCreator = (newText) => ({ type: UPDATE_POST_TEXT, text: newText })
-
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
-export const updateMessageTextActionCreator = (newTextMessage) =>
-    ({ type: UPDATE_MESSAGE_TEXT, textMessage: newTextMessage })
-
-export const addNewsCreator = () => ({ type: ADD_NEWS })
-export const updateNewsBodyCreator = (newBody) =>
-    ({ type: UPDATE_NEWS_BODY, body: newBody })
 
 window.store = store
 
