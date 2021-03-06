@@ -1,7 +1,16 @@
 const ADD_NEWS = 'ADD-NEWS'
 const UPDATE_NEWS_BODY = 'UPDATE-NEWS-BODY'
 
-const newsReducer = (state, action) => {
+let initialState = {
+    newsData: [
+        { id: 1, message: 'Сегодня я освоила state и props' },
+        { id: 2, message: 'В феврале вышел фильм "Северное сияние" ' },
+    ],
+
+    newNewsBody: '',
+}
+
+const newsReducer = (state=initialState, action) => {
     switch (action.type) {
 
         case ADD_NEWS:
@@ -10,7 +19,7 @@ const newsReducer = (state, action) => {
                 message: state.newNewsBody
             }
             state.newsData.push(newNewsText)
-            state.newNewsBody = ''
+            state.newNewsBody = ""
             return (state)
 
         case UPDATE_NEWS_BODY:
