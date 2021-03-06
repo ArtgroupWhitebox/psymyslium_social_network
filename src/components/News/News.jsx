@@ -9,8 +9,8 @@ const News = (props) => {
         el => <NewsItem id={el.id} message={el.message} />
     )
 
-    let onChangeNewsBody = (e) => {
-        let newBody = e.target.value
+    let onChangeNewsBody = (event) => {
+        let newBody = event.target.value
         let action = updateNewsBodyCreator(newBody)
         props.dispatch(action)
     }

@@ -19,7 +19,7 @@ const App = (props) => {
                 <Route path='/dialogs' render={() => <Dialogs dialogsPage={props.state.dialogsPage}
                     dispatch={props.dispatch} newMessageText={props.state.dialogsPage.newMessageText} />} />
                 <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />} />
-                <Route path='/news' render={() => <News newsPage={props.state.newsPage} newNewsBody={props.newNewsBody} 
+                <Route path='/news' render={() => <News newsPage={props.state.newsPage} newNewsBody={props.state.newsPage.newNewsBody} 
                     dispatch={props.dispatch} />} />
                 <Route path='/music' component={Music} />
                 <Route path='/settings' component={Settings} />

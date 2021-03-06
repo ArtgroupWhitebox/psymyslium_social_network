@@ -7,7 +7,7 @@ let initialState = {
         { id: 2, message: 'В феврале вышел фильм "Северное сияние" ' },
     ],
 
-    newNewsBody: '',
+    newNewsBody: ''
 }
 
 const newsReducer = (state=initialState, action) => {
@@ -19,7 +19,7 @@ const newsReducer = (state=initialState, action) => {
                 message: state.newNewsBody
             }
             state.newsData.push(newNewsText)
-            state.newNewsBody = ""
+            state.newNewsBody = ''
             return (state)
 
         case UPDATE_NEWS_BODY:
