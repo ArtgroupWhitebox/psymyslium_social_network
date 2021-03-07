@@ -1,6 +1,6 @@
 import { addMessageActionCreator, updateMessageTextActionCreator } from '../../redux/dialogs_reducer'
 import Dialogs from './Dialogs'
-// import Dialogs from './Dialogs';
+
 
 const dialogsContainer = (props) => {
 
