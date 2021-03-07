@@ -1,23 +1,20 @@
 import classes from './News.module.css'
 import NewsItem from './NewsItem/NewsItem'
-import { updateNewsBodyCreator, addNewsCreator } from '../../redux/news_reducer'
 console.log(classes)
 
 const News = (props) => {
 
-    let newsElements = props.newsPage.newsData.map(
+    let newsElements = props.newsData.map(
         el => <NewsItem id={el.id} message={el.message} />
     )
 
     let onChangeNewsBody = (event) => {
         let newBody = event.target.value
-        let action = updateNewsBodyCreator(newBody)
-        props.dispatch(action)
+        props.updateNewsBody(newBody)
     }
 
     let addNewsButton = () => {
-        let action = addNewsCreator()
-        props.dispatch(action)
+        props.addNews()
     }
         
     return (

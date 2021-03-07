@@ -5,7 +5,7 @@ console.log (classes)
 
 const Sidebar = (props) => {
 
-    let friendsElements = props.sidebar.friendsData.map(
+    let friendsElements = props.friendsData.map(
         el => <FriendsItem id={el.id} name={el.name} avatar={el.avatar} /> 
     ) 
 
