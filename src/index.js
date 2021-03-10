@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import StoreContext from './components/StoreContext';
 
 
 const rerenderTree = () => {
@@ -12,7 +13,9 @@ const rerenderTree = () => {
 
     <BrowserRouter>
       <React.StrictMode>
-        <App store={store} />
+        <StoreContext.Provider value={store}>
+          <App />
+        </StoreContext.Provider>
       </React.StrictMode>
     </BrowserRouter>,
 

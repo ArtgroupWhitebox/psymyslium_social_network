@@ -1,12 +1,19 @@
-import Sidebar from "./Sidebar";
+import StoreContext from "../StoreContext"
+import Sidebar from "./Sidebar"
 
 
-const SidebarContainer = (props) => {
+const SidebarContainer = () => {
 
     return (
-
-        <Sidebar friendsData={props.store.getState().sidebar.friendsData} />
+        <StoreContext.Consumer>
+            {
+                (store) => {
+                    return (
+                        <Sidebar friendsData={store.getState().sidebar.friendsData} />
+                    )
+                }
+            }
+        </StoreContext.Consumer>        
     )
 }
-
 export default SidebarContainer;

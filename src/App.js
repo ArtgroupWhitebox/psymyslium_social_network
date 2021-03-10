@@ -16,13 +16,13 @@ const App = (props) => {
             <Header />
             <Nav />
             <div className='app_psymyslium-content'>                
-                <Route path='/dialogs' render={() => <DialogsContainer store={props.store} />} />
-                <Route path='/profile' render={() => <Profile store={props.store} />} />
-                <Route path='/news' render={() => <NewsContainer store={props.store} />} />
+                <Route path='/dialogs' render={() => <DialogsContainer />} />
+                <Route path='/profile' render={() => <Profile />} />
+                <Route path='/news' render={() => <NewsContainer />} />
                 <Route path='/music' component={Music} />
                 <Route path='/settings' component={Settings} />
             </div>            
-            <SidebarContainer store={props.store} />
+            <SidebarContainer />
         </div>
     );
 }
