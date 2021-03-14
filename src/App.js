@@ -9,7 +9,7 @@ import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import SidebarContainer from './components/Sidebar/SidebarContainer';
 
-const App = (props) => {
+const App = () => {
 
     return (
         <div className='app_psymyslium'>
