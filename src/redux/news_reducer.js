@@ -12,25 +12,26 @@ let initialState = {
 
 const newsReducer = (state=initialState, action) => {
 
-    let stateCopy = {...state}
-    stateCopy.newsData=[...state.newsData]
-
     switch (action.type) {
 
         case ADD_NEWS:
             let newNewsText = {
                 id: 3,
-                message: stateCopy.newNewsBody
+                message: state.newNewsBody
             }
-            stateCopy.newsData.push(newNewsText)
-            stateCopy.newNewsBody = ''
-            return (stateCopy)
+            return {
+                ...state,
+                newsData: [...state.newsData, newNewsText],
+                newNewsBody: ''
+            }
 
         case UPDATE_NEWS_BODY:
-            stateCopy.newNewsBody = action.body
-            return (stateCopy)
+            return {
+                ...state,
+                newNewsBody: action.body
+            }
 
-        default: return (stateCopy)
+        default: return (state)
     }
 }
 export default newsReducer

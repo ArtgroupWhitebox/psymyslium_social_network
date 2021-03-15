@@ -9,8 +9,8 @@ let initialState = {
  
 const sidebarReducer = (state=initialState, action) => {
 
-    let stateCopy = {...state}
-    return (stateCopy)
+    return {...state}
+    
 }
 
 export default sidebarReducer
