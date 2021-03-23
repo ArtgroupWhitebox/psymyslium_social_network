@@ -1,0 +1,59 @@
+.itemUsers {
+    padding: 10px;
+    background-color: rgb(83, 83, 83);
+}
+
+.itemBlock {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    padding: 10px;
+}
+
+.item {
+    padding: 10px;
+}
+
+.userName a {
+    color: rgb(7, 224, 253);
+    text-decoration: none;
+}
+
+.userName a.activeLink {
+    color: rgb(250, 221, 91);
+    text-decoration: none;
+}
+
+.userAvatar a img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.followButton {
+    width: 70px;
+    height: 25px;
+    border-radius: 4px;
+    background-color: rgb(243, 221, 125);
+    color: black;
+    border: 0px;
+}
+
+.unFollowButton {
+    width: 70px;
+    height: 25px;
+    border-radius: 4px;
+    background-color: gray;
+    color: black;
+    border: 0px;
+}
+
+.personalData {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    width: 300px;
+    height: 100px;
+    border-radius: 5px;
+    background-color: rgb(95, 95, 95);
+    color: rgb(184, 184, 184);
+}

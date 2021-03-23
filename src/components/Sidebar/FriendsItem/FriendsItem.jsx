@@ -16,4 +16,4 @@ const FriendsItem = (props) => {
     );
 }
 
-export default FriendsItem;
+export default FriendsItem
