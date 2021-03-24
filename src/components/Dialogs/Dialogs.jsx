@@ -6,11 +6,11 @@ console.log(classes)
 const Dialogs = (props) => {
 
     let dialogsElements = props.dialogsData.map(
-        el => <DialogItem id={el.id} name={el.name} avatar={el.avatar} />
+        el => <DialogItem id={el.id} key={el.id} name={el.name} avatar={el.avatar} />
     )
 
     let messagesElements = props.messagesData.map(
-        el => <MessageItem id={el.id} message={el.message} />
+        el => <MessageItem id={el.id} key={el.id} message={el.message} />
     )
 
     let addMessageButton = () => {

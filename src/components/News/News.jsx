@@ -5,7 +5,7 @@ console.log(classes)
 const News = (props) => {
 
     let newsElements = props.newsData.map(
-        el => <NewsItem id={el.id} message={el.message} />
+        el => <NewsItem id={el.id} key={el.id} message={el.message} />
     )
 
     let onChangeNewsBody = (event) => {

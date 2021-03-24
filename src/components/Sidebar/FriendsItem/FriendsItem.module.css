@@ -1,13 +1,15 @@
 .item {
-    padding: 10px; 
+    padding: 10px;    
 }
 
 .itemName a {
-    color: rgb(7, 224, 253);  
+    color: rgb(7, 224, 253);
+    justify-content: center;
 }
 
 .itemName a.activeLink {
-    color: rgb(250, 221, 91);         
+    color: rgb(250, 221, 91);
+    justify-content: center;         
 }
 
 .itemAvatar a img {
