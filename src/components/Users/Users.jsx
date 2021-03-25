@@ -5,9 +5,9 @@ import * as axios from 'axios'
 import avatar from '../../assets/images/Nastay.jpg'
 
 class Users extends React.Component {
-    
+
     // если компонента constructor не содержит ничего кроме вызова родительской компоненты super,
-    // то ее можно неписаль, она применяется по умолчанию
+    // то ее можно не писать, она применяется по умолчанию
     // constructor(props) {
     //     super(props)        
     // }
