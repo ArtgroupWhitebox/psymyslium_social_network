@@ -5,15 +5,19 @@ import * as axios from 'axios'
 import avatar from '../../assets/images/Nastay.jpg'
 
 class Users extends React.Component {
-
-    constructor(props) {
-        super(props)
-
+    
+    // если компонента constructor не содержит ничего кроме вызова родительской компоненты super,
+    // то ее можно неписаль, она применяется по умолчанию
+    // constructor(props) {
+    //     super(props)        
+    // }
+    
+    componentDidMount() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
             this.props.setUsers(response.data.items)
         }) 
     }
-    
+
     render() {
         return (
             <div className={classes.itemUsers}> {
