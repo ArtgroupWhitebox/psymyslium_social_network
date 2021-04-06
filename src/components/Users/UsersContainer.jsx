@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
-import { followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unFollowAC,  } from '../../redux/users_reducer'
+import { followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleIsPreloadingAC, unFollowAC,  } from '../../redux/users_reducer'
 import Users from './Users'
 import * as axios from 'axios'
 import React from 'react'
+import Preloading from '../commons/Preloading'
 
 class UsersAPI extends React.Component {
 
@@ -11,7 +12,9 @@ class UsersAPI extends React.Component {
     }
 
     componentDidMount() {
+        this.props.toggleIsPreloading(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+            this.props.toggleIsPreloading(false)
             this.props.setUsers(response.data.items)
             this.props.setTotalUsersCount(response.data.totalCount)
         }
@@ -19,23 +22,28 @@ class UsersAPI extends React.Component {
     }
 
     onPageChanged = (pageNumber) => {
+        this.props.toggleIsPreloading(true)
         this.props.setCurrentPage(pageNumber)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+            this.props.toggleIsPreloading(false)
             this.props.setUsers(response.data.items)
         }
         )
     } 
     
     render() {
-       return <Users 
-            usersData={this.props.usersData}
-            totalUsersCount={this.props.totalUsersCount}
-            pageSize={this.props.pageSize}
-            currentPage={this.props.currentPage}
-            follow={this.props.follow}
-            unFollow={this.props.unFollow}            
-            onPageChanged={this.onPageChanged}
-       />
+       return <>
+        { this.props.isPreloading ? <Preloading /> : 
+        <Users 
+                usersData={this.props.usersData}
+                totalUsersCount={this.props.totalUsersCount}
+                pageSize={this.props.pageSize}
+                currentPage={this.props.currentPage}
+                follow={this.props.follow}
+                unFollow={this.props.unFollow}            
+                onPageChanged={this.onPageChanged}
+        />}
+    </>
     }
 }
 
@@ -45,7 +53,8 @@ const mapStateToProps = (state) => {
             usersData: state.usersPage.usersData,
             totalUsersCount: state.usersPage.totalUsersCount,
             pageSize: state.usersPage.pageSize,
-            currentPage: state.usersPage.currentPage
+            currentPage: state.usersPage.currentPage,
+            isPreloading: state.usersPage.isPreloading
         }
     )
 }
@@ -70,6 +79,9 @@ const mapDispatchToProps = (dispatch) => {
             }, 
             setCurrentPage: (pageNumber) => {
                 dispatch(setCurrentPageAC(pageNumber))
+            },
+            toggleIsPreloading: (preloader) => {
+                dispatch(toggleIsPreloadingAC(preloader)) 
             }
         }
     )

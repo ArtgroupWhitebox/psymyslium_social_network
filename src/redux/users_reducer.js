@@ -3,13 +3,16 @@ const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 const CURRENT_PAGE = 'CURRENT_PAGE'
+const TOGGLE_IS_PRELOADING = 'TOGGLE_IS_PRELOADING'
+
 
 
 let initialState = { 
     usersData: [],
     totalUsersCount: 0,
     pageSize: 100,
-    currentPage: 1
+    currentPage: 1,
+    isPreloading: true
     }
 
 const usersReducer = (state = initialState, action) => {
@@ -55,6 +58,12 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 currentPage: action.currentPageNew
         }
+
+        case TOGGLE_IS_PRELOADING:
+            return {
+                ...state,
+                isPreloading: action.preloader
+        }
         
         default: return (state)
     }
@@ -67,3 +76,4 @@ export const unFollowAC = (userId) => ({ type: UNFOLLOW, userId })
 export const setUsersAC = (users) => ({ type: SET_USERS, users })
 export const setTotalUsersCountAC = (usersCount) => ({ type: SET_TOTAL_USERS_COUNT, usersCount })
 export const setCurrentPageAC = (pageNumber) => ({ type: CURRENT_PAGE, currentPageNew: pageNumber })
+export const toggleIsPreloadingAC = (preloader) => ({ type: TOGGLE_IS_PRELOADING, preloader })
