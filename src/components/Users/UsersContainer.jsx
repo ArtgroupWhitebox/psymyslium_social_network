@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
-import { followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleIsPreloadingAC, unFollowAC,  } from '../../redux/users_reducer'
+import { follow, setCurrentPage, setTotalUsersCount, setUsers, toggleIsPreloading, unFollow,  } from '../../redux/users_reducer'
 import Users from './Users'
 import * as axios from 'axios'
 import React from 'react'
 import Preloading from '../commons/Preloading'
 
-class UsersAPI extends React.Component {
+class UsersContainer extends React.Component {
 
     constructor(props) {
         super(props)        
@@ -33,60 +33,22 @@ class UsersAPI extends React.Component {
     
     render() {
        return <>
-        { this.props.isPreloading ? <Preloading /> : 
-        <Users 
-                usersData={this.props.usersData}
-                totalUsersCount={this.props.totalUsersCount}
-                pageSize={this.props.pageSize}
-                currentPage={this.props.currentPage}
-                follow={this.props.follow}
-                unFollow={this.props.unFollow}            
-                onPageChanged={this.onPageChanged}
-        />}
+        { this.props.isPreloading ? <Preloading /> : <Users {...this.props} onPageChanged={this.onPageChanged} />}
     </>
     }
 }
 
-const mapStateToProps = (state) => {
-    return (
-        {
-            usersData: state.usersPage.usersData,
-            totalUsersCount: state.usersPage.totalUsersCount,
-            pageSize: state.usersPage.pageSize,
-            currentPage: state.usersPage.currentPage,
-            isPreloading: state.usersPage.isPreloading
-        }
-    )
+const mapStateToProps = (state) => ({
+    usersData: state.usersPage.usersData,
+    totalUsersCount: state.usersPage.totalUsersCount,
+    pageSize: state.usersPage.pageSize,
+    currentPage: state.usersPage.currentPage,
+    isPreloading: state.usersPage.isPreloading
+})
+
+const mapDispatchToProps = {
+            follow, unFollow, setUsers, setTotalUsersCount, setCurrentPage, toggleIsPreloading
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return (
-        {
-            follow: (userId) => {
-                let action = followAC(userId)
-                dispatch(action)
-            },
-            unFollow: (userId) => {
-                let action = unFollowAC(userId)
-                dispatch(action)
-            },
-            setUsers: (users) => {
-                let action = setUsersAC(users)
-                dispatch(action)
-            },
-            setTotalUsersCount: (usersCount) => {
-                dispatch(setTotalUsersCountAC(usersCount)) 
-            }, 
-            setCurrentPage: (pageNumber) => {
-                dispatch(setCurrentPageAC(pageNumber))
-            },
-            toggleIsPreloading: (preloader) => {
-                dispatch(toggleIsPreloadingAC(preloader)) 
-            }
-        }
-    )
-}
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPI)
-
-export default UsersContainer
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
 

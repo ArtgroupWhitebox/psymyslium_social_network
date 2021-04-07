@@ -70,10 +70,10 @@ const usersReducer = (state = initialState, action) => {
 }
 export default usersReducer
 
-export const followAC = (userId) => ({ type: FOLLOW, userId })
-export const unFollowAC = (userId) => ({ type: UNFOLLOW, userId })
+export const follow = (userId) => ({ type: FOLLOW, userId })
+export const unFollow = (userId) => ({ type: UNFOLLOW, userId })
 
-export const setUsersAC = (users) => ({ type: SET_USERS, users })
-export const setTotalUsersCountAC = (usersCount) => ({ type: SET_TOTAL_USERS_COUNT, usersCount })
-export const setCurrentPageAC = (pageNumber) => ({ type: CURRENT_PAGE, currentPageNew: pageNumber })
-export const toggleIsPreloadingAC = (preloader) => ({ type: TOGGLE_IS_PRELOADING, preloader })
+export const setUsers = (users) => ({ type: SET_USERS, users })
+export const setTotalUsersCount = (usersCount) => ({ type: SET_TOTAL_USERS_COUNT, usersCount })
+export const setCurrentPage = (pageNumber) => ({ type: CURRENT_PAGE, currentPageNew: pageNumber })
+export const toggleIsPreloading = (preloader) => ({ type: TOGGLE_IS_PRELOADING, preloader })

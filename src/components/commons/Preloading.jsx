@@ -1,6 +1,6 @@
 
 import preload from '../../assets/images/preload.gif'
-import classes from '../Users/Users.module.css'
+import classes from './Commons.module.css'
 
 let Preloading = () => {
     return <div>

@@ -5,7 +5,7 @@ import Header from './components/Header/Header'
 import Music from './components/Music/Music'
 import Nav from './components/Nav/Nav'
 import NewsContainer from './components/News/NewsContainer'
-import Profile from './components/Profile/Profile'
+import ProfileContainer from './components/Profile/ProfileContainer'
 import Settings from './components/Settings/Settings'
 import SidebarContainer from './components/Sidebar/SidebarContainer'
 import UsersContainer from './components/Users/UsersContainer'
@@ -19,7 +19,7 @@ const App = () => {
             <Nav />
             <div className='app_psymyslium-content'>                
                 <Route path='/dialogs' render={() => <DialogsContainer />} />
-                <Route path='/profile' render={() => <Profile />} />
+                <Route path='/profile' render={() => <ProfileContainer />} />
                 <Route path='/news' render={() => <NewsContainer />} />
                 <Route path='/music' component={Music} />
                 <Route path='/settings' component={Settings} />
