@@ -19,7 +19,7 @@ const App = () => {
             <Nav />
             <div className='app_psymyslium-content'>                
                 <Route path='/dialogs' render={() => <DialogsContainer />} />
-                <Route path='/profile' render={() => <ProfileContainer />} />
+                <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
                 <Route path='/news' render={() => <NewsContainer />} />
                 <Route path='/music' component={Music} />
                 <Route path='/settings' component={Settings} />
