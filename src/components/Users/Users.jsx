@@ -1,6 +1,8 @@
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
 import classes from './Users.module.css'
-import avatar from '../../assets/images/Nastay.jpg'
+// import avatar from '../../assets/images/Nastay.jpg'
+import UserPhoto from '../commons/userPhoto/UserPhoto'
+import UserName from '../commons/UserName'
 
 const Users = (props) => {
 
@@ -27,14 +29,16 @@ const Users = (props) => {
                     <div className={classes.itemBlock}>
                         <div className={classes.item}>
                             <div className={classes.userAvatar}>
-                                <NavLink to={'/profile/' + user.id}>
+                                <UserPhoto  pageKey={props.pageKey} photosSmall={user.photos.small} userId={user.id}/>
+                                {/* <NavLink to={'/profile/' + user.id}>
                                     <img src={user.photos.small != null ? user.photos.small : avatar} className={classes.avatar} />
-                                </NavLink>
+                                </NavLink> */}
                             </div>
                             <div className={classes.userName}>
-                                <NavLink to={'/profile/' + user.id} activeClassName={classes.activeLink}>
+                                <UserName pageKey={props.pageKey} fullName={user.name} userId={user.id}/>
+                                {/* <NavLink to={'/profile/' + user.id} activeClassName={classes.activeLink}>
                                     {user.name}
-                                </NavLink>
+                                </NavLink> */}
                             </div>
                             <div>
                                 {user.followed

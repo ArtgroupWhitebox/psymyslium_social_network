@@ -10,7 +10,8 @@ let initialState = {
         { id: 3, message: 'Мне нравится React', like: 22 }
     ],
     newPostText: '',
-    profile: null    
+    profile: null, 
+    pageKey: 'ProfileInfo'   
 }
 
 const profileReducer = (state=initialState, action) => {

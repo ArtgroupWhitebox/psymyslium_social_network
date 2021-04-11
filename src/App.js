@@ -1,5 +1,6 @@
 import { Route } from 'react-router-dom'
 import './App.css'
+import UserPhotoContainer from './components/commons/userPhoto/UserPhotoContainer'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
 import Header from './components/Header/Header'
 import Music from './components/Music/Music'
@@ -20,6 +21,7 @@ const App = () => {
             <div className='app_psymyslium-content'>                
                 <Route path='/dialogs' render={() => <DialogsContainer />} />
                 <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+                <Route path='/userPhotoLarge/:userId' render={() => <UserPhotoContainer />} />
                 <Route path='/news' render={() => <NewsContainer />} />
                 <Route path='/music' component={Music} />
                 <Route path='/settings' component={Settings} />

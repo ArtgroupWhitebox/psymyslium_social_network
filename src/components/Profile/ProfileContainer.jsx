@@ -18,7 +18,7 @@ class ProfileContainer extends React.Component {
     render() { return <Profile {...this.props} /> }
 }
 
-const mapStateToProps = (state) => ({ profile: state.profilePage.profile })
+const mapStateToProps = (state) => ({ profile: state.profilePage.profile, pageKey: state.profilePage.pageKey })
 
 let DispatchToProps = { setUserProfile }
 

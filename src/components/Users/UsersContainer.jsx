@@ -6,7 +6,7 @@ import React from 'react'
 import Preloading from '../commons/Preloading'
 
 class UsersContainer extends React.Component {
-
+    
     constructor(props) {
         super(props)        
     }
@@ -39,11 +39,13 @@ class UsersContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+
     usersData: state.usersPage.usersData,
     totalUsersCount: state.usersPage.totalUsersCount,
     pageSize: state.usersPage.pageSize,
     currentPage: state.usersPage.currentPage,
-    isPreloading: state.usersPage.isPreloading
+    isPreloading: state.usersPage.isPreloading,
+    pageKey: state.usersPage.pageKey
 })
 
 const mapDispatchToProps = {

@@ -7,7 +7,8 @@ const mapStateToProps = (state) => {
     return (
         {
             newNewsBody: state.newsPage.newNewsBody,
-            newsData: state.newsPage.newsData 
+            newsData: state.newsPage.newsData      
+            
         }
     )
 }

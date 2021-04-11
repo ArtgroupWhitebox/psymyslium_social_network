@@ -6,14 +6,14 @@ const CURRENT_PAGE = 'CURRENT_PAGE'
 const TOGGLE_IS_PRELOADING = 'TOGGLE_IS_PRELOADING'
 
 
-
 let initialState = { 
     usersData: [],
     totalUsersCount: 0,
     pageSize: 100,
     currentPage: 1,
-    isPreloading: true
-    }
+    isPreloading: true,
+    pageKey: 'Users'
+}
 
 const usersReducer = (state = initialState, action) => {
 
