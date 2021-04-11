@@ -29,16 +29,10 @@ const Users = (props) => {
                     <div className={classes.itemBlock}>
                         <div className={classes.item}>
                             <div className={classes.userAvatar}>
-                                <UserPhoto  pageKey={props.pageKey} photosSmall={user.photos.small} userId={user.id}/>
-                                {/* <NavLink to={'/profile/' + user.id}>
-                                    <img src={user.photos.small != null ? user.photos.small : avatar} className={classes.avatar} />
-                                </NavLink> */}
+                                <UserPhoto  pageKey={props.pageKey} photosSmall={user.photos.small} userId={user.id}/>                               
                             </div>
                             <div className={classes.userName}>
                                 <UserName pageKey={props.pageKey} fullName={user.name} userId={user.id}/>
-                                {/* <NavLink to={'/profile/' + user.id} activeClassName={classes.activeLink}>
-                                    {user.name}
-                                </NavLink> */}
                             </div>
                             <div>
                                 {user.followed

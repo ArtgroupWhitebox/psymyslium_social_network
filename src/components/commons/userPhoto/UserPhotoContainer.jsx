@@ -25,10 +25,8 @@ class UserPhotoContainer extends React.Component {
        
     render() {
         
-        return this.props.photoLarge ? 
-            <UserPhotoLarge photoLarge = {this.props.photoLarge} userId={this.props.match.params.userId}/> :
-            <Preloading />
-            
+        return <UserPhotoLarge photoLarge = {this.props.photoLarge} userId={this.props.match.params.userId}/> 
+
         // return this.state ? <UserPhotoLarge photoUrl = {this.state.photoUrl} userId={this.state.userId}/> : <Preloading />
     }
 }

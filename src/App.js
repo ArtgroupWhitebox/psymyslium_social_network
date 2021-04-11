@@ -3,6 +3,7 @@ import './App.css'
 import UserPhotoContainer from './components/commons/userPhoto/UserPhotoContainer'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
 import Header from './components/Header/Header'
+import HeaderContainer from './components/Header/HeaderContainer'
 import Music from './components/Music/Music'
 import Nav from './components/Nav/Nav'
 import NewsContainer from './components/News/NewsContainer'
@@ -16,7 +17,7 @@ const App = () => {
 
     return (
         <div className='app_psymyslium'>
-            <Header />
+            <HeaderContainer />
             <Nav />
             <div className='app_psymyslium-content'>                
                 <Route path='/dialogs' render={() => <DialogsContainer />} />

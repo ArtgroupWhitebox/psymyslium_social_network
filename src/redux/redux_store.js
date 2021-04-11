@@ -1,4 +1,5 @@
 import { combineReducers, createStore } from "redux";
+import authMeReducer from "./authMe_reducer";
 import dialogsReducer from "./dialogs_reducer";
 import newsReducer from "./news_reducer";
 import profileReducer from "./profile_reducer";
@@ -13,7 +14,8 @@ let reducers = combineReducers({
     newsPage: newsReducer,
     sidebar: sidebarReducer,
     usersPage: usersReducer,
-    userPhotos: userPhotoReducer
+    userPhotos: userPhotoReducer,
+    auth: authMeReducer
 })
 
 let store = createStore(reducers) 

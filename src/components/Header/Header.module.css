@@ -6,3 +6,14 @@
 .header img {
     width: 20px;
 }
+
+.loginBlook {
+    width: 20px;
+    color: aqua;
+}
+
+.loginBlook a {
+    color: aqua;
+    text-decoration: none;
+}
+
