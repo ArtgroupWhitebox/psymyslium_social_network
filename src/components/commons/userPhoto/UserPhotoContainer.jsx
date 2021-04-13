@@ -4,7 +4,7 @@ import * as axios from 'axios'
 import { setUserPhoto } from '../../../redux/userPhoto_reducer'
 import { withRouter } from "react-router"
 import UserPhotoLarge from "./UserPhotoLarge"
-import Preloading from "../Preloading"
+// import Preloading from "../Preloading"
 
 class UserPhotoContainer extends React.Component { 
     
