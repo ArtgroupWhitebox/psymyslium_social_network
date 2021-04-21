@@ -1,3 +1,5 @@
+import { profileAPI } from "../components/axiosAPI/api"
+
 const SET_USER_PHOTO = 'SET_USER_PHOTO'
 
 let initialState = {
@@ -20,3 +22,14 @@ const userPhotoReducer = (state=initialState, action) => {
 export default userPhotoReducer
 
 export const setUserPhoto = (photoUrl) => ({ type: SET_USER_PHOTO, photoUrl })
+
+export const getUserThunk = (userId) => {
+    return (dispatch) => {                              
+
+        profileAPI.getUser(userId).then(data => {            
+            dispatch(setUserPhoto(data.photos.large))
+        })
+    }
+}
+
+         

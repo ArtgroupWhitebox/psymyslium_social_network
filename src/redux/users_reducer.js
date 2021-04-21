@@ -1,3 +1,5 @@
+import { followAPI, usersAPI } from "../components/axiosAPI/api"
+
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
@@ -89,3 +91,38 @@ export const setTotalUsersCount = (usersCount) => ({ type: SET_TOTAL_USERS_COUNT
 export const setCurrentPage = (pageNumber) => ({ type: CURRENT_PAGE, currentPageNew: pageNumber })
 export const toggleIsPreloading = (preloader) => ({ type: TOGGLE_IS_PRELOADING, preloader })
 export const toggleIsDisabled = (disabler, userId) => ({ type: TOGGLE_IS_DISABLED, disabler, userId})
+
+export const getUsersThunk = (page, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleIsPreloading(true))
+        dispatch(setCurrentPage(page))
+        usersAPI.getUsers(page, pageSize).then(data => {
+                dispatch(toggleIsPreloading(false))
+                dispatch(setUsers(data.items))
+                dispatch(setTotalUsersCount(data.totalCount))
+            }
+        ) 
+    }
+}
+
+export const followThunk = (id) => {
+    return (dispatch) => {
+        dispatch(toggleIsDisabled(true, id))
+        followAPI.postUser(id).then(data => {
+                data.resultCode === 0 && dispatch(follow(id))
+            } 
+        )
+        dispatch(toggleIsDisabled(false, id))
+    }
+}
+
+export const unFollowThunk = (id) => {
+    return (dispatch) => {
+        dispatch(toggleIsDisabled(true, id))
+        followAPI.deleteUser(id).then(data => {
+                data.resultCode === 0 && dispatch(unFollow(id))
+            }
+        )
+        dispatch(toggleIsDisabled(false, id))
+    }
+}

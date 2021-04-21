@@ -15,6 +15,13 @@ export const usersAPI = {
     }
 }
 
+export const profileAPI = {
+
+    getUser(userId) {
+        return axiosInstance.get(`profile/${userId}`).then(response => response.data)
+    }
+}
+
 export const followAPI = {
     postUser(id) {
         return axiosInstance.post(`follow/${id}`, {}).then(response => response.data)

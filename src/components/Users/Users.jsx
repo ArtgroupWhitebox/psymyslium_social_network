@@ -1,6 +1,4 @@
-// import { NavLink } from 'react-router-dom'
 import classes from './Users.module.css'
-// import avatar from '../../assets/images/Nastay.jpg'
 import UserPhoto from '../commons/userPhoto/UserPhoto'
 import UserName from '../commons/UserName'
 
@@ -29,7 +27,7 @@ const Users = (props) => {
                     <div className={classes.itemBlock}>
                         <div className={classes.item}>
                             <div className={classes.userAvatar}>
-                                <UserPhoto  pageKey={props.pageKey} photosSmall={user.photos.small} userId={user.id}/>                               
+                                <UserPhoto  pageKey={props.pageKey} photosSmall={user.photos.small} userId={user.id}/>                                                                  
                             </div>
                             <div className={classes.userName}>
                                 <UserName pageKey={props.pageKey} fullName={user.name} userId={user.id}/>

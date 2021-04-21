@@ -1,3 +1,5 @@
+import { profileAPI } from "../components/axiosAPI/api"
+
 const ADD_POST = 'ADD-POST'
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
@@ -50,3 +52,12 @@ export default profileReducer
 export const addPostActionCreator = () => ({ type: ADD_POST })
 export const updatePostTextActionCreator = (newText) => ({ type: UPDATE_POST_TEXT, text: newText })
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
+
+export const getUserThunk = (userId) => {
+    return (dispatch) => {
+        profileAPI.getUser(userId).then(data => {
+            dispatch(setUserProfile(data))
+        }) 
+    }
+}
+ 
