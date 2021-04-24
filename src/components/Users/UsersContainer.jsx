@@ -4,6 +4,7 @@ import Users from './Users'
 import React from 'react'
 import Preloading from '../commons/Preloading'
 import withAuthRedirect from '../commons/Redirect/withAuthRedirect'
+import { compose } from 'redux'
 
 class UsersContainer extends React.Component {
 
@@ -46,6 +47,7 @@ const mapStateToProps = (state) => ({
     pageKey: state.usersPage.pageKey
 })   
 
-const AuthRedirectContainer = withAuthRedirect(UsersContainer)
-export default connect(mapStateToProps, {getUsersThunk, followThunk, unFollowThunk }) (AuthRedirectContainer)
+export default compose(
+    connect(mapStateToProps, {getUsersThunk, followThunk, unFollowThunk }),
+    withAuthRedirect)(UsersContainer)
 
