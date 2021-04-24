@@ -1,8 +1,8 @@
 import { Route } from 'react-router-dom'
 import './App.css'
+import LoginPage from './components/commons/Login/LoginPage'
 import UserPhotoContainer from './components/commons/userPhoto/UserPhotoContainer'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
-import Header from './components/Header/Header'
 import HeaderContainer from './components/Header/HeaderContainer'
 import Music from './components/Music/Music'
 import Nav from './components/Nav/Nav'
@@ -27,6 +27,7 @@ const App = () => {
                 <Route path='/music' component={Music} />
                 <Route path='/settings' component={Settings} />
                 <Route path='/users' render={ () => <UsersContainer /> } />
+                <Route path='/login' render={ () => <LoginPage /> } />
             </div>                       
             <div><SidebarContainer /></div>             
         </div>

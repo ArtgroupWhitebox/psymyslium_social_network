@@ -3,6 +3,7 @@ import { getUsersThunk, unFollowThunk, followThunk,  } from '../../redux/users_r
 import Users from './Users'
 import React from 'react'
 import Preloading from '../commons/Preloading'
+import withAuthRedirect from '../commons/Redirect/withAuthRedirect'
 
 class UsersContainer extends React.Component {
 
@@ -45,6 +46,6 @@ const mapStateToProps = (state) => ({
     pageKey: state.usersPage.pageKey
 })   
 
-export default connect(mapStateToProps,  
-    {getUsersThunk, followThunk, unFollowThunk }) (UsersContainer)
+const AuthRedirectContainer = withAuthRedirect(UsersContainer)
+export default connect(mapStateToProps, {getUsersThunk, followThunk, unFollowThunk }) (AuthRedirectContainer)
 

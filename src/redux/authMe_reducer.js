@@ -7,8 +7,7 @@ let initialState = {
     id: null,
     email: null,
     login: null,
-    isAuth: false,
-    pageKey: 'authMe'   
+    isAuth: false 
 }
 
 const authMeReducer = (state=initialState, action) => {
