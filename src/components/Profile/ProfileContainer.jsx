@@ -21,5 +21,5 @@ const mapStateToProps = (state) => ({ profile: state.profilePage.profile, pageKe
 
 export default compose(
     connect(mapStateToProps, { getUserThunk }),
-    withAuthRedirect,
+    // withAuthRedirect,
     withRouter)(ProfileContainer)
