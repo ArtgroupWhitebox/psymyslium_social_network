@@ -4,10 +4,9 @@ import ProfileStatus from './ProfileStatus/ProfileStatus'
 
 const Profile = (props) => {
     return <div>
-        <ProfileInfo profile={props.profile} pageKey={props.pageKey}/>
-        <ProfileStatus status={'lalala'} />
-        <MyPostsContainer />
-        
+        <ProfileInfo profile={props.profile} pageKey={props.pageKey}/> 
+        <ProfileStatus status={props.status} updateUserStatusThunk={props.updateUserStatusThunk} />
+        <MyPostsContainer />        
     </div>
 }
 

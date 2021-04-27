@@ -4,7 +4,8 @@ import classes from './ProfileStatus.module.css'
 class ProfileStatus extends React.Component {
 
     state = {
-        editMode: false
+        editMode: false,
+        statusLocal: this.props.status
     }
 
     activateEditMode = () => {
@@ -17,6 +18,13 @@ class ProfileStatus extends React.Component {
         this.setState({
             editMode: false
         })
+        this.props.updateUserStatusThunk(this.state.statusLocal)
+    }
+
+    onChangeUserStatus = (event) => {
+        this.setState({
+            statusLocal: event.target.value 
+        })
     }
 
     selectText = (event) => {
@@ -25,12 +33,13 @@ class ProfileStatus extends React.Component {
 
     render() {
         return <div className={classes.statusBlock}>
-            {!this.state.editMode ?
+            { !this.state.editMode ?
                 <div>
-                    <span onDoubleClick={this.activateEditMode} >{this.props.status}</span>
+                    <span onDoubleClick={this.activateEditMode} >{this.props.status || 'Status: ;););)' }</span>
                 </div> :
                 <div>
-                    <input autoFocus={true} onFocus={this.selectText} onBlur={this.deActivateEditMode} value={this.props.status} />
+                    <input autoFocus={true} onFocus={this.selectText} onBlur={this.deActivateEditMode} 
+                    onChange={this.onChangeUserStatus} value={this.state.statusLocal} />
                 </div>
             }
         </div>

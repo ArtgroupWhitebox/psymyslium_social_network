@@ -37,6 +37,8 @@ const ProfileInfo = (props) => {
                         {user.lookingForAJob == true && <div>Looking for a job: {user.lookingForAJobDescription} </div>}
                     </div>
                 </div>
+                
+                
             }
         </div>
     </div>
