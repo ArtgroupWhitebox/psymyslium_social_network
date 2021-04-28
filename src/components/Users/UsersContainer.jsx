@@ -19,19 +19,10 @@ class UsersContainer extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.getUsersThunk(pageNumber, this.props.pageSize)
     }
-
-    onClickFollow = (id) => {
-        this.props.followThunk(id)
-    }
-
-    onClickUnFollow = (id) => {
-        this.props.unFollowThunk(id)
-    }
-   
+    
     render() {
         return <>
-            { this.props.isPreloading ? <Preloading /> : <Users {...this.props} onPageChanged={this.onPageChanged}
-                onClickFollow={this.onClickFollow} onClickUnFollow={this.onClickUnFollow} />}
+            { this.props.isPreloading ? <Preloading /> : <Users {...this.props} onPageChanged={this.onPageChanged} />}
         </>
     }
 }

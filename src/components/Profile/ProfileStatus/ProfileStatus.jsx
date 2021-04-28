@@ -1,4 +1,5 @@
 import React from "react"
+import { componentDidUpdate } from "react"
 import classes from './ProfileStatus.module.css'
 
 class ProfileStatus extends React.Component {
@@ -24,6 +25,13 @@ class ProfileStatus extends React.Component {
     onChangeUserStatus = (event) => {
         this.setState({
             statusLocal: event.target.value 
+        })
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        prevProps.status !== this.props.status && 
+        this.setState({
+            statusLocal: this.props.status
         })
     }
 

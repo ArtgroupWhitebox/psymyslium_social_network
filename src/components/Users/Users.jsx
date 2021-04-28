@@ -34,9 +34,9 @@ const Users = (props) => {
                             </div>
                             <div>
                                 {user.followed
-                                    ? <button disabled={props.isDisabled.some(id => id === user.id)} onClick={() => { props.onClickUnFollow(user.id) }} className={classes.unFollowButton} >
+                                    ? <button disabled={props.isDisabled.some(id => id === user.id)} onClick={() => { props.unFollowThunk(user.id) }} className={classes.unFollowButton} >
                                     Unfollow </button>
-                                    : <button disabled={props.isDisabled.some(id => id === user.id)} onClick={() => { props.onClickFollow(user.id) }} className={classes.followButton} >
+                                    : <button disabled={props.isDisabled.some(id => id === user.id)} onClick={() => { props.followThunk(user.id) }} className={classes.followButton} >
                                     Follow </button> }
                             </div>
                         </div>
