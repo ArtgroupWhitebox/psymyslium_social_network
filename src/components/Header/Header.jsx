@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import classes from './Header.module.css'
-console.log (classes)
+console.log(classes)
 
 const Header = (props) => {
     return <header className={classes.header}>
@@ -8,10 +8,17 @@ const Header = (props) => {
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFWWl122hfo3Mds1f9lNAfwEXiaGU7_VaiPA&usqp=CAU" />
 
         <span className={classes.loginBlook}>
-            {props.isAuth ? props.login : <Link to={'/login/'}>Login</Link>}            
+            {props.isAuth ? <div>
+                    <div>
+                        {props.login}
+                    </div>
+                    <div>
+                        <button onClick={props.logoutThunk}>Log out</button>
+                    </div>
+                </div>
+                : <Link to={'/login/'}>Login</Link>}
         </span>
-        
     </header>
 }
 
-export default Header;
+export default Header

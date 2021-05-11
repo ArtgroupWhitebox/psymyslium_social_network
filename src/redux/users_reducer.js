@@ -75,7 +75,7 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 isDisabled: action.disabler ?
                     [...state.isDisabled, action.userId] :
-                    state.isDisabled.filter(id => id !=action.userId )
+                    state.isDisabled.filter(id => id !==action.userId )
         }
         
         default: return (state)

@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { getAuthMeThunk } from "../../redux/authMe_reducer"
+import { getAuthMeThunk, logoutThunk } from "../../redux/authMe_reducer"
 import Header from "./Header"
 
 class HeaderContainer extends React.Component {
@@ -24,5 +24,5 @@ const mapStateToProps = (state) => {
     }    
 } 
 
-export default connect(mapStateToProps, {getAuthMeThunk})(HeaderContainer)
+export default connect(mapStateToProps, {getAuthMeThunk, logoutThunk})(HeaderContainer)
 
