@@ -31,7 +31,7 @@ export const setAuthMeData = (id, email, login, isAuth) => ({ type: SET_AUTH_ME_
 export const getAuthMeThunk = () => {
     return (dispatch) => {
 
-        authAPI.getAuthMe().then(data => {
+        return authAPI.getAuthMe().then(data => {
             const {id, email, login} = data.data        
             data.resultCode === 0 && dispatch(setAuthMeData(id, email, login, true))
         })

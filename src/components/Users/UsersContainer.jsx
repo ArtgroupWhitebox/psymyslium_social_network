@@ -40,5 +40,6 @@ const mapStateToProps = (state) => ({
 
 export default compose(
     connect(mapStateToProps, {getUsersThunk, followThunk, unFollowThunk }),
-    withAuthRedirect)(UsersContainer)
+    // withAuthRedirect
+    )(UsersContainer)
 
