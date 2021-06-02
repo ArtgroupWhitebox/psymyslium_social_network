@@ -5,6 +5,7 @@ import React from 'react'
 import Preloading from '../commons/Preloading'
 import withAuthRedirect from '../commons/Redirect/withAuthRedirect'
 import { compose } from 'redux'
+import { getCurrentPage, getIsDisabled, getIsPreloading, getPageKey, getPageSize, getTotalUsersCount, getUsers } from '../../redux/users_selector'
 
 class UsersContainer extends React.Component {
 
@@ -29,13 +30,13 @@ class UsersContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
 
-    usersData: state.usersPage.usersData,
-    totalUsersCount: state.usersPage.totalUsersCount,
-    pageSize: state.usersPage.pageSize,
-    currentPage: state.usersPage.currentPage,
-    isPreloading: state.usersPage.isPreloading,
-    isDisabled: state.usersPage.isDisabled,
-    pageKey: state.usersPage.pageKey
+    usersData: getUsers(state),
+    totalUsersCount: getTotalUsersCount(state),
+    pageSize: getPageSize(state),
+    currentPage: getCurrentPage(state),
+    isPreloading: getIsPreloading(state),
+    isDisabled: getIsDisabled(state),
+    pageKey: getPageKey(state)
 })   
 
 export default compose(
