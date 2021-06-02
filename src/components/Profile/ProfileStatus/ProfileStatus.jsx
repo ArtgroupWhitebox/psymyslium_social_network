@@ -1,4 +1,4 @@
-import React from "react"
+import React  from "react"
 import { componentDidUpdate } from "react"
 import classes from './ProfileStatus.module.css'
 
@@ -33,6 +33,7 @@ class ProfileStatus extends React.Component {
         this.setState({
             statusLocal: this.props.status
         })
+        console.log(componentDidUpdate)
     }
 
     selectText = (event) => {
