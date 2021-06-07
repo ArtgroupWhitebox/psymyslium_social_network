@@ -1,6 +1,7 @@
 import { profileAPI } from "../components/axiosAPI/api"
 
 const ADD_POST = 'ADD-POST'
+const DELETE_POST = 'DELETE_POST'
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
@@ -24,7 +25,7 @@ const profileReducer = (state = initialState, action) => {
 
         case ADD_POST:
             let newPost = {
-                id: 5,
+                id: 4,
                 message: state.newPostText,
                 like: 0
             }
@@ -33,6 +34,12 @@ const profileReducer = (state = initialState, action) => {
                 postsData: [...state.postsData, newPost],
                 newPostText: ''
             }
+
+        case DELETE_POST:
+            return {
+                ...state,
+                postsData: [...state.postsData.filter(p => p.id != action.postId)]
+            }     
 
         case UPDATE_POST_TEXT:
             return {
@@ -58,6 +65,7 @@ const profileReducer = (state = initialState, action) => {
 export default profileReducer
 
 export const addPostActionCreator = () => ({ type: ADD_POST })
+export const deletePostActionCreator = (postId) => ({ type: DELETE_POST, postId })
 export const updatePostTextActionCreator = (newText) => ({ type: UPDATE_POST_TEXT, text: newText })
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status })

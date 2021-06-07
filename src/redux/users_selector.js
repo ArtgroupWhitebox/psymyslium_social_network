@@ -25,3 +25,7 @@ export const getIsDisabled = (state) => {
 export const getPageKey = (state) => {
     return state.usersPage.pageKey
 }
+
+export const getPhotoLarge = (state) => {
+    return state.userPhotos.photoLarge
+}
