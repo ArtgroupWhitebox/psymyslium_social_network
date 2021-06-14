@@ -1,4 +1,5 @@
 import { followAPI, usersAPI } from "../components/axiosAPI/api"
+import { updateObjectInArray } from "../components/commons/updateObjectInArray/updateObjectInArray"
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
@@ -27,23 +28,13 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                usersData: state.usersData.map( user => {
-                    if (user.id === action.userId) {
-                        return { ...user, followed: false  }
-                    }
-                    return user
-                })
+                usersData: updateObjectInArray(state.usersData, action.userId, 'id', {followed: false} )
             }
 
         case UNFOLLOW:
             return {
                 ...state,
-                usersData: state.usersData.map( user => {
-                    if (user.id === action.userId) {
-                        return { ...user, followed: true }
-                    }
-                    return user
-                })
+                usersData: updateObjectInArray(state.usersData, action.userId, 'id', {followed: true} )
             }
     
         case SET_USERS:        
@@ -128,6 +119,6 @@ export const unFollowThunk = (id) => {
         let methodAPI = followAPI.deleteUser(id)
         let actionCreator = unFollow(id)
 
-        followUnfollowFlow(dispatch, id, methodAPI, actionCreator)        
+        followUnfollowFlow(dispatch, id, methodAPI, actionCreator )        
     }
 }
