@@ -1,0 +1,17 @@
+.selectedPage {
+    color: rgb(250, 221, 91)
+}
+
+.pageNumber {
+    color: rgb(22, 22, 22)
+}
+
+.paginator button {
+    width: 70px;
+    height: 25px;
+    margin: 10px;
+    border-radius: 4px;
+    background-color: gray;
+    color: black;
+    border: 0px;
+}

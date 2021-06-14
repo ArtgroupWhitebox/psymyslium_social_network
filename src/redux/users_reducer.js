@@ -116,9 +116,6 @@ export const followThunk = (id) => {
 
 export const unFollowThunk = (id) => {
     return (dispatch) => {
-        let methodAPI = followAPI.deleteUser(id)
-        let actionCreator = unFollow(id)
-
-        followUnfollowFlow(dispatch, id, methodAPI, actionCreator )        
+        followUnfollowFlow(dispatch, id, followAPI.deleteUser(id), unFollow(id) )        
     }
 }

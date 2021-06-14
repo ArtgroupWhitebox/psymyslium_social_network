@@ -3,7 +3,6 @@ import { getUsersThunk, unFollowThunk, followThunk,  } from '../../redux/users_r
 import Users from './Users'
 import React from 'react'
 import Preloading from '../commons/Preloading'
-import withAuthRedirect from '../commons/Redirect/withAuthRedirect'
 import { compose } from 'redux'
 import { getCurrentPage, getIsDisabled, getIsPreloading, getPageKey, getPageSize, getTotalUsersCount, getUsers } from '../../redux/users_selector'
 
@@ -40,7 +39,6 @@ const mapStateToProps = (state) => ({
 })   
 
 export default compose(
-    connect(mapStateToProps, {getUsersThunk, followThunk, unFollowThunk }),
-    // withAuthRedirect
+    connect(mapStateToProps, {getUsersThunk, followThunk, unFollowThunk })
     )(UsersContainer)
 

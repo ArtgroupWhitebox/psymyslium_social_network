@@ -1,27 +1,14 @@
 import classes from './Users.module.css'
 import UserPhoto from '../commons/userPhoto/UserPhoto'
 import UserName from '../commons/UserName'
+import Paginator from '../commons/Paginator/Paginator'
 
 const Users = (props) => {
 
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-    console.log(pagesCount)
-    let pages = []
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
-
     return (
         <div className={classes.itemUsers}>
-            <div> {
-                pages.map(pageNumber => {
-                    return <span key={pageNumber} className={props.currentPage === pageNumber ? classes.selectedPage : undefined}
-                        onClick={(event) => { props.onPageChanged(pageNumber) }}> {pageNumber}
-                    </span>
-                }
-                )
-            }
-            </div>
+            <Paginator totalItemsCount={props.totalUsersCount} pageSize={props.pageSize} currentPage={props.currentPage}
+                onPageChanged={props.onPageChanged} partSize={20} />
             {
                 props.usersData.map(user => <div key={user.id}>
                     <div className={classes.itemBlock}>
