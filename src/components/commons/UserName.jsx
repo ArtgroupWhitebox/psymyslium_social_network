@@ -4,22 +4,19 @@ import classes from '../commons/Commons.module.css'
 
 const UserName = (props) => {
 
+    const lincFn = (path) => {
+
+        return <div className={classes.userName}>
+                <NavLink to={path + props.userId} activeClassName={classes.activeLink}>
+                    {props.fullName}
+                </NavLink>
+            </div>
+    }
+
     switch (props.pageKey) {
 
-        case 'ProfileInfo':
-            return <div className={classes.userName}>
-                <NavLink to={'/userPhotoLarge/' + props.userId} activeClassName={classes.activeLink}>
-                    {props.fullName}
-                </NavLink>
-            </div>
-
-        case 'Users':
-            return <div className={classes.userName}>
-                <NavLink to={'/profile/' + props.userId} activeClassName={classes.activeLink}>
-                    {props.fullName}
-                </NavLink>
-            </div>
-
+        case 'ProfileInfo': return lincFn('/userPhotoLarge/')
+        case 'Users': return lincFn('/profile/')
         default: return <div>Упс...</div>
     }
 }

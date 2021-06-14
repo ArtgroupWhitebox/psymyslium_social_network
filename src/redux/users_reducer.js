@@ -105,24 +105,29 @@ export const getUsersThunk = (page, pageSize) => {
     }
 }
 
+const followUnfollowFlow = (dispatch, id, methodAPI, actionCreator) => {
+    dispatch(toggleIsDisabled(true, id))
+    methodAPI.then(data => {
+            data.resultCode === 0 && dispatch(actionCreator)
+        }
+    )
+    dispatch(toggleIsDisabled(false, id))
+}
+
 export const followThunk = (id) => {
     return (dispatch) => {
-        dispatch(toggleIsDisabled(true, id))
-        followAPI.postUser(id).then(data => {
-                data.resultCode === 0 && dispatch(follow(id))
-            } 
-        )
-        dispatch(toggleIsDisabled(false, id))
+        let methodAPI = followAPI.postUser(id)
+        let actionCreator = follow(id)
+
+        followUnfollowFlow(dispatch, id, methodAPI, actionCreator)  
     }
 }
 
 export const unFollowThunk = (id) => {
     return (dispatch) => {
-        dispatch(toggleIsDisabled(true, id))
-        followAPI.deleteUser(id).then(data => {
-                data.resultCode === 0 && dispatch(unFollow(id))
-            }
-        )
-        dispatch(toggleIsDisabled(false, id))
+        let methodAPI = followAPI.deleteUser(id)
+        let actionCreator = unFollow(id)
+
+        followUnfollowFlow(dispatch, id, methodAPI, actionCreator)        
     }
 }
