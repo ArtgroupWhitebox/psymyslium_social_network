@@ -3,21 +3,24 @@ import classes from './ProfileInfo.module.css'
 import logo from '../../../assets/images/logo.jpg'
 import UserPhoto from '../../commons/userPhoto/UserPhoto'
 import UserName from '../../commons/UserName'
+import OwnerPhoto from '../../commons/OwnerPhoto/OwnerPhoto'
 
-const ProfileInfo = (props) => {
-    
+const ProfileInfo = (props) => { 
+      
     const user = props.profile
     return <div>
         <div>
             <img src={logo} />
-        </div>
+        </div>        
         <div className={classes.postBlock}>
-            {!user ? <Preloading /> :
+            { !user ? <Preloading /> :
                 <div className={classes.itemBlock}>
                     <div className={classes.item}>
                     <div className={classes.userAvatar}>
-                            <UserPhoto pageKey={props.pageKey} photosSmall={user.photos.small} userId={user.userId}/>
-                        </div>
+                        { props.isOwner ? <OwnerPhoto photoOwnerSmall={user.photos.small} 
+                            saveOwnerPhotoThunk={props.saveOwnerPhotoThunk} /> : 
+                        <UserPhoto pageKey={props.pageKey} photosSmall={user.photos.small} userId={user.userId} />}
+                    </div>
                         <div className={classes.userName}>
                             <UserName pageKey={props.pageKey} fullName={user.fullName} userId={user.userId}/>
                         </div>

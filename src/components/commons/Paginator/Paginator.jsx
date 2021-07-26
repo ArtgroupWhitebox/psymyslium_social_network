@@ -4,7 +4,6 @@ import classes from './Paginator.module.css'
 const Paginator = (props) => {
 
     const pagesCount = Math.ceil(props.totalItemsCount / props.pageSize)
-    console.log(pagesCount)
     const pagesArray = []
     for (let i = 1; i <= pagesCount; i++) {
         pagesArray.push(i)
@@ -35,7 +34,7 @@ const Paginator = (props) => {
             }
 
             {useEffect(()=>setPartNumber(Math.ceil(props.currentPage/props.partSize)), [props.currentPage])}
-            
+
             {
                 partsCount > partNumber  && 
                 <button onClick={ () => { setPartNumber(partNumber + 1) }}> NEXT </button>

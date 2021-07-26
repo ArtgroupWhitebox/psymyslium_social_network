@@ -6,9 +6,11 @@ const UserPhoto = (props) => {
     
     const lincFn = (path) => {
 
-        return <Link to={path + props.userId}>
-                <img src={props.photosSmall != null ? props.photosSmall : avatar} className={classes.avatar} />
-            </Link> 
+        return <>
+            <Link to={path + props.userId}>
+                <img src={props.photosSmall || avatar} className={classes.avatar} />
+            </Link>
+        </>  
     }
       
     switch (props.pageKey) {

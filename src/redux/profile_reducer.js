@@ -5,6 +5,7 @@ const DELETE_POST = 'DELETE_POST'
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
+const SET_USER_OWNER_PHOTO = 'SET_USER_OWNER_PHOTO'
 
 let initialState = {
 
@@ -38,7 +39,7 @@ const profileReducer = (state = initialState, action) => {
         case DELETE_POST:
             return {
                 ...state,
-                postsData: [...state.postsData.filter(p => p.id != action.postId)]
+                postsData: [...state.postsData.filter(p => p.id !== action.postId)]
             }     
 
         case UPDATE_POST_TEXT:
@@ -57,9 +58,16 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 status: action.status
+            }  
+            
+        case SET_USER_OWNER_PHOTO:
+            return {
+                ...state,
+                profile: { ...state.profile, photos: action.photos }
+                // profile: {...state.profile, photos: {...state.profile.photos, small: action.photos}}
             }
 
-        default: return (state)
+        default: return (state)        
     }
 }
 export default profileReducer
@@ -69,6 +77,8 @@ export const deletePostActionCreator = (postId) => ({ type: DELETE_POST, postId 
 export const updatePostTextActionCreator = (newText) => ({ type: UPDATE_POST_TEXT, text: newText })
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status })
+export const setUserOwnerPhoto = (photos) => ({ type: SET_USER_OWNER_PHOTO, photos })
+
 
 export const getUserThunk = (userId) => {
     return (dispatch) => {
@@ -91,6 +101,17 @@ export const updateUserStatusThunk = (status) => {
         profileAPI.putStatus(status).then(data => {
             data.resultCode === 0 &&
             dispatch(setUserStatus(status))
+        })
+    }
+}
+
+export const saveOwnerPhotoThunk = (file) => {
+    return (dispatch) => { 
+        profileAPI.putUserPhoto(file).then(data => {
+            data.resultCode === 0 &&
+            dispatch(setUserOwnerPhoto(data.data.photos))
+            console.log(data.resultCode)
+            console.log(data.data.photos)
         })
     }
 }

@@ -14,7 +14,7 @@ const userPhotoReducer = (state=initialState, action) => {
                 ...state,
                 photoLarge: action.photoUrl
             }
-
+        
         default: return (state)
     }
 }
@@ -22,6 +22,8 @@ const userPhotoReducer = (state=initialState, action) => {
 export default userPhotoReducer
 
 export const setUserPhoto = (photoUrl) => ({ type: SET_USER_PHOTO, photoUrl })
+
+
 
 export const getUserThunk = (userId) => {
     return (dispatch) => {                              
