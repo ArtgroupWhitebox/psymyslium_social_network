@@ -34,6 +34,11 @@ export const profileAPI = {
         formData.append('image', photoFile)
         return axiosInstance.put(`profile/photo`, formData        
         ).then(response => response.data)        
+    },
+
+    putProfilePersonalData(fullName, aboutMe, lookingForAJob=null, lookingForAJobDescription) {
+        return axiosInstance.put(`profile`, {fullName: fullName, aboutMe: aboutMe, 
+            lookingForAJob: lookingForAJob, lookingForAJobDescription: lookingForAJobDescription } ).then(response => response.data)
     }
 }
 
@@ -59,8 +64,34 @@ export const authAPI = {
     
     logout() {
         return axiosInstance.delete(`auth/login`).then(response => response.data)
-    }
+    }    
+}
+
+export const dialogsAPI = {
+
+    putStartDialog(userId) {
+        return axiosInstance.put(`dialogs/${userId}`, {}).then(response => response.data)
+    },
+
+    getUsersDialogs() {
+        return axiosInstance.get(`dialogs`).then(response => response.data)
+    },
+
+    // getUsersDialogs(page, pageSize) {
+    //     return axiosInstance.get(`dialogs?page=${page}&count=${pageSize}`).then(response => response.data)
+    // },
     
+    // getReturnMessageNewestThanDate(userId, date) {
+    //     return axiosInstance.get(`dialogs/${userId}/messages/new?newerThen=${date}`).then(response => response.data)
+    // },
+
+    // putSendMessageToYourFriend(userId, body) {
+    //     return axiosInstance.put(`dialogs/${userId}`, {body}).then(response => response.data)
+    // },
+
+    // deleteUser(id) {
+    //     return axiosInstance.delete(`follow/${id}`).then(response => response.data)
+    // }
 }
 
            

@@ -8,7 +8,7 @@ const UserName = (props) => {
 
         return <div className={classes.userName}>
                 <NavLink to={path + props.userId} activeClassName={classes.activeLink}>
-                    {props.fullName}
+                    {props.fullName || props.userId || 'User_'}
                 </NavLink>
             </div>
     }
@@ -17,6 +17,7 @@ const UserName = (props) => {
 
         case 'ProfileInfo': return lincFn('/userPhotoLarge/')
         case 'Users': return lincFn('/profile/')
+        case 'Dialogs': return lincFn('/dialogs/')
         default: return <div>Упс...</div>
     }
 }

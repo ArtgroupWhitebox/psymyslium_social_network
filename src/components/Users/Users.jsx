@@ -2,14 +2,15 @@ import classes from './Users.module.css'
 import UserPhoto from '../commons/userPhoto/UserPhoto'
 import UserName from '../commons/UserName'
 import Paginator from '../commons/Paginator/Paginator'
+import StartDialog from '../Dialogs/StartDialog'
 
 const Users = (props) => {
-
+    console.log(props.usersData)
     return (
         <div className={classes.itemUsers}>
             <Paginator totalItemsCount={props.totalUsersCount} pageSize={props.pageSize} currentPage={props.currentPage}
                 onPageChanged={props.onPageChanged} partSize={20} />
-            {
+            { 
                 props.usersData.map(user => <div key={user.id}>
                     <div className={classes.itemBlock}>
                         <div className={classes.item}>
@@ -20,18 +21,18 @@ const Users = (props) => {
                                 <UserName pageKey={props.pageKey} fullName={user.name} userId={user.id}/>
                             </div>
                             <div>
+                                <StartDialog userId={user.id} usersData={props.usersData}/>
+                            </div> 
+                            <div>
                                 {user.followed
                                     ? <button disabled={props.isDisabled.some(id => id === user.id)} onClick={() => { props.unFollowThunk(user.id) }} className={classes.unFollowButton} >
-                                    Unfollow </button>
+                                    Отписаться </button>
                                     : <button disabled={props.isDisabled.some(id => id === user.id)} onClick={() => { props.followThunk(user.id) }} className={classes.followButton} >
-                                    Follow </button> }
-                            </div>
+                                    Подписаться </button> }
+                            </div>                            
                         </div>
                         <div className={classes.personalData}>
-                            <div>Status: {user.status ? user.status : 'Всем привет!'}</div>
-                            {/* <div>Location: 
-                        {user.location.сity.cityName}, {user.location.country.countryName}
-                    </div> */}
+                            <div>Status: {user.status ? user.status : 'Всем привет!'}</div>                            
                         </div>
                     </div>
 
@@ -39,6 +40,7 @@ const Users = (props) => {
             }
         </div>
     )
+    
 }
 
 export default Users

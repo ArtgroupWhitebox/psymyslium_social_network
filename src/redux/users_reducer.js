@@ -11,7 +11,7 @@ const TOGGLE_IS_DISABLED = 'TOGGLE_IS_DISABLED'
 
 
 
-let initialState = { 
+const initialState = { 
     usersData: [],
     totalUsersCount: 0,
     pageSize: 100,

@@ -6,6 +6,7 @@ const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
 const SET_USER_OWNER_PHOTO = 'SET_USER_OWNER_PHOTO'
+const TOGGLE_PROFILE_EDIT_MODE = 'TOGGLE_PROFILE_EDIT_MODE'
 
 let initialState = {
 
@@ -16,6 +17,7 @@ let initialState = {
     ],
     newPostText: '',
     profile: null,
+    profileDataEdit: false,
     pageKey: 'ProfileInfo',
     status: ' '
 }
@@ -54,6 +56,12 @@ const profileReducer = (state = initialState, action) => {
                 profile: action.profile
             }
 
+        case TOGGLE_PROFILE_EDIT_MODE:            
+            return {            
+                ...state,
+                profileDataEdit: action.toggle
+        }
+
         case SET_USER_STATUS:
             return {
                 ...state,
@@ -64,7 +72,6 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 profile: { ...state.profile, photos: action.photos }
-                // profile: {...state.profile, photos: {...state.profile.photos, small: action.photos}}
             }
 
         default: return (state)        
@@ -78,10 +85,10 @@ export const updatePostTextActionCreator = (newText) => ({ type: UPDATE_POST_TEX
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status })
 export const setUserOwnerPhoto = (photos) => ({ type: SET_USER_OWNER_PHOTO, photos })
-
+export const toggleProfileEditMode = (toggle) => ({ type: TOGGLE_PROFILE_EDIT_MODE, toggle })
 
 export const getUserThunk = (userId) => {
-    return (dispatch) => {
+    return (dispatch) => { 
         profileAPI.getUser(userId).then(data => {
             dispatch(setUserProfile(data))
         })
@@ -110,8 +117,28 @@ export const saveOwnerPhotoThunk = (file) => {
         profileAPI.putUserPhoto(file).then(data => {
             data.resultCode === 0 &&
             dispatch(setUserOwnerPhoto(data.data.photos))
-            console.log(data.resultCode)
-            console.log(data.data.photos)
         })
     }
 }
+
+export const activateProfileEditModeThunk = () => {
+    return (dispatch) => {
+        dispatch(toggleProfileEditMode(true))
+    }
+}
+
+export const deactivateProfileEditModeThunk = () => {
+    return (dispatch) => {        
+        dispatch(toggleProfileEditMode(false))
+    }
+}
+
+export const updataProfilePersonalThunk = (userId, fullName, aboutMe, lookingForAJob, lookingForAJobDescription) => {
+    return (dispatch) => {
+        profileAPI.putProfilePersonalData(fullName, aboutMe, lookingForAJob, lookingForAJobDescription).then(data => {                   
+            data.resultCode === 0 && dispatch(getUserThunk(userId))              
+        })        
+    }     
+}
+
+

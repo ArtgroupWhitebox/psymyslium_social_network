@@ -6,7 +6,9 @@ import './App.css'
 import LoginPage from './components/commons/Login/LoginPage'
 import Preloading from './components/commons/Preloading'
 import UserPhotoContainer from './components/commons/userPhoto/UserPhotoContainer'
+import DialogItem from './components/Dialogs/DialogItem/DialogItem'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
+import MessageItem from './components/Dialogs/MessageItem/MessageItem'
 import HeaderContainer from './components/Header/HeaderContainer'
 import Music from './components/Music/Music'
 import Nav from './components/Nav/Nav'
@@ -33,7 +35,9 @@ class App extends React.Component {
                 <HeaderContainer />
                 <Nav />
                 <div className='app_psymyslium-content'>                
-                    <Route path='/dialogs' render={() => <DialogsContainer />} />
+                    <Route path='/dialogs/:userId?' component={DialogsContainer} />
+                    <Route path='/dialogItem/:userId?' render={() => <DialogItem />} />
+                    <Route path='/messagesItem/:userId?' render={() => <MessageItem />} />
                     <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
                     <Route path='/userPhotoLarge/:userId' render={() => <UserPhotoContainer />} />
                     <Route path='/news' render={() => <NewsContainer />} />

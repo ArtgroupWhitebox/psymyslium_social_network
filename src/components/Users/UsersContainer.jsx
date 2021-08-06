@@ -5,6 +5,7 @@ import React from 'react'
 import Preloading from '../commons/Preloading'
 import { compose } from 'redux'
 import { getCurrentPage, getIsDisabled, getIsPreloading, getPageKey, getPageSize, getTotalUsersCount, getUsers } from '../../redux/users_selector'
+import { getUsersDialogsThunk } from '../../redux/dialogs_reducer'
 
 class UsersContainer extends React.Component {
 
@@ -20,7 +21,8 @@ class UsersContainer extends React.Component {
         this.props.getUsersThunk(pageNumber, this.props.pageSize)
     }
     
-    render() {
+    render() {       
+        
         return <>
             { this.props.isPreloading ? <Preloading /> : <Users {...this.props} onPageChanged={this.onPageChanged} />}
         </>
@@ -39,6 +41,6 @@ const mapStateToProps = (state) => ({
 })   
 
 export default compose(
-    connect(mapStateToProps, {getUsersThunk, followThunk, unFollowThunk })
+    connect(mapStateToProps, {getUsersThunk, followThunk, unFollowThunk, getUsersDialogsThunk })
     )(UsersContainer)
-
+    

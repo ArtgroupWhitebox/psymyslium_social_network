@@ -17,6 +17,7 @@ const UserPhoto = (props) => {
 
         case 'ProfileInfo': return lincFn('/userPhotoLarge/')
         case 'Users': return lincFn('/profile/')
+        case 'Dialogs': return lincFn('/dialogs/')
         default: return <div>Упс...</div>
     } 
     

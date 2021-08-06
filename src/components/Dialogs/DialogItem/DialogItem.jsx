@@ -1,19 +1,29 @@
 import { NavLink } from 'react-router-dom'
 import classes from './DialogItem.module.css'
-console.log(classes)
+import Avatar from '../../../assets/images/Nastay.jpg'
+import StartDialog from '../StartDialog'
+
 
 const DialogItem = (props) => {
 
+    console.log(props)
+
     return (
         <div className={classes.dialog} >
-            <div>
-                <NavLink to={'/dialogs/' + props.id} activeClassName={classes.activeLink} > {props.avatar} </NavLink>
-            </div>
-            <div>
-                <NavLink to={'/dialogs/' + props.id} activeClassName={classes.activeLink} > {props.name} </NavLink>
-            </div>
+            { props.dialogsData.map( el => <div key={el.id}> 
+                    <div className={classes.avatar}>
+                        <NavLink to={'/messageItem/' + el.id} activeClassName={classes.activeLink} > 
+                            <img src= {el.photos.small || Avatar} className={classes.avatar} />
+                        </NavLink>
+                    </div>
+                    <div className={classes.userName}>
+                        <NavLink to={'/messageItem/' + el.id} activeClassName={classes.activeLink} > {el.userName || el.id || 'User_' } </NavLink>
+                    </div> 
+                    <StartDialog userId={el.id}/>   
+                </div>
+            )}
         </div>
-    );
+    )
 }
 
-export default DialogItem;
+export default DialogItem

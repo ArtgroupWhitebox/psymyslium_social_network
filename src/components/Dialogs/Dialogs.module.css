@@ -11,3 +11,25 @@
     background: rgb(109, 108, 108);
     padding: 20px;
 }
+
+.startMessageLink {
+    text-decoration: none;
+}
+
+.startMessageButton {
+    position: relative;    
+    display:block;
+    border-radius: 4px;
+    border: 1px solid rgb(49, 49, 49);
+    background-color: rgb(95, 95, 95);
+    color: rgb(39, 39, 39);
+    padding: 2px 3px 4px 3px ;
+    margin-top: 10px; 
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: small;
+}
+
+.startMessageButton:hover {
+    background-color: rgb(114, 113, 113);
+}
