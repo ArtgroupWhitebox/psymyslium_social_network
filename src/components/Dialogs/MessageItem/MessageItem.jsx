@@ -5,15 +5,16 @@ import UserName from '../../commons/UserName'
 
 
 const AddMessagesText = (props) => {
+
+    console.log(props)
     return <Formik initialValues={{ body: '' }} onSubmit = {props.submitForm}>
         <Form>
-            <div className={classes.messagesItems}>
+            <div>
                 <div>
-                    <Field name='body' type='text' pleysholder='Новое сообщение'/>
+                    <Field name='body' type='text' pleysholder='Новое сообщение' className={classes.input}/>
                 </div>
-
                 <div>
-                    <button type='submit'> Add message </button>
+                    <button type='submit' className={classes.buttonSubmit}> Отправить </button>
                 </div>        
             </div>
         </Form>
@@ -23,31 +24,33 @@ const AddMessagesText = (props) => {
 const MessageItem = (props) => {
 
     const submitForm = (value) => {
-        props.addMessageThunk(value.body)
+        props.addMessageThunk(props.userId, value.body)
     }  
     
     const userItem = (props.dialogsData.find(item => item.id === props.userId))
         || (props.usersData.find(item => item.id === props.userId))
 
     return (
-        userItem ? <div className={classes.dialog} >            
-            <div>
-                <div>
-                    <UserPhoto pageKey={props.pageKey} photosSmall={userItem.photos.small} userId={userItem.id}/>                                                                  
+        userItem ? <div className={classes.message}>            
+            <div className={classes.userData}>
+                <div className={classes.userPhoto}>
+                    <UserPhoto pageKey={props.pageKey} photosSmall={userItem.photos.small} userId={userItem.id} />                                                                  
                 </div>
-                <div>
-                    <UserName pageKey={props.pageKey} fullName={userItem.userName || userItem.name} userId={userItem.id}/>
+                <div className={classes.userName}>
+                    <UserName pageKey={props.pageKey} fullName={userItem.userName || userItem.name} userId={userItem.id} />
                 </div>
-            </div> 
-
-            <AddMessagesText submitForm = {submitForm} /> 
-
-            {/* { props.messagesData.map( el => <div key={el.messageId}> 
-                    <div className={classes.message}>
-                        {props.body}
-                    </div>
+                </div> 
+                <div className={classes.messagesItems} >
+                    { props.messagesData.map( el => 
+                        <div key={el.id}> 
+                            <div className={classes.item}>
+                                {el.body}
+                            </div>
+                        </div>
+                    )}
                 </div>
-            )} */}
+                <AddMessagesText submitForm = {submitForm} className={classes.addMessageSubmit}/> 
+                            
             </div>
         : <div>Выберите пользователя для начала диалога</div>
     )

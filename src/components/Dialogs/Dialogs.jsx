@@ -11,11 +11,13 @@ const Dialogs = (props) => {
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
-                <DialogItem dialogsData={props.dialogsData} />
+                <DialogItem dialogsData={props.dialogsData} clearMessagesThunk={props.clearMessagesThunk}
+                    getUserMessagesThunk={props.getUserMessagesThunk}/>
             </div>                            
             <div>
                 <MessageItem messagesData={props.messagesData} pageKey={props.pageKey}
-                    dialogsData={props.dialogsData} usersData={props.usersData} userId={props.userId} />
+                    dialogsData={props.dialogsData} usersData={props.usersData} userId={props.userId} 
+                    addMessageThunk={props.addMessageThunk} />
             </div>                       
         </div>        
     )    

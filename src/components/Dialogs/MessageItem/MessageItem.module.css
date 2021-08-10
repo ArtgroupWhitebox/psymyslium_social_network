@@ -1,4 +1,65 @@
 .message {
-    color: rgb(253, 196, 7);
-    padding: 10px;
+    color: rgb(32, 32, 32);
+    padding: 20px;
+}
+
+.userData {
+    display: flex;
+    align-items: center;
+}
+
+.userPhoto {
+    padding-right: 20px;
+}
+
+.userName {
+    font-size: large;  
+}
+
+.messagesItems {
+    width: 400px;
+    height: 400px;
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid rgb(126, 126, 126);
+    background-color: rgb(219, 219, 219);
+}
+
+.item {
+    margin: 10px;
+}
+
+.input {
+    width: 400px;
+    height: 24px;
+    padding: 5px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    background-color: rgb(219, 219, 219);    
+    border-radius: 4px;
+    border: 1px solid rgb(126, 126, 126);
+    color: rgb(49, 49, 49);
+}
+
+.input:hover {
+    background-color: rgb(240, 238, 238);
+}
+
+.buttonSubmit {
+    position: relative;    
+    display:block;
+    border-radius: 4px;
+    border: 1px solid rgb(49, 49, 49);
+    background-color: rgb(208, 255, 37);
+    color: rgb(39, 39, 39);
+    padding: 2px 3px 4px 3px ;
+    margin-top: 10px; 
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: small;
+}
+
+.buttonSubmit:hover {
+    background-color: rgb(228, 255, 131);
 }

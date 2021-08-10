@@ -77,21 +77,14 @@ export const dialogsAPI = {
         return axiosInstance.get(`dialogs`).then(response => response.data)
     },
 
-    // getUsersDialogs(page, pageSize) {
-    //     return axiosInstance.get(`dialogs?page=${page}&count=${pageSize}`).then(response => response.data)
-    // },
+    postAddMessage(userId, body) {
+        return axiosInstance.post(`dialogs/${userId}/messages`, {body} ).then(response => response.data)
+    },
+
+    getUserMessages(userId, page, pageSize) {
+        return axiosInstance.get(`dialogs/${userId}/messages?page=${page}&count=${pageSize}`).then(response => response.data)
+    },
     
-    // getReturnMessageNewestThanDate(userId, date) {
-    //     return axiosInstance.get(`dialogs/${userId}/messages/new?newerThen=${date}`).then(response => response.data)
-    // },
-
-    // putSendMessageToYourFriend(userId, body) {
-    //     return axiosInstance.put(`dialogs/${userId}`, {body}).then(response => response.data)
-    // },
-
-    // deleteUser(id) {
-    //     return axiosInstance.delete(`follow/${id}`).then(response => response.data)
-    // }
 }
 
            

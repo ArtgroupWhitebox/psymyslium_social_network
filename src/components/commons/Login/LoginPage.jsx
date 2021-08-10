@@ -5,6 +5,7 @@ import { loginThunk } from '../../../redux/authMe_reducer'
 import classes from './LoginPage.module.css'
 
 export const LoginFormik = (props) => {
+    console.log(props)
     return <Formik initialValues={{ name: "", email: "" }} onSubmit={props.hendleSubmit} >
             <Form>
                 <div className={classes.loginField}>
@@ -18,7 +19,7 @@ export const LoginFormik = (props) => {
                 </div>
                 <div className={classes.loginField}>
                     <Field name="rememberMe" type="checkbox" className={classes.loginCheckbox} /> Remember me
-            </div>
+                </div>
                 <div className={classes.loginField}>
                     <button type="submit" className={classes.loginSubmit} >Submit</button>
                 </div>

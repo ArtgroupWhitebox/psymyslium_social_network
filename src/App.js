@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Route, withRouter } from 'react-router-dom'
+import { Redirect, Route, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import './App.css'
 import LoginPage from './components/commons/Login/LoginPage'
@@ -34,7 +34,8 @@ class App extends React.Component {
             : <div className='app_psymyslium'>
                 <HeaderContainer />
                 <Nav />
-                <div className='app_psymyslium-content'>                
+                <div className='app_psymyslium-content'> 
+                    <Route exact path='/' render={() => <Redirect to={'/profile'} />} />          
                     <Route path='/dialogs/:userId?' component={DialogsContainer} />
                     <Route path='/dialogItem/:userId?' render={() => <DialogItem />} />
                     <Route path='/messagesItem/:userId?' render={() => <MessageItem />} />
@@ -45,6 +46,7 @@ class App extends React.Component {
                     <Route path='/settings' component={Settings} />
                     <Route path='/users' render={ () => <UsersContainer /> } />
                     <Route path='/login' render={ () => <LoginPage /> } />
+                    <Route path='*' render={ () => <div>404 NOT FOUND</div> } />
                 </div>                       
                 <div><SidebarContainer /></div>             
             </div>            

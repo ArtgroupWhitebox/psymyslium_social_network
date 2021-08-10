@@ -1,15 +1,11 @@
-import { dialogsAPI, profileAPI } from "../components/axiosAPI/api"
+import { dialogsAPI } from "../components/axiosAPI/api"
 
-const ADD_MESSAGE = 'ADD-MESSAGE'
+const ADD_MESSAGES = 'ADD-MESSAGES'
 const SET_USERS_DIALOGS = 'SET_USERS_DIALOGS' 
 
 let initialState = {
 
-    // messagesData: [
-    //     { messageId: 1, userId: 444, body: 'Привет! Кака дела?' },
-    //     { messageId: 2, userId: 444, body: 'Oк!)' },
-    //     { messageId: 3, userId: 555, body: 'Отлично!)' }        
-    // ],
+    messagesData: [],
 
     dialogsData: [],
     
@@ -20,23 +16,13 @@ const dialogsReducer = (state=initialState, action) => {
 
     switch (action.type) {
 
-        case ADD_MESSAGE:
-            const newMessage = {
-                messageId: action.messageId,
-                userId: action.userId,
-                body: action.body,
-            }
+        case ADD_MESSAGES:
             return {
                 ...state,
-                messagesData: [...state.messagesData, newMessage]
+                messagesData: action.messages
             }  
             
         case SET_USERS_DIALOGS:
-            // const newDialog = {
-            //     userId: action.dialogs.id,
-            //     name: action.dialogs.userName,
-            //     avatar: action.dialogs.photos.small
-            // }
             return {
                 ...state,
                 dialogsData: action.data              
@@ -47,13 +33,14 @@ const dialogsReducer = (state=initialState, action) => {
 }
 export default dialogsReducer
 
-export const addMessage = (messageId,  userId, body) => ({ type: ADD_MESSAGE, messageId,  userId, body})
+export const addMessages = (messages) => ({ type: ADD_MESSAGES, messages})
+export const clearMessages = () => ({ type: ADD_MESSAGES, messages: [] })
 export const setUsersDialogs = (data) => ({ type: SET_USERS_DIALOGS, data })
 
 
 export const startDialogThunk = (userId) => (dispatch) => {
     dialogsAPI.putStartDialog(userId).then(data => {                   
-        data.resultCode === 0 && dispatch(getUsersDialogsThunk(userId))              
+        data.resultCode === 0 && dispatch(getUsersDialogsThunk())              
     })        
 } 
 
@@ -66,16 +53,19 @@ export const getUsersDialogsThunk = () => {
 }
 
 export const addMessageThunk = (userId, body) => (dispatch) => {
-    dialogsAPI.postSendMessageToYourFriend(userId, body).then(data => {                   
-        data.resultCode === 0 && dispatch(getUserMessageThunk(userId))              
+    dialogsAPI.postAddMessage(userId, body).then(data => {                   
+        data.resultCode === 0 && dispatch(getUserMessagesThunk(userId))              
     })        
 } 
 
-export const getUserMessageThunk = (userId) => {
+export const clearMessagesThunk = () => (dispatch) => {
+    dispatch(clearMessages())
+}
+
+export const getUserMessagesThunk = (userId) => {
     return (dispatch) => {
-        const date = new Date()
-        dialogsAPI.getUserMessage(userId, date).then(data => {
-            dispatch(addMessage(data.messageId,  data.userId, data.body))
+        dialogsAPI.getUserMessages(userId).then(data => {
+            dispatch(addMessages(data.items))
         })
     }
 }

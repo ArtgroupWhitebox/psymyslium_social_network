@@ -21,7 +21,8 @@ const Users = (props) => {
                                 <UserName pageKey={props.pageKey} fullName={user.name} userId={user.id}/>
                             </div>
                             <div>
-                                <StartDialog userId={user.id} usersData={props.usersData}/>
+                                <StartDialog userId={user.id} usersData={props.usersData} clearMessagesThunk={props.clearMessagesThunk}
+                                    getUserMessagesThunk={props.getUserMessagesThunk} />
                             </div> 
                             <div>
                                 {user.followed

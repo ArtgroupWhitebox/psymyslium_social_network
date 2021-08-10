@@ -5,7 +5,7 @@ import React from 'react'
 import Preloading from '../commons/Preloading'
 import { compose } from 'redux'
 import { getCurrentPage, getIsDisabled, getIsPreloading, getPageKey, getPageSize, getTotalUsersCount, getUsers } from '../../redux/users_selector'
-import { getUsersDialogsThunk } from '../../redux/dialogs_reducer'
+import { addMessageThunk, clearMessagesThunk, getUserMessagesThunk, getUsersDialogsThunk } from '../../redux/dialogs_reducer'
 
 class UsersContainer extends React.Component {
 
@@ -41,6 +41,8 @@ const mapStateToProps = (state) => ({
 })   
 
 export default compose(
-    connect(mapStateToProps, {getUsersThunk, followThunk, unFollowThunk, getUsersDialogsThunk })
+    connect(mapStateToProps, {getUsersThunk, followThunk, unFollowThunk, getUsersDialogsThunk, addMessageThunk,
+        clearMessagesThunk, getUserMessagesThunk })
     )(UsersContainer)
+    
     

@@ -19,7 +19,8 @@ const DialogItem = (props) => {
                     <div className={classes.userName}>
                         <NavLink to={'/messageItem/' + el.id} activeClassName={classes.activeLink} > {el.userName || el.id || 'User_' } </NavLink>
                     </div> 
-                    <StartDialog userId={el.id}/>   
+                    <StartDialog userId={el.id} clearMessagesThunk={props.clearMessagesThunk}
+                    getUserMessagesThunk={props.getUserMessagesThunk}/>   
                 </div>
             )}
         </div>

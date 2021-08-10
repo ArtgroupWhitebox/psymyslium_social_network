@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import React from 'react'
 import Preloading from '../commons/Preloading'
-import { getUsersDialogsThunk, startDialogThunk } from '../../redux/dialogs_reducer'
+import { addMessageThunk, clearMessagesThunk, getUserMessagesThunk, getUsersDialogsThunk, startDialogThunk } from '../../redux/dialogs_reducer'
 import withAuthRedirect from '../commons/Redirect/withAuthRedirect'
 import Dialogs from './Dialogs'
 
@@ -14,15 +14,22 @@ class DialogsContainer extends React.Component {
 
     componentDidMount() {
         this.props.getUsersDialogsThunk(this.props.currentPage, this.props.pageSize)
+        this.props.getUserMessagesThunk(this.props.match.params.userId)
+    }
+
+    componentDidUpdate(prevProps, prevState) {        
+        (prevProps.match.params.userId !== this.props.match.params.userId) && 
+        this.props.getUserMessagesThunk(this.props.match.params.userId)
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.getUsersDialogsThunk(pageNumber, this.props.pageSize)
+        this.getUsersDialogsThunk(pageNumber, this.props.pageSize)
     }
     
     render() {
         return <>
-            { this.props.isPreloading ? <Preloading /> 
+            { this.props.isPreloading 
+            ? <Preloading /> 
             : <Dialogs {...this.props} userId={+this.props.match.params.userId} onPageChanged={this.onPageChanged} />}
         </>
     }
@@ -40,6 +47,7 @@ const mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {startDialogThunk, getUsersDialogsThunk}),
+    connect(mapStateToProps, {startDialogThunk, getUsersDialogsThunk, addMessageThunk, clearMessagesThunk, getUserMessagesThunk}),
     withAuthRedirect)(DialogsContainer) 
+    
     
