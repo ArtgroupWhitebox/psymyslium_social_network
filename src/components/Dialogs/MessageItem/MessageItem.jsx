@@ -1,5 +1,5 @@
 import classes from './MessageItem.module.css'
-import { Form, Formik, Field } from 'formik'
+import { Field, Form, Formik } from 'formik'
 import UserPhoto from '../../commons/userPhoto/UserPhoto'
 import UserName from '../../commons/UserName'
 
@@ -7,25 +7,27 @@ import UserName from '../../commons/UserName'
 const AddMessagesText = (props) => {
 
     console.log(props)
-    return <Formik initialValues={{ body: '' }} onSubmit = {props.submitForm}>
+    
+    return <Formik initialValues={{ body: '' }} onSubmit={props.submitForm}>
         <Form>
             <div>
                 <div>
-                    <Field name='body' type='text' pleysholder='Новое сообщение' className={classes.input}/>
+                    <Field name='body' component='textarea' pleysholder='Новое сообщение' className={classes.input}/>
                 </div>
                 <div>
                     <button type='submit' className={classes.buttonSubmit}> Отправить </button>
                 </div>        
-            </div>
+            </div> 
         </Form>
     </Formik> 
 }
 
 const MessageItem = (props) => {
 
-    const submitForm = (value) => {
-        props.addMessageThunk(props.userId, value.body)
-    }  
+    const submitForm = (values, actions) => {
+        props.addMessageThunk(props.userId, values.body)
+        actions.resetForm({ body: '' })
+    } 
     
     const userItem = (props.dialogsData.find(item => item.id === props.userId))
         || (props.usersData.find(item => item.id === props.userId))
@@ -49,7 +51,7 @@ const MessageItem = (props) => {
                         </div>
                     )}
                 </div>
-                <AddMessagesText submitForm = {submitForm} className={classes.addMessageSubmit}/> 
+                <AddMessagesText submitForm={submitForm} className={classes.addMessageSubmit} /> 
                             
             </div>
         : <div>Выберите пользователя для начала диалога</div>

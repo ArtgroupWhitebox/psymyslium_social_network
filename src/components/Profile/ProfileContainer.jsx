@@ -18,6 +18,7 @@ class ProfileContainer extends React.Component {
 
     componentDidMount() {
         this.refreshProfiile()
+        this.props.deactivateProfileEditModeThunk()
     }
 
     componentDidUpdate(prevProps, prevState) {        

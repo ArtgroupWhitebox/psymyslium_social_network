@@ -6,10 +6,10 @@ import classes from './LoginPage.module.css'
 
 export const LoginFormik = (props) => {
     console.log(props)
-    return <Formik initialValues={{ name: "", email: "" }} onSubmit={props.hendleSubmit} >
+    return <Formik initialValues={{ name: '', email: '', password: '', rememberMe: false }} onSubmit={props.hendleSubmit} >
             <Form>
                 <div className={classes.loginField}>
-                    <Field name="name" type="text" placeholder='Name' className={classes.loginNeme} />
+                    <Field name="name" type="textarea" placeholder='Name' className={classes.loginNeme} />
                 </div>
                 <div className={classes.loginField}>
                     <Field name="email" type="email" placeholder='Email' className={classes.loginEmail} />
@@ -18,10 +18,10 @@ export const LoginFormik = (props) => {
                     <Field name="password" type="password" placeholder='Password' className={classes.loginPassword} />
                 </div>
                 <div className={classes.loginField}>
-                    <Field name="rememberMe" type="checkbox" className={classes.loginCheckbox} /> Remember me
+                    <Field name="rememberMe" type="checkbox" className={classes.loginCheckbox} /> Запомнить меня
                 </div>
                 <div className={classes.loginField}>
-                    <button type="submit" className={classes.loginSubmit} >Submit</button>
+                    <button type="submit" className={classes.loginSubmit} >Отправить</button>
                 </div>
             </Form>
     </Formik>

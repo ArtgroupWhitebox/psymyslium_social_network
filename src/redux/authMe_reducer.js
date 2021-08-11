@@ -7,6 +7,7 @@ let initialState = {
     id: null,
     email: null,
     login: null,
+    rememberMe: false,
     isAuth: false 
 }
 
@@ -26,14 +27,14 @@ const authMeReducer = (state=initialState, action) => {
 }
 export default authMeReducer
 
-export const setAuthMeData = (id, email, login, isAuth) => ({ type: SET_AUTH_ME_DATA, payload: {id, email, login, isAuth} })
+export const setAuthMeData = (id, email, login, rememberMe, isAuth) => ({ type: SET_AUTH_ME_DATA, payload: {id, email, login, rememberMe, isAuth} })
 
 export const getAuthMeThunk = () => {
     return (dispatch) => {
 
         return authAPI.getAuthMe().then(data => {
-            const {id, email, login} = data.data        
-            data.resultCode === 0 && dispatch(setAuthMeData(id, email, login, true))
+            const {id, email, login, rememberMe} = data.data        
+            data.resultCode === 0 && dispatch(setAuthMeData(id, email, login, rememberMe, true))
         })
     }
 }
@@ -51,7 +52,7 @@ export const logoutThunk = () => {
     return (dispatch) => {
 
         authAPI.logout().then(data => {                   
-            data.resultCode === 0 && dispatch(setAuthMeData(null, null, null, false))
+            data.resultCode === 0 && dispatch(setAuthMeData(null, null, null, false, false))
         })
     }
 }
