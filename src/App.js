@@ -12,7 +12,7 @@ import MessageItem from './components/Dialogs/MessageItem/MessageItem'
 import HeaderContainer from './components/Header/HeaderContainer'
 import Music from './components/Music/Music'
 import Nav from './components/Nav/Nav'
-import NewsContainer from './components/News/NewsContainer'
+import MyPostsWithHooks from './components/News/MyPostsWithHooks'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import Settings from './components/Settings/Settings'
 import SidebarContainer from './components/Sidebar/SidebarContainer'
@@ -41,7 +41,7 @@ class App extends React.Component {
                     <Route path='/messagesItem/:userId?' render={() => <MessageItem />} />
                     <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
                     <Route path='/userPhotoLarge/:userId' render={() => <UserPhotoContainer />} />
-                    <Route path='/news' render={() => <NewsContainer />} />
+                    <Route path='/news' render={() => <MyPostsWithHooks />} />
                     <Route path='/music' component={Music} />
                     <Route path='/settings' component={Settings} />
                     <Route path='/users' render={ () => <UsersContainer /> } />

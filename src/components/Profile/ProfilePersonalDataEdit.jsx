@@ -6,7 +6,7 @@ import classes from '../Profile/ProfileInfo/ProfileInfo.module.css'
 const PersonalDataEditFormik = (props) => {
     return <Formik initialValues={{ fullName: props.profile.fullName, aboutMe: props.profile.aboutMe, 
         lookingForAJob: props.profile.lookingForAJob, lookingForAJobDescription: props.profile.lookingForAJobDescription} }
-                onSubmit={props.onSubmit} onBlur={props.onBlur} >
+                onSubmit={props.onSubmit} >
             <Form>                      
                 <div className={classes.editField}>
                     <h4 className={classes.lable}>Данные профиля</h4>

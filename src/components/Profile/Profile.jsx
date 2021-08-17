@@ -1,7 +1,6 @@
-import MyPostsContainer from './MyPosts/MyPostsContainer'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
-// import ProfileStatus from './ProfileStatus/ProfileStatus'
 import ProfileStatusWithHooks from './ProfileStatus/ProfileStatusWithHooks'
+// import ProfileStatus from './ProfileStatus/ProfileStatus'
 
 const Profile = (props) => {
     return <div>
@@ -10,7 +9,6 @@ const Profile = (props) => {
             profileDataEdit={props.profileDataEdit} updataProfilePersonalThunk={props.updataProfilePersonalThunk}
             deactivateProfileEditModeThunk={props.deactivateProfileEditModeThunk} /> 
         <ProfileStatusWithHooks status={props.status} updateUserStatusThunk={props.updateUserStatusThunk} />
-        <MyPostsContainer />        
     </div>
 }
 
