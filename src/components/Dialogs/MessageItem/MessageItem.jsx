@@ -12,7 +12,7 @@ const AddMessagesText = (props) => {
         <Form>
             <div>
                 <div>
-                    <Field name='body' component='textarea' pleysholder='Новое сообщение' className={classes.input}/>
+                    <Field name='body' component='textarea' placeholder='Новое сообщение' className={classes.input}/>
                 </div>
                 <div>
                     <button type='submit' className={classes.buttonSubmit}> Отправить </button>
