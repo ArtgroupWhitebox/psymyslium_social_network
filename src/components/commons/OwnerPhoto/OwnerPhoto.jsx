@@ -14,7 +14,7 @@ const OwnerPhoto = (props) => {
         </div>
         <label className={classes.on_hover}>
             <input type='file' onChange={onPhotoSelected} /> 
-            <span className={classes.span}>Заменить фото</span>
+            <span className={classes.span}>Replace photo</span>
         </label>        
     </> 
 }

@@ -4,8 +4,7 @@
 }
 
 .dialogsItems {
-    background: rgb(94, 93, 93);
-    padding: 20px;
+    background: rgb(41, 41, 41);
 }
 
 .messagesItems {
@@ -21,16 +20,17 @@
     position: relative;    
     display:block;
     border-radius: 4px;
-    border: 1px solid rgb(49, 49, 49);
-    background-color: rgb(95, 95, 95);
-    color: rgb(39, 39, 39);
-    padding: 2px 3px 4px 3px ;
-    margin-top: 10px; 
-    margin-bottom: 20px;
+    border: 0.5px solid rgb(151, 151, 151);
+    background-color: rgba(95, 95, 95, 0);
+    box-shadow: 0px 0px 7px 2px rgb(90, 89, 89);
+    color: rgb(151, 151, 151);
+    width: 120px;
+    padding: 5px ;
+    margin: 10px; 
     cursor: pointer;
     font-size: small;
 }
 
 .startMessageButton:hover {
-    background-color: rgb(114, 113, 113);
+    box-shadow: 0px 0px 7px 2px rgb(151, 151, 151);
 }

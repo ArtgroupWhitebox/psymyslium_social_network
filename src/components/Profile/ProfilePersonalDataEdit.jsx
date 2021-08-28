@@ -9,7 +9,7 @@ const PersonalDataEditFormik = (props) => {
                 onSubmit={props.onSubmit} >
             <Form>                      
                 <div className={classes.editField}>
-                    <h4 className={classes.lable}>Данные профиля</h4>
+                    <h4 className={classes.lable}>PROFILE DATA</h4>
                     
                     <Field name="fullName" type="text" placeholder='Full Name' className={classes.editText} />
                 
@@ -21,8 +21,8 @@ const PersonalDataEditFormik = (props) => {
                     <Field name="lookingForAJobDescription" type="text" placeholder='Looking for a job description' className={classes.editText} />
                 </div>                               
                 <div className={classes.buttonField}>
-                    <button type="submit" className={classes.hendleSubmit} > Сохранить </button>
-                    <button onClick={props.deactivateEditMode} className={classes.hendleSubmit} > Отменить </button>
+                    <button type="submit" className={classes.hendleSubmit} > Save </button>
+                    <button onClick={props.deactivateEditMode} className={classes.hendleSubmit} > Cancel </button>
                 </div>
             </Form>
     </Formik>

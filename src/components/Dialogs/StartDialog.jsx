@@ -11,7 +11,7 @@ const StartDialog = (props) => {
     
     return <Link to={'/dialogs/' + props.userId} className={classes.startMessageLink} >
         <button className={classes.startMessageButton} onClick={customizMessages}>
-            Начать переписку </button> 
+        Start chat </button> 
     </Link> 
 } 
 

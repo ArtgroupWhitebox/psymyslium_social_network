@@ -10,7 +10,7 @@ const DialogItem = (props) => {
 
     return (
         <div className={classes.dialog} >
-            { props.dialogsData.map( el => <div key={el.id}> 
+            { props.dialogsData.map( el => <div key={el.id} className={classes.dialogData}> 
                     <div className={classes.avatar}>
                         <NavLink to={'/messageItem/' + el.id} activeClassName={classes.activeLink} > 
                             <img src= {el.photos.small || Avatar} className={classes.avatar} />

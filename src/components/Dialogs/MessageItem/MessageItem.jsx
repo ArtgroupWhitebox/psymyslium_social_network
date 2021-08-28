@@ -12,10 +12,10 @@ const AddMessagesText = (props) => {
         <Form>
             <div>
                 <div>
-                    <Field name='body' component='textarea' placeholder='Новое сообщение' className={classes.input}/>
+                    <Field name='body' component='textarea' placeholder='New message' className={classes.input}/>
                 </div>
                 <div>
-                    <button type='submit' className={classes.buttonSubmit}> Отправить </button>
+                    <button type='submit' className={classes.buttonSubmit}> Send </button>
                 </div>        
             </div> 
         </Form>
@@ -33,7 +33,8 @@ const MessageItem = (props) => {
         || (props.usersData.find(item => item.id === props.userId))
 
     return (
-        userItem ? <div className={classes.message}>            
+        userItem  
+        ? <div className={classes.message}> 
             <div className={classes.userData}>
                 <div className={classes.userPhoto}>
                     <UserPhoto pageKey={props.pageKey} photosSmall={userItem.photos.small} userId={userItem.id} />                                                                  
@@ -41,19 +42,18 @@ const MessageItem = (props) => {
                 <div className={classes.userName}>
                     <UserName pageKey={props.pageKey} fullName={userItem.userName || userItem.name} userId={userItem.id} />
                 </div>
-                </div> 
-                <div className={classes.messagesItems} >
-                    { props.messagesData.map( el => 
-                        <div key={el.id}> 
-                            <div className={classes.item}>
-                                {el.body}
-                            </div>
+            </div> 
+            <div className={classes.messagesItems} >
+                { props.messagesData.map( el => 
+                    <div key={el.id}> 
+                        <div className={classes.item}>
+                            {el.body}
                         </div>
-                    )}
-                </div>
-                <AddMessagesText submitForm={submitForm} className={classes.addMessageSubmit} /> 
-                            
-            </div>
+                    </div>
+                )}
+            </div>           
+            <AddMessagesText submitForm={submitForm} className={classes.addMessageSubmit} />
+        </div>
         : <div>Выберите пользователя для начала диалога</div>
     )
 }

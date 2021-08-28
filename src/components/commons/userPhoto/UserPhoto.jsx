@@ -3,12 +3,14 @@ import avatar from '../../../assets/images/Nastay.jpg'
 import classes from '../../commons/Commons.module.css'
 
 const UserPhoto = (props) => { 
+
+    console.log(props.className)
     
     const lincFn = (path) => {
 
         return <>
             <Link to={path + props.userId}>
-                <img src={props.photosSmall || avatar} className={classes.avatar} />
+                <img src={props.photosSmall || avatar} className={props.className || classes.avatar} />
             </Link>
         </>  
     }
