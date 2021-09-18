@@ -1,23 +1,21 @@
-import { NavLink } from 'react-router-dom'
 import classes from './DialogItem.module.css'
-import Avatar from '../../../assets/images/Nastay.jpg'
 import StartDialog from '../StartDialog'
+import UserPhoto from '../../commons/userPhotoAndName/UserPhoto'
+import UserName from '../../commons/userPhotoAndName/UserName'
 
 
 const DialogItem = (props) => {
 
-    console.log(props)
+    console.log('DialogItem' , props)
 
     return (
         <div className={classes.dialog} >
             { props.dialogsData.map( el => <div key={el.id} className={classes.dialogData}> 
                     <div className={classes.avatar}>
-                        <NavLink to={'/messageItem/' + el.id} activeClassName={classes.activeLink} > 
-                            <img src= {el.photos.small || Avatar} className={classes.avatar} />
-                        </NavLink>
+                        <UserPhoto pageKey={props.pageKey} photoSmall={el.photos.small} userId={el.id}/>
                     </div>
                     <div className={classes.userName}>
-                        <NavLink to={'/messageItem/' + el.id} activeClassName={classes.activeLink} > {el.userName || el.id || 'User_' } </NavLink>
+                        <UserName pageKey={props.pageKey} name={el.userName} userId={el.id}/>
                     </div> 
                     <StartDialog userId={el.id} clearMessagesThunk={props.clearMessagesThunk}
                     getUserMessagesThunk={props.getUserMessagesThunk}/>   

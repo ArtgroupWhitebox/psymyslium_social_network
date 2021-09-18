@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom"
-import classes from '../commons/Commons.module.css'
+import {Link } from "react-router-dom"
+import classes from '../../commons/Commons.module.css'
 
 
 const UserName = (props) => {
@@ -7,9 +7,9 @@ const UserName = (props) => {
     const lincFn = (path) => {
 
         return <div className={classes.userName}>
-                <NavLink to={path + props.userId} activeClassName={classes.activeLink}>
-                    {props.fullName || props.userId || 'User_'}
-                </NavLink>
+                <Link to={path + props.userId} className={classes.nameLink}>
+                    {props.name || props.userId || 'User_'}
+                </Link>
             </div>
     }
 
@@ -17,7 +17,8 @@ const UserName = (props) => {
 
         case 'ProfileInfo': return lincFn('/userPhotoLarge/')
         case 'Users': return lincFn('/profile/')
-        case 'Dialogs': return lincFn('/dialogs/')
+        case 'Dialogs': return lincFn('/profile/')
+        case 'Sidebar': return lincFn('/profile/')
         default: return <div>Упс...</div>
     }
 }

@@ -27,5 +27,13 @@ export const getPageKey = (state) => {
 }
 
 export const getPhotoLarge = (state) => {
-    return state.userPhotos.photoLarge
+    return state.userPhotoAndName.photoLarge
+}
+
+export const getPhotoSmall = (state) => {
+    return state.userPhotoAndName.photoSmall
+}
+
+export const getName = (state) => {
+    return state.userPhotoAndName.name
 }

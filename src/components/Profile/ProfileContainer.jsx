@@ -5,6 +5,7 @@ import { activateProfileEditModeThunk, getUserThunk, saveOwnerPhotoThunk,
     updataProfilePersonalThunk, deactivateProfileEditModeThunk } from '../../redux/profile_reducer'
 import { withRouter } from "react-router"
 import { compose } from "redux"
+import { clearMessagesThunk, getUserMessagesThunk } from '../../redux/dialogs_reducer'
 
 class ProfileContainer extends React.Component {
         
@@ -37,5 +38,6 @@ const mapStateToProps = (state) => ({
 
 export default compose(
     connect(mapStateToProps, { getUserThunk, saveOwnerPhotoThunk,  
-        activateProfileEditModeThunk, updataProfilePersonalThunk, deactivateProfileEditModeThunk } ),
+        activateProfileEditModeThunk, updataProfilePersonalThunk, deactivateProfileEditModeThunk, clearMessagesThunk,
+        getUserMessagesThunk } ),
         withRouter)(ProfileContainer) 

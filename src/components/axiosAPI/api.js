@@ -12,6 +12,10 @@ export const usersAPI = {
 
     getUsers(page, pageSize) {
         return axiosInstance.get(`users?page=${page}&count=${pageSize}`).then(response => response.data)
+    },
+
+    getFrends(page = 1) {
+        return axiosInstance.get(`users?friend=true&page=${page}`).then(response => response.data)
     }
 }
 

@@ -1,7 +1,7 @@
 import classes from './MessageItem.module.css'
 import { Field, Form, Formik } from 'formik'
-import UserPhoto from '../../commons/userPhoto/UserPhoto'
-import UserName from '../../commons/UserName'
+import UserPhoto from '../../commons/userPhotoAndName/UserPhoto'
+import UserName from '../../commons/userPhotoAndName/UserName'
 
 
 const AddMessagesText = (props) => {
@@ -29,18 +29,17 @@ const MessageItem = (props) => {
         actions.resetForm({ body: '' })
     } 
     
-    const userItem = (props.dialogsData.find(item => item.id === props.userId))
-        || (props.usersData.find(item => item.id === props.userId))
+    const userItem = props.profile
 
     return (
         userItem  
         ? <div className={classes.message}> 
             <div className={classes.userData}>
                 <div className={classes.userPhoto}>
-                    <UserPhoto pageKey={props.pageKey} photosSmall={userItem.photos.small} userId={userItem.id} />                                                                  
+                    <UserPhoto pageKey={props.pageKey} photoSmall={userItem.photos.small} userId={userItem.userId} />                                                                  
                 </div>
                 <div className={classes.userName}>
-                    <UserName pageKey={props.pageKey} fullName={userItem.userName || userItem.name} userId={userItem.id} />
+                    <UserName pageKey={props.pageKey} name={userItem.fullName} userId={userItem.userId} />
                 </div>
             </div> 
             <div className={classes.messagesItems} >
@@ -54,7 +53,7 @@ const MessageItem = (props) => {
             </div>           
             <AddMessagesText submitForm={submitForm} className={classes.addMessageSubmit} />
         </div>
-        : <div>Выберите пользователя для начала диалога</div>
+        : <div className={classes.warning}> Select a user to start a chat </div>
     )
 }
 

@@ -27,7 +27,6 @@ const Nav = () => {
             <div className={classes.item}>
                 <NavLink to='/users' activeClassName={classes.activeLink}>Users</NavLink>
             </div>
-            
         </nav>
     );
 }

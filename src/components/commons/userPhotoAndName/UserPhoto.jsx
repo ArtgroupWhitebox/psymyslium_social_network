@@ -10,7 +10,7 @@ const UserPhoto = (props) => {
 
         return <>
             <Link to={path + props.userId}>
-                <img src={props.photosSmall || avatar} className={props.className || classes.avatar} />
+                <img src={props.photoSmall || avatar} className={props.className || classes.avatar} />
             </Link>
         </>  
     }
@@ -19,7 +19,8 @@ const UserPhoto = (props) => {
 
         case 'ProfileInfo': return lincFn('/userPhotoLarge/')
         case 'Users': return lincFn('/profile/')
-        case 'Dialogs': return lincFn('/dialogs/')
+        case 'Dialogs': return lincFn('/profile/')
+        case 'Sidebar': return lincFn('/profile/')
         default: return <div>Упс...</div>
     } 
     

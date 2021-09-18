@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import classes from './Header.module.css'
 import IconLogo from '../../assets/images/icon_Logo.png'
+import { ButtonAqua } from '../Button/Button'
 
 const Header = (props) => {
     return <header className={classes.header}>
@@ -11,7 +12,7 @@ const Header = (props) => {
                     {props.login}
                 </span>
                 <div>
-                    <button onClick={props.logoutThunk} className={classes.loginButton}>Log out</button>
+                    <ButtonAqua onClick={props.logoutThunk} value={'Log out'} />
                 </div>
             </div>
             : <span className={classes.login}>

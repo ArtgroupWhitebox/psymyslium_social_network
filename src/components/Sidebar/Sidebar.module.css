@@ -1,4 +1,7 @@
 .sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     grid-area: s;
     background-color: rgba(59, 59, 60, 1);
     padding: 20px;
@@ -12,22 +15,41 @@
     text-decoration: none;
 }
 
-.itemFriends a {
-    color: white;
-    text-decoration: none;
-    font-size: x-large;
+.itemFriends {
+    color: aqua;
 }
 
-.itemFriends a.activeLink {
-    color: red;
-    text-decoration: none;
-    font-size: x-large;
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 160px;
+    height: 120px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 7px 2px rgb(107, 107, 107);
+}
+
+.userName {
+    color: aqua;
+}
+
+.userAvatar {
+    padding: 10px;
+}
+
+.text {
+    color: rgb(36, 36, 36);
+    margin: 10px;
 }
 
 
 
 
-/* .item.it {
-    color: red;
-} */
+
+
+
+
+
 

@@ -5,7 +5,7 @@ import { compose } from 'redux'
 import './App.css'
 import LoginPage from './components/commons/Login/LoginPage'
 import Preloading from './components/commons/Preloading'
-import UserPhotoContainer from './components/commons/userPhoto/UserPhotoContainer'
+import UserPhotoAndNameContainer from './components/commons/userPhotoAndName/UserPhotoAndNameContainer'
 import DialogItem from './components/Dialogs/DialogItem/DialogItem'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
 import MessageItem from './components/Dialogs/MessageItem/MessageItem'
@@ -15,7 +15,7 @@ import Nav from './components/Nav/Nav'
 import MyPostsWithHooks from './components/News/MyPostsWithHooks'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import Settings from './components/Settings/Settings'
-import SidebarContainer from './components/Sidebar/SidebarContainer'
+import Sidebar from './components/Sidebar/Sidebar'
 import UsersContainer from './components/Users/UsersContainer'
 import { initializationSuccessThunk } from './redux/app_reduser'
 
@@ -40,15 +40,17 @@ class App extends React.Component {
                     <Route path='/dialogItem/:userId?' render={() => <DialogItem />} />
                     <Route path='/messagesItem/:userId?' render={() => <MessageItem />} />
                     <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-                    <Route path='/userPhotoLarge/:userId' render={() => <UserPhotoContainer />} />
-                    <Route path='/news' render={() => <MyPostsWithHooks />} />
+                    <Route path='/userPhotoLarge/:userId' render={() => <UserPhotoAndNameContainer />} />
+                    <Route path='/news' render={() => <MyPostsWithHooks />} />                    
                     <Route path='/music' component={Music} />
                     <Route path='/settings' component={Settings} />
                     <Route path='/users' render={ () => <UsersContainer /> } />
                     <Route path='/login' render={ () => <LoginPage /> } />
                     <Route path='*' render={ () => <div>404 NOT FOUND</div> } />
                 </div>                       
-                <div><SidebarContainer /></div>             
+                <div className='sidebar'>
+                    <Sidebar />
+                </div>             
             </div>            
         )
     }    

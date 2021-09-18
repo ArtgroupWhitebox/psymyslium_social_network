@@ -2,6 +2,7 @@ import { dialogsAPI } from "../components/axiosAPI/api"
 
 const ADD_MESSAGES = 'ADD-MESSAGES'
 const SET_USERS_DIALOGS = 'SET_USERS_DIALOGS' 
+const CLEAR_MESSAGES = 'CLEAR_MESSAGES'
 
 let initialState = {
 
@@ -34,7 +35,7 @@ const dialogsReducer = (state=initialState, action) => {
 export default dialogsReducer
 
 export const addMessages = (messages) => ({ type: ADD_MESSAGES, messages})
-export const clearMessages = () => ({ type: ADD_MESSAGES, messages: [] })
+export const clearMessages = () => ({ type: CLEAR_MESSAGES, messages: [] })
 export const setUsersDialogs = (data) => ({ type: SET_USERS_DIALOGS, data })
 
 

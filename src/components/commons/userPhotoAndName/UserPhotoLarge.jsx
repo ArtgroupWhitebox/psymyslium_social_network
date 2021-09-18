@@ -5,7 +5,7 @@ import classes from '../../commons/Commons.module.css'
 
 const UserPhotoLarge = (props) => {
     return <Link to={'/profile/' + props.userId}>
-            <img src={props.photoLarge ? props.photoLarge : avatar} className={classes.avatarLarge} />
+            <img src={props.photoLarge || avatar} className={classes.avatarLarge} />
         </Link>   
 }
 

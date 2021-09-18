@@ -1,11 +1,10 @@
+import { ButtonBlue } from '../Button/Button'
 import classes from '../Profile/ProfileInfo/ProfileInfo.module.css'
 
 const ProfilePersonalData = ({profile, isOwner, activateProfileEditModeThunk}) => {
     return <div className={classes.personalData}>
         {isOwner && <div>
-                <button 
-                    onClick={activateProfileEditModeThunk}  
-                    className={classes.editModeButton}> Edit profile </button>
+                <ButtonBlue onClick={activateProfileEditModeThunk} value={'Edit profile'} /> 
             </div> }
         <div className={classes.dataBlock}>
             <div className={classes.dataItem}><b>Об о мне:</b> {profile.aboutMe ? profile.aboutMe : ' ;)'}</div>

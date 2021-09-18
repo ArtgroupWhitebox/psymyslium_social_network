@@ -1,6 +1,7 @@
 import { Formik, Field, Form } from 'formik'
 import { connect } from 'react-redux'
 import { deactivateProfileEditModeThunk, updataProfilePersonalThunk } from '../../redux/profile_reducer'
+import { ButtonBlue } from '../Button/Button'
 import classes from '../Profile/ProfileInfo/ProfileInfo.module.css'
 
 const PersonalDataEditFormik = (props) => {
@@ -21,8 +22,8 @@ const PersonalDataEditFormik = (props) => {
                     <Field name="lookingForAJobDescription" type="text" placeholder='Looking for a job description' className={classes.editText} />
                 </div>                               
                 <div className={classes.buttonField}>
-                    <button type="submit" className={classes.hendleSubmit} > Save </button>
-                    <button onClick={props.deactivateEditMode} className={classes.hendleSubmit} > Cancel </button>
+                    <ButtonBlue type={'submit'} value={'Save'} /> 
+                    <ButtonBlue onClick={props.deactivateEditMode} value={'Cancel'} /> 
                 </div>
             </Form>
     </Formik>

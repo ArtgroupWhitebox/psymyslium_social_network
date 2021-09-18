@@ -4,7 +4,7 @@
   'h h' 
   'n c'
   's c';
-  grid-template-rows: 80px 5fr 10fr;
+  grid-template-rows: 80px 200px 10fr;
   grid-template-columns: 3fr 12fr;
   /* grid-gap: 10px; */
 }
@@ -12,6 +12,10 @@
 .app_psymyslium-content {
   grid-area: c;
   background-color: rgb(34, 34, 34);
+}
+
+.sidebar {  
+  background-color: rgba(59, 59, 60, 1);
 }
 
 

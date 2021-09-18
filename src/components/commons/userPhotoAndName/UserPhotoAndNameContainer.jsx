@@ -1,13 +1,13 @@
 import { connect } from "react-redux"
 import React from 'react'
-import { getUserThunk } from '../../../redux/userPhoto_reducer'
+import { getUserThunk } from '../../../redux/userPhotoAndName_reducer'
 import { withRouter } from "react-router"
 import UserPhotoLarge from "./UserPhotoLarge"
 import { getPhotoLarge } from "../../../redux/users_selector"
 import { compose } from "redux"
 // import Preloading from "../Preloading"
 
-class UserPhotoContainer extends React.Component { 
+class UserPhotoAndNameContainer extends React.Component { 
     
     componentDidMount() {       
                  
@@ -26,7 +26,9 @@ class UserPhotoContainer extends React.Component {
        
     render() {
         
-        return <UserPhotoLarge photoLarge = {this.props.photoLarge} userId={this.props.match.params.userId}/> 
+        return <>   
+            <UserPhotoLarge photoLarge = {this.props.photoLarge} userId={this.props.match.params.userId}/>
+        </>
 
         // return this.state ? <UserPhotoLarge photoUrl = {this.state.photoUrl} userId={this.state.userId}/> : <Preloading />
     }
@@ -39,4 +41,4 @@ const mapStateToProps = (state) => ({
 export default compose(
     connect(mapStateToProps, { getUserThunk }),
     withRouter
-)(UserPhotoContainer)
+)(UserPhotoAndNameContainer)

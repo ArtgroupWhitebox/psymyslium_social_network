@@ -14,7 +14,7 @@ const TOGGLE_IS_DISABLED = 'TOGGLE_IS_DISABLED'
 const initialState = { 
     usersData: [],
     totalUsersCount: 0,
-    pageSize: 100,
+    pageSize: 10,
     currentPage: 1,
     isPreloading: true,
     isDisabled: [],
@@ -107,10 +107,7 @@ const followUnfollowFlow = (dispatch, id, methodAPI, actionCreator) => {
 
 export const followThunk = (id) => {
     return (dispatch) => {
-        let methodAPI = followAPI.postUser(id)
-        let actionCreator = follow(id)
-
-        followUnfollowFlow(dispatch, id, methodAPI, actionCreator)  
+        followUnfollowFlow(dispatch, id, followAPI.postUser(id),  follow(id))  
     }
 }
 

@@ -5,7 +5,8 @@ const Profile = (props) => {
         saveOwnerPhotoThunk={props.saveOwnerPhotoThunk} activateProfileEditModeThunk={props.activateProfileEditModeThunk} 
         profileDataEdit={props.profileDataEdit} updataProfilePersonalThunk={props.updataProfilePersonalThunk}
         deactivateProfileEditModeThunk={props.deactivateProfileEditModeThunk} 
-        status={props.status} />
+        status={props.status} clearMessagesThunk={props.clearMessagesThunk}
+        getUserMessagesThunk={props.getUserMessagesThunk}/>
 }
 
 export default Profile
