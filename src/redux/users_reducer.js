@@ -1,6 +1,7 @@
 import { followAPI, usersAPI } from "../components/axiosAPI/api"
 import { updateObjectInArray } from "../components/commons/updateObjectInArray/updateObjectInArray"
 
+
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
@@ -9,8 +10,6 @@ const CURRENT_PAGE = 'CURRENT_PAGE'
 const TOGGLE_IS_PRELOADING = 'TOGGLE_IS_PRELOADING'
 const TOGGLE_IS_DISABLED = 'TOGGLE_IS_DISABLED'
 
-
-
 const initialState = { 
     usersData: [],
     totalUsersCount: 0,
@@ -18,7 +17,7 @@ const initialState = {
     currentPage: 1,
     isPreloading: true,
     isDisabled: [],
-    pageKey: 'Users'
+    pageKey: 'Users' 
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -68,7 +67,7 @@ const usersReducer = (state = initialState, action) => {
                     [...state.isDisabled, action.userId] :
                     state.isDisabled.filter(id => id !==action.userId )
         }
-        
+               
         default: return (state)
     }
 }
@@ -96,23 +95,25 @@ export const getUsersThunk = (page, pageSize) => {
     }
 }
 
-const followUnfollowFlow = (dispatch, id, methodAPI, actionCreator) => {
+const followUnfollowFlow = (dispatch, id, methodAPI, actionCreator, page, pageSize) => {
     dispatch(toggleIsDisabled(true, id))
-    methodAPI.then(data => {
-            data.resultCode === 0 && dispatch(actionCreator)
-        }
-    )
-    dispatch(toggleIsDisabled(false, id))
+    methodAPI
+        .then(data => {
+                data.resultCode === 0 && dispatch(actionCreator)
+            }
+        )
+        .then(() => { dispatch(toggleIsDisabled(false, id))})
+        .then(() => { dispatch(getUsersThunk(page, pageSize))})
 }
 
-export const followThunk = (id) => {
+export const followThunk = (id, page, pageSize) => {
     return (dispatch) => {
-        followUnfollowFlow(dispatch, id, followAPI.postUser(id),  follow(id))  
+        followUnfollowFlow(dispatch, id, followAPI.postUser(id), follow(id), page, pageSize)
     }
 }
 
-export const unFollowThunk = (id) => {
+export const unFollowThunk = (id, page, pageSize) => {
     return (dispatch) => {
-        followUnfollowFlow(dispatch, id, followAPI.deleteUser(id), unFollow(id) )        
+        followUnfollowFlow(dispatch, id, followAPI.deleteUser(id), unFollow(id), page, pageSize)
     }
 }

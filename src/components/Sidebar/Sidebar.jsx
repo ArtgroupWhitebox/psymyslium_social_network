@@ -6,11 +6,14 @@ import { compose } from 'redux'
 import { usersAPI } from '../axiosAPI/api'
 import { ButtonAqua } from '../Button/Button'
 import Preloading from '../commons/Preloading'
+import { getIsDisabled } from '../../redux/users_selector'
 
 const Sidebar = (props) => {
 
+    console.log('Sidebar props', props)
+
     const [friends, setFriends] = useState([])
-    const [nextPage, setNextPage] = useState(1)
+    const [nextPage, setNextPage] = useState(2)
     const [friendsTotalCount, setFriendsTotalCount] = useState(1)
     const [isLoading, setIsLoading] = useState(true) 
 
@@ -19,8 +22,17 @@ const Sidebar = (props) => {
     const setNextPartFriends = () => {
         setIsLoading(true)        
         usersAPI.getFrends(nextPage).then(data => { 
-            setNextPage(nextPage+1)
+            setNextPage(nextPage + 1)
             setFriends([...friends, ...data.items])
+            setFriendsTotalCount(data.totalCount) 
+            setIsLoading(false)         
+        })
+    }
+
+    const updateFriends = () => {
+        setIsLoading(true)        
+        usersAPI.getFrends(1).then(data => { 
+            setFriends(data.items)
             setFriendsTotalCount(data.totalCount) 
             setIsLoading(false)         
         })
@@ -28,10 +40,10 @@ const Sidebar = (props) => {
 
     useEffect(() => {
         setIsLoading(true)
-        setNextPartFriends()
-    }, [])
+        updateFriends()
+    }, [props.isDisabled])
 
-    
+        
     return <div className={classes.sidebar}>
         <div className={classes.itemFriends}>
             <h1>Friends</h1>
@@ -52,10 +64,10 @@ const Sidebar = (props) => {
 
 const mapStateToProps = (state) => {   
 
-    return (
-        { pageKey: state.sidebar.pageKey
-        }
-    )
+    return { 
+        pageKey: state.sidebar.pageKey,
+        isDisabled: getIsDisabled(state)
+    }
 }
 
 export default compose(

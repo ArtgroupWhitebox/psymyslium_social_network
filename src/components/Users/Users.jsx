@@ -24,14 +24,10 @@ const Users = (props) => {
                         </div>                        
                         <div>
                             {user.followed
-                                ? <ButtonYellow onClick={() => { props.unFollowThunk(user.id) }} 
+                                ? <ButtonYellow disabled={props.isDisabled.some(id => id === user.id)} onClick={() => {props.onClickUnFollowed(user.id)} } 
                                     value={'Unsubscribe'} />
-                                    // ? <ButtonYellow disabled={props.isDisabled.some(id => id === user.id)} onClick={() => { props.unFollowThunk(user.id) }} 
-                                    // value={'Unsubscribe'} />
-                                : <ButtonAqua onClick={() => { props.followThunk(user.id) }} 
+                                : <ButtonAqua disabled={props.isDisabled.some(id => id === user.id)} onClick={() => {props.onClickFollowed(user.id)} } 
                                     value={'Subscribe'} />
-                                    // : <ButtonAqua disabled={props.isDisabled.some(id => id === user.id)} onClick={() => { props.followThunk(user.id) }} 
-                                    // value={'Subscribe'} />
                             }
                         </div>                            
                     </div>
