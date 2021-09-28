@@ -1,4 +1,27 @@
-.statusBlock {
-    padding: 20px;
+.inputBlock {
+    grid-area: s;
+    display: flex;
+    align-items: center; 
+    padding: 2px;
+    background-color: rgba(219, 219, 219, 0);    
     color: rgb(7, 224, 253);
+    border: none;
+    margin-left: 20px;
+    width: 315px;
+    height: 40px;    
+}
+
+.inputBlock:hover {
+    color: rgb(219, 219, 219);
+}
+
+.input {
+    box-shadow: 0px 0px 7px 1px rgb(240, 238, 238);
+    background-color: rgba(219, 219, 219, 0);
+    border: none;
+    border-radius: 4px;
+    padding-left: 5px;
+    color: rgb(219, 219, 219);
+    width: 315px;
+    height: 40px;
 }

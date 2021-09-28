@@ -8,9 +8,27 @@
     align-items: center;
     justify-content: center;
     margin: 20px;
+    margin-top: 10px;
     padding: 10px;
     border-radius: 4px;
     box-shadow: 0px 0px 8px 3px rgb(77, 76, 76);
+}
+
+.dialogData:hover {
+    border: 0.5px solid gray;
+    box-shadow: 0px 0px 8px 3px rgb(95, 94, 94);
+}
+
+.dialog {
+    height: 1005px;
+    margin: 16px;
+    margin-bottom: 40px;
+    overflow-y: scroll;
+    cursor: url(../../../assets/images/icon_cursor_3.png) 10 21, auto;
+}
+
+.dialog::-webkit-scrollbar {
+    width: 0;
 }
 
 .dialog a {

@@ -24,7 +24,7 @@
     border-radius: 4px;
     border: none;
     background-color: rgba(219, 219, 219, 0);
-    box-shadow: 0px 0px 8px 1px rgb(208, 255, 37);
+    box-shadow: 0px 0px 7px 1px rgb(208, 255, 37);
     overflow-y: auto;
 }
 
@@ -45,12 +45,12 @@
     background-color: rgba(219, 219, 219, 0);    
     border-radius: 4px;
     border: none;
-    box-shadow: 0px 0px 8px 1px rgb(208, 255, 37);
+    box-shadow: 0px 0px 7px 1px rgb(208, 255, 37);
     color: rgb(240, 247, 218);
 }
 
 .input:hover {
-    box-shadow: 0px 0px 8px 2px rgb(240, 247, 218);
+    box-shadow: 0px 0px 7px 2px rgb(240, 247, 218);
 }
 
 .buttonSubmit {
@@ -59,7 +59,7 @@
     width: 80px;
     height: 28px;
     border-radius: 4px;
-    border: 1px solid rgb(208, 255, 37);
+    border: 0.5px solid rgb(208, 255, 37);
     background-color: rgba(208, 255, 37, 0);
     color: rgb(208, 255, 37);
     padding: 5px ;

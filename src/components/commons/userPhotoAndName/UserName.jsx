@@ -6,7 +6,7 @@ const UserName = (props) => {
 
     const lincFn = (path) => {
 
-        return <div className={classes.userName}>
+        return <div className={props.className || classes.userName}>
                 <Link to={path + props.userId} className={classes.nameLink}>
                     {props.name || props.userId || 'User_'}
                 </Link>
@@ -19,6 +19,7 @@ const UserName = (props) => {
         case 'Users': return lincFn('/profile/')
         case 'Dialogs': return lincFn('/profile/')
         case 'Sidebar': return lincFn('/profile/')
+        case 'ScanUsersByName': return lincFn('/users/')
         default: return <div>Упс...</div>
     }
 }

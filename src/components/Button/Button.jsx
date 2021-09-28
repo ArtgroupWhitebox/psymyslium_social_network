@@ -24,3 +24,7 @@ export const ButtonWhite = ({value, onClick, type}) => {
     return <Button onClick={onClick} type={type} value={value} className={classes.buttonWhite}/>
 }
 
+export const ButtonRed = ({value, onClick, type}) => {
+    return <Button onClick={onClick} type={type} value={value} className={classes.buttonRed}/>
+}
+

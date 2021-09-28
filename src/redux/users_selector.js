@@ -37,3 +37,15 @@ export const getPhotoSmall = (state) => {
 export const getName = (state) => {
     return state.userPhotoAndName.name
 }
+
+export const getIsScan = (state) => {
+    return state.usersPage.isScan
+}
+
+export const getIsFriends = (state) => {
+    return state.usersPage.isFriends
+}
+
+export const getTurnByName = (state) => {
+    return state.usersPage.turnByName
+}

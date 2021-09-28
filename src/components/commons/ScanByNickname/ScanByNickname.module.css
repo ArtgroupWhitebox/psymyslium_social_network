@@ -1,0 +1,133 @@
+.inputBlock {
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    margin-bottom: 40px; 
+    background-color: rgba(219, 219, 219, 0);    
+    color: aqua;
+    border: none;
+    width: 160px;   
+}
+
+.inputBlock:hover {
+    color: rgb(219, 219, 219);
+}
+
+.input, .dropListBlock {
+    width: 160px;
+    height: 38px;
+    margin-top: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    justify-content: center;
+    align-items: center; 
+    background-color: rgba(219, 219, 219, 0);    
+    border-radius: 3px;
+    border: 0.5px solid aqua;
+    color: aqua;
+}
+
+.input:hover {
+    border: 0.5px solid white;
+    box-shadow: 0px 0px 4px 1px rgba(255, 255, 255, 0.815);
+
+}
+
+.input {
+    margin-top: 0px;
+    padding: 10px;
+    color: white;
+}
+
+.dropListBlock {
+    height: auto;
+    min-height: 20px;
+}
+
+.buttonSelect {
+    width: 160px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border: none;
+    background-color: rgba(219, 219, 219, 0);
+    color: aqua;  
+} 
+
+.buttonSelectUsersData {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    width: 160px;
+    height: 20px;
+}
+
+.buttonSelect:hover {
+    color: white; 
+}
+
+.buttonCloseBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.spanBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    border-radius: 4px;
+    padding: 4px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+}
+
+.spanBlock:hover {
+    background-color: rgba(37, 37, 37, 0.507);
+}
+
+.img {
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+}
+
+.userPhoto {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;    
+    border-radius: 50px; 
+}
+
+.userPhoto:hover {
+    box-shadow: 0px 0px 4px 1px white;
+}
+
+.userName { 
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.userName::-webkit-scrollbar {
+    width: 0;
+}
+
+.nameLink:hover {
+    color: rgb(247, 247, 247);  
+}
+
+

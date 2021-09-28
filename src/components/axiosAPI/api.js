@@ -10,12 +10,9 @@ export const axiosInstance = axios.create({
 
 export const usersAPI = {
 
-    getUsers(page, pageSize) {
-        return axiosInstance.get(`users?page=${page}&count=${pageSize}`).then(response => response.data)
-    },
-
-    getFrends(page = 1) {
-        return axiosInstance.get(`users?friend=true&page=${page}`).then(response => response.data)
+    getUsers(page, pageSize, turnByName, isFriends) {
+        return axiosInstance.get(`users`, { params: { page: page, count: pageSize, term: turnByName, friend: isFriends } })
+            .then(response => response.data)
     }
 }
 

@@ -4,8 +4,6 @@ import { Link } from "react-router-dom"
 
 const StartDialog = (props) => {
 
-    console.log('StartDialog', props)
-
     const customizMessages = () => {        
         props.clearMessagesThunk()
         props.getUserMessagesThunk(props.userId)

@@ -138,8 +138,8 @@ const MyPostsWithHooks = () => {
                         </div>
                     }
                     {item.post && 
-                        <div className={classes.text}>
-                            <span> {item.post} </span>                        
+                        <div >
+                            <div className={classes.text}> {item.post} </div>                        
                         </div>
                     }  
                 </div> 

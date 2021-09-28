@@ -8,7 +8,7 @@ const DialogItem = (props) => {
 
     console.log('DialogItem' , props)
 
-    return (
+    return <>
         <div className={classes.dialog} >
             { props.dialogsData.map( el => <div key={el.id} className={classes.dialogData}> 
                     <div className={classes.avatar}>
@@ -22,7 +22,7 @@ const DialogItem = (props) => {
                 </div>
             )}
         </div>
-    )
+    </>
 }
 
 export default DialogItem

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { profileAPI } from "../../axiosAPI/api"
-import classes from '../ProfileInfo/ProfileInfo.module.css'
+import classes from '../ProfileStatus/ProfileStatus.module.css'
 
 const ProfileStatusWithHooks = ({isOwner, userId}) => {
 

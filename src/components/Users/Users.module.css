@@ -1,18 +1,24 @@
+
 .itemUsers {
-    padding: 10px;
+    width: 442px;
+    height: 590px;
+    margin: 20px auto 20px 30px;
+    padding-top: 10px;
     background-color: rgb(36, 35, 35);
+    box-shadow: 0px 0px 8px 3px rgb(85, 85, 85);
+    border-radius: 4px;
+    overflow-y: scroll;
+    cursor: url(../../assets/images/icon_cursor_3.png) 10 21, auto;
 }
 
-.paginatorBlock {
-    margin: 10px;
-    padding-left: 10px;
+.itemUsers::-webkit-scrollbar {
+    width: 0;
 }
-
 
 .itemBlock {
     display: flex;
     width: 400px;   
-    margin-top: 30px;
+    margin-bottom: 20px;
     margin-left: 20px;
     padding-top: 10px;
     border: 1px solid rgb(255, 195, 43);
@@ -56,6 +62,11 @@
 
 .status {
     padding-right: 10px;
+}
+
+.h1 {
+    color: aqua;
+    margin-left: 30px;
 }
 
 

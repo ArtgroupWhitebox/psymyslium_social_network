@@ -49,9 +49,11 @@
     color: rgb(247, 247, 247);  
 }
 
-label {
+.labelOwnerPhoto {
     position: relative;    
     display:block;
+    align-content: center;
+    justify-content: center;
     border-radius: 4px;
     border: 0.4px solid rgb(117, 117, 117);
     background-color: rgba(199, 197, 197, 0);    
@@ -62,21 +64,22 @@ label {
     font-size: 14px;
 }
   
-.on_hover:hover {
+.labelOwnerPhoto:hover {
     box-shadow: 0px 0px 6px 1px rgb(117, 117, 117);
 }
 
-label input[type=file] {
+.inputOwnerPhoto {
     position: absolute;    
     opacity: 0;
     width: 0; 
     height: 0;
 }
 
-label input span {
+.spanOwnerPhoto {
     position: absolute;    
     display:block;
     align-content: center;
+    justify-content: center;
 }
 
 

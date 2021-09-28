@@ -12,9 +12,9 @@ const OwnerPhoto = (props) => {
         <div> 
             <img src={props.photoOwnerSmall || avatar} className={classes.photoOwnerSmall} />
         </div>
-        <label className={classes.on_hover}>
-            <input type='file' onChange={onPhotoSelected} /> 
-            <span className={classes.span}>Replace photo</span>
+        <label className={classes.labelOwnerPhoto}>
+            <input type='file' onChange={onPhotoSelected} className={classes.inputOwnerPhoto}/> 
+            <span className={classes.spanOwnerPhoto}>Replace photo</span>
         </label>        
     </> 
 }

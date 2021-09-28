@@ -1,3 +1,7 @@
+.paginator {
+    margin: 20px auto auto 30px;
+}
+
 .selectedPage {
     color: aqua;
 }

@@ -8,11 +8,8 @@ import { ButtonAqua, ButtonYellow } from '../Button/Button'
 const Users = (props) => {
     console.log('Users', props)
     
-    return <div className={classes.itemUsers}>
-        <div className={classes.paginatorBlock} >
-            <Paginator totalItemsCount={props.totalUsersCount} pageSize={props.pageSize} currentPage={props.currentPage}
-            onPageChanged={props.onPageChanged} partSize={20} />
-        </div>
+    return <>
+    <div className={classes.itemUsers}>
         { props.usersData.map(user => <div key={user.id}>
                 <div className={classes.itemBlock}>
                     <div className={classes.item}>
@@ -43,7 +40,12 @@ const Users = (props) => {
                 </div>
             </div>
         )}
-    </div>
+        </div>
+        <div className={classes.paginatorBlock} >
+            <Paginator totalItemsCount={props.totalUsersCount} pageSize={props.pageSize} currentPage={props.currentPage}
+            onPageChanged={props.onPageChanged} partSize={10} turnByName={props.turnByName}/>
+        </div>
+    </>
 }
 
 export default Users
