@@ -19,7 +19,7 @@ export const usersAPI = {
 export const profileAPI = {
 
     getUser(userId) {
-        return axiosInstance.get(`profile/${userId}`).then(response => response.data)
+        return axiosInstance.get(`profile/${userId}/`).then(response => response.data)
     },
 
     getStatus(userId) {
@@ -85,7 +85,7 @@ export const dialogsAPI = {
     getUserMessages(userId, page, pageSize) {
         return axiosInstance.get(`dialogs/${userId}/messages?page=${page}&count=${pageSize}`).then(response => response.data)
     },
-    
+
 }
 
            

@@ -13,11 +13,11 @@ const ProfilePersonalData = ({profile, isOwner, activateProfileEditModeThunk}) =
             <div className={classes.userContacts}> 
                 <div className={classes.dataItem}><b>Контакты:</b></div>
                 {Object.keys(profile.contacts).map(key => {
-                    return <>
+                    return <div key={key}>
                         {profile.contacts[key] && 
                         <div className={classes.dataItem}><Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} /></div>                    
                         }
-                    </>
+                    </div>
                 })
             }        
             </div>

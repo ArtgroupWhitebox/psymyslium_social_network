@@ -1,14 +1,14 @@
 
 .itemUsers {
     width: 442px;
-    height: 590px;
+    height: 675px;
     margin: 20px auto 20px 30px;
-    padding-top: 10px;
+    padding-top: 15px;
     background-color: rgb(36, 35, 35);
     box-shadow: 0px 0px 8px 3px rgb(85, 85, 85);
     border-radius: 4px;
     overflow-y: scroll;
-    cursor: url(../../assets/images/icon_cursor_3.png) 10 21, auto;
+    cursor: url(../../assets/images/icon_cursor_7.png) 10 21, auto;
 }
 
 .itemUsers::-webkit-scrollbar {
@@ -20,13 +20,12 @@
     width: 400px;   
     margin-bottom: 20px;
     margin-left: 20px;
-    padding-top: 10px;
-    border: 1px solid rgb(255, 195, 43);
+    border: 1px solid rgb(208, 255, 37);
     border-radius: 4px;
 }
 
 .itemBlock:hover {
-    box-shadow: 0px 0px 7px 1px rgb(255, 195, 43);
+    box-shadow: 0px 0px 7px 1px rgb(208, 255, 37);
 }
 
 .item {
@@ -57,11 +56,11 @@
     border-radius: 4px;
     border: none;
     background-color: rgba(95, 95, 95, 0);
-    color: rgb(252, 213, 108);
+    color: rgb(208, 255, 37);
 }
 
 .status {
-    padding-right: 10px;
+    padding: 10px 10px 0px 0px;
 }
 
 .h1 {

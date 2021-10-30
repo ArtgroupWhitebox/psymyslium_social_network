@@ -4,7 +4,16 @@
 }
 
 .dialogsItems {
+    display: flex;
+    flex-direction: column;
+    width: 230px;
+    align-items: center;
+    justify-content: center;
     background: rgb(41, 41, 41);
+}
+.dialogsItems a {
+    flex-wrap: wrap;
+    height: 100%;
 }
 
 .messagesItems {

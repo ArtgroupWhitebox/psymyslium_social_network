@@ -13,6 +13,7 @@ const Sidebar = ({pageKey, isDisabled}) => {
 
     const [friends, setFriends] = useState([])
     const [nextPage, setNextPage] = useState(1)
+    const [currentPage, setCurrentPage] = useState(null)
     const [friendsTotalCount, setFriendsTotalCount] = useState(1)
     const [isLoading, setIsLoading] = useState(true)
     
@@ -24,8 +25,9 @@ const Sidebar = ({pageKey, isDisabled}) => {
     }, [isDisabled])
 
     const onUpdateFriends = (page, currentFriends) => {
-        setIsLoading(true)  
-        usersAPI.getUsers(page, 10, null, true).then(data => { 
+        setIsLoading(true)
+        usersAPI.getUsers(page, 10, null, true).then(data => {
+            setCurrentPage(page)   
             setNextPage(page + 1)
             setFriends([...currentFriends, ...data.items])
             setFriendsTotalCount(data.totalCount) 
@@ -40,7 +42,8 @@ const Sidebar = ({pageKey, isDisabled}) => {
         <ScanByNickname pageKey={pageKey} />
         <div className={classes.friends}>
             { friends.map( item => <div key={item.id}>
-                    <MyFriend id={item.id} pageKey={pageKey} name={item.name} photoSmall={item.photos.small} />
+                    <MyFriend id={item.id} pageKey={pageKey} name={item.name} photoSmall={item.photos.small}
+                    isFollowed={item.followed} currentPage={currentPage } />
                 </div>
             )} 
         </div>

@@ -49,3 +49,9 @@ export const getIsFriends = (state) => {
 export const getTurnByName = (state) => {
     return state.usersPage.turnByName
 }
+
+export const getIsFollowed = (state) => {
+    return state.usersPage.isFollowed
+}
+
+

@@ -8,6 +8,8 @@ import { getCurrentPage, getIsDisabled, getIsFriends, getIsPreloading, getIsScan
 import { addMessageThunk, clearMessagesThunk, getUserMessagesThunk, getUsersDialogsThunk } from '../../redux/dialogs_reducer'
 import ScanUsersByName from '../commons/ScanByNickname/ScanUsersByName'
 import classes from './Users.module.css'
+import { getUserThunk } from '../../redux/profile_reducer'
+
 
 
 class UsersContainer extends React.Component {
@@ -23,15 +25,7 @@ class UsersContainer extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.getUsersThunk(pageNumber, this.props.pageSize, this.props.turnByName, this.props.isFriends)     
     }
-
-    onClickUnFollowed = (userId) => {
-        this.props.unFollowThunk(this.props.currentPage, this.props.pageSize, this.props.turnByName, this.props.isFriends, userId)
-    }
-
-    onClickFollowed = (userId) => {
-        this.props.followThunk(this.props.currentPage, this.props.pageSize, this.props.turnByName, this.props.isFriends, userId)
-    }
-    
+      
     render() {       
         
         return <> 
@@ -44,9 +38,7 @@ class UsersContainer extends React.Component {
                      /> 
             </div>        
             { this.props.isPreloading ? <Preloading /> : <Users {...this.props} 
-                onPageChanged={this.onPageChanged} 
-                onClickUnFollowed={this.onClickUnFollowed}
-                onClickFollowed={this.onClickFollowed}
+                onPageChanged={this.onPageChanged}                 
             />}
         </>
     }
@@ -68,7 +60,7 @@ const mapStateToProps = (state) => ({
 
 export default compose(
     connect(mapStateToProps, {getUsersThunk, followThunk, unFollowThunk, getUsersDialogsThunk, addMessageThunk,
-        clearMessagesThunk, getUserMessagesThunk, setIsScan, setIsFriends, setTurnByName })
+        clearMessagesThunk, getUserMessagesThunk, setIsScan, setIsFriends, setTurnByName, getUserThunk })
     )(UsersContainer)
     
     

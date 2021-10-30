@@ -118,21 +118,21 @@ export const getUsersThunk = (page, pageSize, turnByName, isFriends) => {
                 dispatch(toggleIsPreloading(false))
                 dispatch(setUsers(data.items))
                 dispatch(setTotalUsersCount(data.totalCount))
-                dispatch(setTurnByName(turnByName))
+                dispatch(setTurnByName(turnByName))               
             }
         ) 
     }
 }
-
+       
 const followUnfollowFlow = (dispatch, id, methodAPI, actionCreator, page, pageSize, turnByName, isFriends) => {
     dispatch(toggleIsDisabled(true, id))
     methodAPI
         .then(data => {
                 data.resultCode === 0 && dispatch(actionCreator)
             }
-        )
-        .then(() => { dispatch(toggleIsDisabled(false, id))})
-        .then(() => { dispatch(getUsersThunk(page, pageSize, turnByName, isFriends))})
+        ) 
+        .then(() => { dispatch(getUsersThunk(page, pageSize, turnByName, isFriends, id))})
+        .then(() => { dispatch(toggleIsDisabled(false, id))}) 
 }
 
 export const followThunk = (page, pageSize, turnByName, isFriends, id) => {

@@ -2,6 +2,7 @@ import classes from './MessageItem.module.css'
 import { Field, Form, Formik } from 'formik'
 import UserPhoto from '../../commons/userPhotoAndName/UserPhoto'
 import UserName from '../../commons/userPhotoAndName/UserName'
+import Preloading from '../../commons/Preloading'
 
 
 const AddMessagesText = (props) => {
@@ -28,33 +29,56 @@ const MessageItem = (props) => {
         props.addMessageThunk(props.userId, values.body)
         actions.resetForm({ body: '' })
     } 
-    
-    const userItem = props.profile
 
-    return (
-        userItem  
-        ? <div className={classes.message}> 
-            <div className={classes.userData}>
-                <div className={classes.userPhoto}>
-                    <UserPhoto pageKey={props.pageKey} photoSmall={userItem.photos.small} userId={userItem.userId} />                                                                  
-                </div>
-                <div className={classes.userName}>
-                    <UserName pageKey={props.pageKey} name={userItem.fullName} userId={userItem.userId} />
-                </div>
-            </div> 
-            <div className={classes.messagesItems} >
-                { props.messagesData.map( el => 
-                    <div key={el.id}> 
-                        <div className={classes.item}>
-                            {el.body}
+    console.log('MessageItem', props)
+    
+    return <>
+        <h1 className={classes.h1}>Messages</h1>
+        { (props.profile &&  !props.isOwner)
+            ? <div className={classes.message}> 
+            { props.isPreloadingMessages 
+                ? <Preloading />
+                : <>
+                    <div className={classes.userData}>
+                        <div className={classes.userPhoto}>
+                            <UserPhoto pageKey={props.pageKey} photoSmall={props.profile.photos.small} userId={props.profile.userId} />                                                                  
                         </div>
-                    </div>
-                )}
-            </div>           
-            <AddMessagesText submitForm={submitForm} className={classes.addMessageSubmit} />
-        </div>
-        : <div className={classes.warning}> Select a user to start a chat </div>
-    )
+                        <UserName pageKey={props.pageKey} name={props.profile.fullName} userId={props.profile.userId} 
+                            nameLink={classes.nameLink} className={classes.userName} />
+                        
+                    </div> 
+                    <div className={classes.messagesItems} >
+                        { props.messagesData.map( (el, index, arr) => 
+                        <div className={el.senderId === props.userId ? classes.messagesItemsUser : classes.messagesItemsOwner}>
+                            <div key={el.id}>
+                                { (index === 0  || 
+                                    arr[index].addedAt.slice(0, 10) !== arr[index - 1].addedAt.slice(0, 10) )                                  
+                                    && <div className={el.senderId === props.userId ? classes.messageDateUser : classes.messageDateOwner}>
+                                        {arr[index].addedAt.slice(0, 10)}
+                                    </div> 
+                                }
+                                <div className={el.senderId === props.userId ? classes.itemUser : classes.itemOwner}>
+                                    <div className={el.senderId === props.userId ? classes.senderNameUser : classes.senderNameOwner}>
+                                        {el.senderName}   
+                                    </div>                                    
+                                    <div className={el.senderId === props.userId ? classes.bodyUser : classes.bodyOwner}>
+                                        {el.body}  
+                                    </div>
+                                    <div className={classes.messageTime}>
+                                        {el.addedAt.slice(11, 16)}   
+                                    </div>                                                                        
+                                </div>
+                            </div>
+                        </div>
+                        )}
+                    </div>           
+                    <AddMessagesText submitForm={submitForm} className={classes.addMessageSubmit} />
+                </>  }
+            </div>
+                    
+            : <div className={classes.warning}> Press 'Start chat' to start chatting </div>
+        }
+    </>
 }
 
 export default MessageItem

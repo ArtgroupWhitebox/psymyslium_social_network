@@ -2,7 +2,8 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import React from 'react'
 import Preloading from '../commons/Preloading'
-import { addMessageThunk, clearMessagesThunk, getUserMessagesThunk, getUsersDialogsThunk, startDialogThunk } from '../../redux/dialogs_reducer'
+import { addMessageThunk, clearMessagesThunk, getUserMessagesThunk, getUsersDialogsThunk, 
+    startDialogThunk } from '../../redux/dialogs_reducer'
 import withAuthRedirect from '../commons/Redirect/withAuthRedirect'
 import Dialogs from './Dialogs'
 import { getUserThunk } from '../../redux/profile_reducer'
@@ -17,13 +18,11 @@ class DialogsContainer extends React.Component {
     componentDidMount() {
         this.props.getUsersDialogsThunk(this.props.currentPage, this.props.pageSize)
         this.props.getUserMessagesThunk(this.props.match.params.userId)
-        this.props.getUserThunk(this.props.match.params.userId)
     }
 
     componentDidUpdate(prevProps, prevState) {        
         (prevProps.match.params.userId !== this.props.match.params.userId) && 
         this.props.getUserMessagesThunk(this.props.match.params.userId)
-        this.props.getUserThunk(this.props.match.params.userId)
     }
 
     onPageChanged = (pageNumber) => {
@@ -32,9 +31,10 @@ class DialogsContainer extends React.Component {
     
     render() {
         return <>
-            { this.props.isPreloading 
+            { (this.props.isPreloading && this.props.isPreloadingMessages) 
             ? <Preloading /> 
-            : <Dialogs {...this.props} userId={+this.props.match.params.userId} onPageChanged={this.onPageChanged} />}
+            : <Dialogs {...this.props} userId={+this.props.match.params.userId} onPageChanged={this.onPageChanged} 
+            isOwner={!this.props.match.params.userId} />}
         </>
     }
 }
@@ -44,6 +44,8 @@ const mapStateToProps = (state) => {
         {
             dialogsData: state.dialogsPage.dialogsData,
             messagesData: state.dialogsPage.messagesData,
+            isPreloading : state.dialogsPage.isPreloading,
+            isPreloadingMessages: state.dialogsPage.isPreloadingMessages,
             pageKey: state.dialogsPage.pageKey,
             usersData: state.usersPage.usersData,
             profile: state.profilePage.profile

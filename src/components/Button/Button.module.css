@@ -9,16 +9,16 @@
 }
 
 .buttonAqua:hover {
-    box-shadow: 0px 0px 7px 1px rgba(0, 255, 255, 0.897);
+    box-shadow: 0px 0px 6px 1px rgba(0, 255, 255, 0.808);
 }
 
 .buttonBlue {
-    border: 0.5px solid rgba(16, 167, 255, 0.808);
-    color: rgba(16, 167, 255, 0.808);
+    border: 0.9px solid rgb(94, 83, 247);
+    color: rgb(112, 127, 255);
 }
 
 .buttonBlue:hover {
-    box-shadow: 0px 0px 7px 1px rgba(16, 120, 255, 0.808);
+    box-shadow: 0px 0px 7px 1px rgba(80, 68, 248, 0.788);
 }
 
 .buttonWhite {
@@ -40,12 +40,12 @@
 }
 
 .buttonYellow {
-    border: 0.5px solid rgb(252, 213, 108);
-    color: rgb(252, 213, 108);
+    border: 0.5px solid rgb(208, 255, 37);
+    color: rgb(208, 255, 37);
 }
 
 .buttonYellow:hover {
-    box-shadow: 0px 0px 6px 1px rgb(252, 213, 108);
+    box-shadow: 0px 0px 6px 1px rgba(208, 255, 37, 0.808);
 }
 
 

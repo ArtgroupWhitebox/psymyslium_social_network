@@ -1,4 +1,4 @@
-import { profileAPI } from "../components/axiosAPI/api"
+import { profileAPI, usersAPI } from "../components/axiosAPI/api"
 
 const ADD_POST = 'ADD-POST'
 const DELETE_POST = 'DELETE_POST'
@@ -6,6 +6,11 @@ const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_OWNER_PHOTO = 'SET_USER_OWNER_PHOTO'
 const TOGGLE_PROFILE_EDIT_MODE = 'TOGGLE_PROFILE_EDIT_MODE'
+const IS_LOADING = 'IS_LOADING'
+const SET_USER_NAME = 'SET_USER_NAME'
+const IS_FOLLOWED = 'IS_FOLLOWED'
+const IS_LOADING_SUBSCRIBE = 'IS_LOADING_SUBSCRIBE'
+const SET_FULL_NAME = 'SET_FULL_NAME'
 
 let initialState = {
 
@@ -18,7 +23,11 @@ let initialState = {
     profile: null,
     profileDataEdit: false,
     pageKey: 'ProfileInfo',
-    status: ' '
+    status: ' ',
+    isLoading: true,
+    isLoadingSubscribe: true,
+    isFollowed: null,
+    fullName: null
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -67,6 +76,36 @@ const profileReducer = (state = initialState, action) => {
                 profile: { ...state.profile, photos: action.photos }
             }
 
+        case IS_LOADING:            
+            return {            
+                ...state,
+                isLoading: action.isLoad
+        } 
+
+        case IS_LOADING_SUBSCRIBE:            
+            return {            
+                ...state,
+                isLoadingSubscribe: action.isLoadingSubscribe
+        } 
+        
+        case SET_USER_NAME:            
+            return {            
+                ...state,
+                userName: action.userName
+        } 
+
+        case IS_FOLLOWED:
+            return {
+                ...state,
+                isFollowed: action.isFollowed
+        }
+
+        case SET_FULL_NAME:
+            return{
+                ...state,
+                fullName: action.fullName
+            }
+
         default: return (state)        
     }
 }
@@ -78,14 +117,51 @@ export const updatePostTextActionCreator = (newText) => ({ type: UPDATE_POST_TEX
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const setUserOwnerPhoto = (photos) => ({ type: SET_USER_OWNER_PHOTO, photos })
 export const toggleProfileEditMode = (toggle) => ({ type: TOGGLE_PROFILE_EDIT_MODE, toggle })
+export const isPreLoading = (isLoad) => ({type: IS_LOADING, isLoad})
+export const setIsLoadingSubscribe = (isLoadingSubscribe) => ({type: IS_LOADING_SUBSCRIBE, isLoadingSubscribe})
+export const setIsFollowed = (isFollowed) => ({type: IS_FOLLOWED, isFollowed})
+export const setFullName = (fullName) => ({type: SET_FULL_NAME, fullName})
 
 export const getUserThunk = (userId) => {
     return (dispatch) => { 
+        dispatch(isPreLoading(true))
         profileAPI.getUser(userId).then(data => {
             dispatch(setUserProfile(data))
+            dispatch(setIsFollowedThunk(userId, data.fullName))
+            dispatch(setFullName(data.fullName))
+            dispatch(isPreLoading(false))
         })
     }
 }
+
+const findUserById = (id, fullName, page=1) => {    
+    return usersAPI.getUsers(page, 10, fullName, null).then(data => {   
+        if (page <= Math.ceil(data.totalCount / 10)) {
+            const userFound = data.items.find(user => user.id === +id)
+            if (userFound !== undefined) {
+                console.log('userFound', userFound)
+                const isFollowed = userFound.followed
+                console.log('isFollowed', isFollowed) 
+                return isFollowed 
+            } else {
+                return findUserById(id, fullName, page + 1) 
+            } 
+        } else {
+            return Promise.resolve(null) 
+        }
+    })
+}
+
+export const setIsFollowedThunk = (id, fullName) => {
+    return (dispatch) => {
+        dispatch(setIsLoadingSubscribe(true)) 
+        findUserById(id, fullName).then(isFollowed => {
+            isFollowed !== null && isFollowed !== undefined 
+            && dispatch(setIsFollowed(isFollowed))
+            && dispatch(setIsLoadingSubscribe(false)) 
+        })
+    } 
+}       
 
 export const saveOwnerPhotoThunk = (file) => {
     return (dispatch) => { 

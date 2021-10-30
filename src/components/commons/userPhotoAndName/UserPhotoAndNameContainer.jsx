@@ -5,7 +5,6 @@ import { withRouter } from "react-router"
 import UserPhotoLarge from "./UserPhotoLarge"
 import { getPhotoLarge } from "../../../redux/users_selector"
 import { compose } from "redux"
-// import Preloading from "../Preloading"
 
 class UserPhotoAndNameContainer extends React.Component { 
     
@@ -15,13 +14,6 @@ class UserPhotoAndNameContainer extends React.Component {
 
         this.props.getUserThunk(userId)       
 
-        // profileAPI.getUser(userId).then(data => {            
-        //     this.props.setUserPhoto(data.photos.large)s            
-            // this.setState({
-            //     photoUrl: data.photos.large,
-            //     userId: data.userId
-            //   })
-        // })
     }    
        
     render() {
@@ -29,8 +21,6 @@ class UserPhotoAndNameContainer extends React.Component {
         return <>   
             <UserPhotoLarge photoLarge = {this.props.photoLarge} userId={this.props.match.params.userId}/>
         </>
-
-        // return this.state ? <UserPhotoLarge photoUrl = {this.state.photoUrl} userId={this.state.userId}/> : <Preloading />
     }
 }
 

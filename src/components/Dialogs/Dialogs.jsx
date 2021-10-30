@@ -12,12 +12,16 @@ const Dialogs = (props) => {
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
                 <DialogItem dialogsData={props.dialogsData} clearMessagesThunk={props.clearMessagesThunk}
-                    getUserMessagesThunk={props.getUserMessagesThunk} userId={props.userId} pageKey={props.pageKey}/>
+                    getUserMessagesThunk={props.getUserMessagesThunk} userId={props.userId} pageKey={props.pageKey}
+                    getUserThunk={props.getUserThunk} isPreloadingMessages={props.isPreloadingMessages} 
+                    />
             </div>                            
             <div>
                 <MessageItem messagesData={props.messagesData} pageKey={props.pageKey}
                     dialogsData={props.dialogsData} usersData={props.usersData} userId={props.userId} 
-                    addMessageThunk={props.addMessageThunk} getUserThunk={props.getUserThunk} profile={props.profile}/>
+                    addMessageThunk={props.addMessageThunk} getUserThunk={props.getUserThunk} profile={props.profile}
+                    isOwner={props.isOwner} isPreloading={props.isPreloading} isPreloadingMessages={props.isPreloadingMessages} 
+                />                    
             </div>                       
         </div>        
     )    

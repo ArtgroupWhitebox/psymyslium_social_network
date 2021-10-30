@@ -3,7 +3,7 @@ import UserPhoto from '../commons/userPhotoAndName/UserPhoto'
 import UserName from '../commons/userPhotoAndName/UserName'
 import Paginator from '../commons/Paginator/Paginator'
 import StartDialog from '../Dialogs/StartDialog'
-import { ButtonAqua, ButtonYellow } from '../Button/Button'
+import SubscribeContainer from '../commons/Subscribe/SubscribeContainer'
 
 const Users = (props) => {
     console.log('Users', props)
@@ -14,19 +14,14 @@ const Users = (props) => {
                 <div className={classes.itemBlock}>
                     <div className={classes.item}>
                         <div className={classes.userAvatar}>
-                            <UserPhoto pageKey={props.pageKey} photoSmall={user.photos.small} userId={user.id}/>                                                                  
+                            <UserPhoto pageKey={props.pageKey} photoSmall={user.photos.small} userId={user.id} 
+                                currentPage={props.currentPage} />                                                                  
                         </div>
                         <div className={classes.userName}>
-                            <UserName pageKey={props.pageKey} name={user.name} userId={user.id}/>
+                            <UserName pageKey={props.pageKey} name={user.name} userId={user.id}
+                                currentPage={props.currentPage} />
                         </div>                        
-                        <div>
-                            {user.followed
-                                ? <ButtonYellow disabled={props.isDisabled.some(id => id === user.id)} onClick={() => {props.onClickUnFollowed(user.id)} } 
-                                    value={'Unsubscribe'} />
-                                : <ButtonAqua disabled={props.isDisabled.some(id => id === user.id)} onClick={() => {props.onClickFollowed(user.id)} } 
-                                    value={'Subscribe'} />
-                            }
-                        </div>                            
+                        <SubscribeContainer userId={user.id} isFollowed={user.followed} currentPage={props.currentPage}/>                            
                     </div>
                     <div className={classes.personalData}>
                         <div className={classes.status}>
@@ -34,7 +29,7 @@ const Users = (props) => {
                         </div> 
                         <div>
                             <StartDialog userId={user.id} clearMessagesThunk={props.clearMessagesThunk}
-                                getUserMessagesThunk={props.getUserMessagesThunk} />
+                                getUserMessagesThunk={props.getUserMessagesThunk} getUserThunk={props.getUserThunk} />
                         </div>                                                    
                     </div>
                 </div>
