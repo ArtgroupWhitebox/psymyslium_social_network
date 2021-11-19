@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/psymyslium-app/static/css/main.ecce67f6.chunk.css",
-    "main.js": "/psymyslium-app/static/js/main.23aa9491.chunk.js",
-    "main.js.map": "/psymyslium-app/static/js/main.23aa9491.chunk.js.map",
-    "runtime-main.js": "/psymyslium-app/static/js/runtime-main.60d4a54c.js",
-    "runtime-main.js.map": "/psymyslium-app/static/js/runtime-main.60d4a54c.js.map",
-    "static/js/2.a62917ff.chunk.js": "/psymyslium-app/static/js/2.a62917ff.chunk.js",
-    "static/js/2.a62917ff.chunk.js.map": "/psymyslium-app/static/js/2.a62917ff.chunk.js.map",
-    "static/js/3.05df020e.chunk.js": "/psymyslium-app/static/js/3.05df020e.chunk.js",
-    "static/js/3.05df020e.chunk.js.map": "/psymyslium-app/static/js/3.05df020e.chunk.js.map",
+    "main.css": "/psymyslium-app/static/css/main.a0e42e5d.chunk.css",
+    "main.js": "/psymyslium-app/static/js/main.7131b8b4.chunk.js",
+    "main.js.map": "/psymyslium-app/static/js/main.7131b8b4.chunk.js.map",
+    "runtime-main.js": "/psymyslium-app/static/js/runtime-main.2213d79c.js",
+    "runtime-main.js.map": "/psymyslium-app/static/js/runtime-main.2213d79c.js.map",
+    "static/js/2.38826cf0.chunk.js": "/psymyslium-app/static/js/2.38826cf0.chunk.js",
+    "static/js/2.38826cf0.chunk.js.map": "/psymyslium-app/static/js/2.38826cf0.chunk.js.map",
+    "static/js/3.7f02b4fe.chunk.js": "/psymyslium-app/static/js/3.7f02b4fe.chunk.js",
+    "static/js/3.7f02b4fe.chunk.js.map": "/psymyslium-app/static/js/3.7f02b4fe.chunk.js.map",
     "index.html": "/psymyslium-app/index.html",
-    "static/css/main.ecce67f6.chunk.css.map": "/psymyslium-app/static/css/main.ecce67f6.chunk.css.map",
-    "static/js/2.a62917ff.chunk.js.LICENSE.txt": "/psymyslium-app/static/js/2.a62917ff.chunk.js.LICENSE.txt",
+    "static/css/main.a0e42e5d.chunk.css.map": "/psymyslium-app/static/css/main.a0e42e5d.chunk.css.map",
+    "static/js/2.38826cf0.chunk.js.LICENSE.txt": "/psymyslium-app/static/js/2.38826cf0.chunk.js.LICENSE.txt",
     "static/media/Nastay.2ed4787d.jpg": "/psymyslium-app/static/media/Nastay.2ed4787d.jpg",
     "static/media/icon_scan.8237a905.png": "/psymyslium-app/static/media/icon_scan.8237a905.png",
     "static/media/preload.bf7cf191.gif": "/psymyslium-app/static/media/preload.bf7cf191.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.60d4a54c.js",
-    "static/js/2.a62917ff.chunk.js",
-    "static/css/main.ecce67f6.chunk.css",
-    "static/js/main.23aa9491.chunk.js"
+    "static/js/runtime-main.2213d79c.js",
+    "static/js/2.38826cf0.chunk.js",
+    "static/css/main.a0e42e5d.chunk.css",
+    "static/js/main.7131b8b4.chunk.js"
   ]
 }
