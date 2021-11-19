@@ -59,8 +59,8 @@ export const authAPI = {
         return axiosInstance.get(`auth/me`).then(response => response.data)
     },  
 
-    login(email, password, rememberMe) {
-        return axiosInstance.post(`auth/login`, {email, password, rememberMe} ).then(response => response.data)
+    login(email, password) {
+        return axiosInstance.post(`auth/login`, {email, password} ).then(response => response.data)
     },
     
     logout() {

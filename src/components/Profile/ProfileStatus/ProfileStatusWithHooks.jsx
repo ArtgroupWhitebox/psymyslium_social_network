@@ -39,7 +39,7 @@ const ProfileStatusWithHooks = ({isOwner, userId}) => {
 
     return <label className={classes.inputBlock}>
         { (!isEdit )
-            ? <span onClick={activateIsEdit} >{ status || 'Status: ;););)' }</span>           
+            ? <span onClick={activateIsEdit} className={classes.span} >{ status || 'Status: ;););)' }</span>           
             : <input type='textarea' autoFocus={true} onFocus={selectText} onBlur={deActivateIsEdit} 
                 onChange={onUpdataStatus} value={status} className={classes.input} />
         }

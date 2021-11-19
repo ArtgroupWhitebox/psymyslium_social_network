@@ -14,6 +14,7 @@ const Paginator = (props) => {
     const leftPartPageNumber = (partNumber - 1) * props.partSize + 1
     const rightPartPageNumber = partNumber * props.partSize
 
+    
     return <div className={classes.paginator}>
         <div>
             {
@@ -26,14 +27,16 @@ const Paginator = (props) => {
                 .filter(pageNumber => pageNumber >= leftPartPageNumber && pageNumber <= rightPartPageNumber)
                 .map(pageNumber => {
                     return <span key={pageNumber} 
-                        className={props.currentPage === pageNumber ? classes.selectedPage : classes.pageNumber}
-                        onClick={(event) => { props.onPageChanged(pageNumber) }}> {pageNumber}
+                        className= { (props.currentPage === pageNumber)
+                            ? classes.selectedPage 
+                            : classes.pageNumber}
+                        onClick={() => { props.onPageChanged(pageNumber) }}> {pageNumber}
                     </span>
                     }
                 )
             }
 
-            {useEffect(()=>setPartNumber(Math.ceil(props.currentPage/props.partSize)), [props.currentPage])}
+            {useEffect(()=>setPartNumber(Math.ceil((props.currentPage) /props.partSize)), [props.currentPage, props.currentPageProfile])}
 
             {
                 partsCount > partNumber  && 

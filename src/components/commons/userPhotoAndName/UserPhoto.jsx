@@ -2,9 +2,7 @@ import { Link } from "react-router-dom"
 import avatar from '../../../assets/images/Nastay.jpg'
 import classes from '../../commons/Commons.module.css'
 
-const UserPhoto = (props) => { 
-
-    console.log(props)
+const UserPhoto = (props) => {
     
     const lincFn = (path) => {
 

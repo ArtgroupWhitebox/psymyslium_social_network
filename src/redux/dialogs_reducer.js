@@ -5,11 +5,13 @@ const SET_USERS_DIALOGS = 'SET_USERS_DIALOGS'
 const CLEAR_MESSAGES = 'CLEAR_MESSAGES'
 const SET_IS_PRELOADING = 'SET_IS_PRELOADING'
 const SET_IS_PRELOADING_MESSAGES = 'SET_IS_PRELOADING_MESSAGES'
-
+const SET_START_USER_ID = 'SET_START_USER_ID'
+ 
 let initialState = {
 
     messagesData: [],
     dialogsData: [],
+    startUserId: null,
     isPreloading: true,
     isPreloadingMessages: true,
     pageKey: 'Dialogs'
@@ -30,6 +32,12 @@ const dialogsReducer = (state=initialState, action) => {
                 ...state,
                 dialogsData: action.data              
             }  
+
+        case SET_START_USER_ID:
+            return {
+                ...state,
+                startUserId: action.startUserId
+            }
 
         case SET_IS_PRELOADING:
             return {
@@ -53,11 +61,12 @@ export const clearMessages = () => ({ type: CLEAR_MESSAGES, messages: [] })
 export const setUsersDialogs = (data) => ({ type: SET_USERS_DIALOGS, data })
 export const setIsPreloading = (isLoading) => ({ type: SET_IS_PRELOADING, isLoading })
 export const setIsPreloadingMessages = (isLoadingMess) => ({ type: SET_IS_PRELOADING_MESSAGES, isLoadingMess })
+export const setStartUserId = (startUserId) => ({type: SET_START_USER_ID, startUserId})
 
-
-export const startDialogThunk = (userId) => (dispatch) => {
+export const startUserInChattinggThunk = (userId) => (dispatch) => {
     dialogsAPI.putStartDialog(userId).then(data => {                   
-        data.resultCode === 0 && dispatch(getUsersDialogsThunk())              
+        data.resultCode === 0 && dispatch(getUsersDialogsThunk())
+        dispatch(setStartUserId(userId))              
     })        
 } 
 
@@ -66,6 +75,8 @@ export const getUsersDialogsThunk = () => {
         dispatch(setIsPreloading(true))
         dialogsAPI.getUsersDialogs().then(data => {
             dispatch(setUsersDialogs(data))
+            dispatch(setStartUserId(data[0].id))
+            console.log('setStartUserId', data[0].id)
             dispatch(setIsPreloading(false))
         })
     }

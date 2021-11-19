@@ -29,7 +29,7 @@ const Users = (props) => {
                         </div> 
                         <div>
                             <StartDialog userId={user.id} clearMessagesThunk={props.clearMessagesThunk}
-                                getUserMessagesThunk={props.getUserMessagesThunk} getUserThunk={props.getUserThunk} />
+                                startUserInChattinggThunk={props.startUserInChattinggThunk}/>
                         </div>                                                    
                     </div>
                 </div>

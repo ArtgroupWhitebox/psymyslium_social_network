@@ -10,13 +10,15 @@ import StartDialog from '../../Dialogs/StartDialog'
 import SubscribeContainer from '../../commons/Subscribe/SubscribeContainer'
 import imgLoader from '../../../assets/images/imgLoader.gif'
 
+
 const ProfileInfo = (props) => { 
 
     console.log('ProfileInfo', props)
       
     const user = props.profile
     return  <div className={classes.postBlock}>
-            { props.isLoading ? <Preloading /> 
+            <h1 className={classes.h1}>Profile</h1>
+            { props.isLoading ? <Preloading processingGif={imgLoader}/> 
                 : <div className={classes.itemBlock}>
                     <div className={classes.item}>
                         <div className={classes.userAvatar}>
@@ -35,9 +37,12 @@ const ProfileInfo = (props) => {
                             && 
                             <div className={classes.buttonsBlock}>
                                 <StartDialog userId={user.userId} clearMessagesThunk={props.clearMessagesThunk}
-                                    getUserMessagesThunk={props.getUserMessagesThunk} pageKey={props.pageKey}/>
-                                {props.isLoadingSubscribe ? <Preloading processingGif={imgLoader}/>
-                                : <SubscribeContainer userId={user.userId} 
+                                    getUserThunk={props.getUserThunk} pageKey={props.pageKey}
+                                    startUserInChattinggThunk={props.startUserInChattinggThunk}
+                                />
+                                {props.isLoadingSubscribe 
+                                    ? <Preloading processingGif={imgLoader}/>
+                                    : <SubscribeContainer userId={user.userId} 
                                         isFollowedUser={props.isFollowedUser}
                                 />}
                             </div> 
@@ -48,7 +53,7 @@ const ProfileInfo = (props) => {
                         <ProfileStatusWithHooks isOwner={props.isOwner} userId={user.userId}/>
                     </div>
                     <div>
-                        {props.profileDataEdit 
+                        {props.profileDataEdit && props.isOwner
                             ? <ProfilePersonalDataEdit profile={props.profile} 
                                 updataProfilePersonalThunk={props.updataProfilePersonalThunk}
                                 deactivateProfileEditModeThunk={props.deactivateProfileEditModeThunk}/> 

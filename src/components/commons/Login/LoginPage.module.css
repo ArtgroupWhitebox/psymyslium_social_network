@@ -1,23 +1,63 @@
+.loginOverlay {
+    position: fixed;
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(53, 52, 52, 0.13);
+    backdrop-filter: blur(2px);
+    
+}
+
+.modalClose {
+    display: none;
+}
+
 .loginForm {
-    background-color: rgb(82, 80, 80);
+    display: flex;
+    flex-direction: column;    
+    width: 400px;
+    height: 400px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(104, 104, 104, 0.658);
+    box-shadow: 0px 0px 10px 5px rgba(15, 14, 14, 0.555);
+    backdrop-filter: blur(2px);
+    border-radius: 5px;
     padding: 20px;
-    color: rgb(9, 225, 253);
+    color: aqua;
 }
 
-.loginEmail .loginPassword .loginCheckbox {    
-    border-radius: 2px;
-    background-color:rgb(82, 80, 80);
-    border-color:  rgb(9, 225, 253);
-    color:   rgb(82, 80, 80);
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.loginSubmit {
+.loginEmail, .loginPassword { 
+    width: 280px;
+    height: 28px;
+    margin-bottom: 40px; 
+    padding: 4px;   
+    border: 1px solid aqua;
     border-radius: 4px;
-    background-color: rgb(9, 225, 253);
-    border-color:  rgb(9, 225, 253);
-    color:   rgb(82, 80, 80);
+    color: rgb(82, 80, 80);
+}
+
+.loginEmail {
+    margin-bottom: 20px;
+}
+
+.loginEmail:hover, .loginPassword:hover { 
+    box-shadow: 0px 0px 6px 1px rgba(0, 255, 255, 0.795);
 }
 
 .loginField {
     padding: 10px;
+}
+
+.h1 {
+    margin: 0px 0px 50px 0px;
 }

@@ -4,15 +4,23 @@
     align-items: center; 
     padding: 2px;
     background-color: rgba(219, 219, 219, 0);    
-    color: rgb(7, 224, 253);
+    color: aqua;
     border: none;
     margin-left: 20px;
     width: 315px;
-    height: 40px;    
+    height: 80px; 
+    cursor: pointer;
+    overflow: hidden;    
 }
 
 .inputBlock:hover {
     color: rgb(219, 219, 219);
+}
+
+.span {
+    width: 315px;
+    height: 80px;
+    word-wrap: break-word; 
 }
 
 .input {
@@ -23,5 +31,5 @@
     padding-left: 5px;
     color: rgb(219, 219, 219);
     width: 315px;
-    height: 40px;
+    height: 80px;
 }

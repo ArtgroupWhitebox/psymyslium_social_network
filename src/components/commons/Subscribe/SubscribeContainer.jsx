@@ -6,8 +6,6 @@ import Subscribe from "./Subscribe"
 
 
 const SubscribeContainer = (props) => {
-    
-    console.log('SubscribeContainer' , props)
 
     const onClickUnFollowed = (userId) => {
         props.unFollowThunk(props.currentPage, props.pageSize, props.turnByName, props.isFriends, userId)

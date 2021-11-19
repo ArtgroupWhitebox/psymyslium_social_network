@@ -6,16 +6,17 @@ import Preloading from '../commons/Preloading'
 import { addMessageThunk, clearMessagesThunk, getUserMessagesThunk, getUsersDialogsThunk,
     startUserInChattinggThunk } from '../../redux/dialogs_reducer'
 import withAuthRedirect from '../commons/Redirect/withAuthRedirect'
+import { getUserThunk } from '../../redux/profile_reducer'
 import DialogItem from './DialogItem/DialogItem'
 import MessageItem from './MessageItem/MessageItem'
 
 
 
-class DialogsContainer extends React.Component {
+class MessagesContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getUsersDialogsThunk()
         this.props.getUserMessagesThunk(this.props.startUserId)
+        this.props.getUserThunk(this.props.startUserId)
         console.log('DialogsContainer' , this.props)
     }
 
@@ -34,13 +35,19 @@ class DialogsContainer extends React.Component {
             ? <Preloading /> 
             : <div className={classes.dialogs}>
                 <div className={classes.dialogsItems}>
-                    <DialogItem dialogsData={this.props.dialogsData}
-                        pageKey={this.props.pageKey} startUserInChattinggThunk={this.props.startUserInChattinggThunk}                 
+                    <DialogItem dialogsData={this.props.dialogsData} clearMessagesThunk={this.props.clearMessagesThunk}
+                        getUserMessagesThunk={this.props.getUserMessagesThunk} 
+                        startUserId={ +this.props.startUserId} 
+                        pageKey={this.props.pageKey} getUserThunk={this.props.getUserThunk} 
+                        isPreloadingMessages={this.props.isPreloadingMessages} startUserInChattinggThunk={this.props.startUserInChattinggThunk}                 
                         />
                 </div>                            
-                <div> 
+                <div>
                     <MessageItem messagesData={this.props.messagesData} pageKey={this.props.pageKey}
-                        dialogsData={this.props.dialogsData} addMessageThunk={this.props.addMessageThunk}
+                        dialogsData={this.props.dialogsData} usersData={this.props.usersData} 
+                        startUserId={ +this.props.startUserId} onPageChanged={this.onPageChanged} 
+                        addMessageThunk={this.props.addMessageThunk} getUserThunk={this.props.getUserThunk}
+                        profile={this.props.profile}
                         isPreloading={this.props.isPreloading} isPreloadingMessages={this.props.isPreloadingMessages} 
                     />                    
                 </div>                       
@@ -57,14 +64,16 @@ const mapStateToProps = (state) => {
             startUserId: state.dialogsPage.startUserId,
             isPreloading : state.dialogsPage.isPreloading,
             isPreloadingMessages: state.dialogsPage.isPreloadingMessages,
-            pageKey: state.dialogsPage.pageKey
+            pageKey: state.dialogsPage.pageKey,
+            usersData: state.usersPage.usersData,
+            profile: state.profilePage.profile
         }
     )
 }
 
 export default compose(
     connect(mapStateToProps, {startUserInChattinggThunk, getUsersDialogsThunk, addMessageThunk, clearMessagesThunk,
-         getUserMessagesThunk }),
-    withAuthRedirect)(DialogsContainer) 
+         getUserMessagesThunk, getUserThunk }),
+    withAuthRedirect)(MessagesContainer) 
     
     

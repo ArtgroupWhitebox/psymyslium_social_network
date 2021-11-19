@@ -60,7 +60,13 @@
 }
 
 .status {
+    text-align: right;
+    width: 200px;
+    height: 130px;
+    cursor: pointer;
     padding: 10px 10px 0px 0px;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 .h1 {

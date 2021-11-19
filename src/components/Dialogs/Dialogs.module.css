@@ -7,8 +7,8 @@
     display: flex;
     flex-direction: column;
     width: 230px;
+    height: 1117px;
     align-items: center;
-    justify-content: center;
     background: rgb(41, 41, 41);
 }
 .dialogsItems a {

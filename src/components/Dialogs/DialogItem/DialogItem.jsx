@@ -6,8 +6,6 @@ import ScanByNickname from '../../commons/ScanByNickname/ScanByNickname'
 
 const DialogItem = (props) => {
 
-    console.log('DialogItem' , props)
-
     return <>
         <h1 className={classes.h1}>Сhats</h1>
         <ScanByNickname pageKey={props.pageKey}/>
@@ -19,8 +17,8 @@ const DialogItem = (props) => {
                     <div className={classes.userName}>
                         <UserName pageKey={props.pageKey} name={el.userName} userId={el.id} currentPage={'1'}/>
                     </div> 
-                    <StartDialog userId={el.id} getUserMessagesThunk={props.getUserMessagesThunk} 
-                        getUserThunk={props.getUserThunk} pageKey={props.pageKey} profile={props.profile}
+                    <StartDialog userId={el.id} pageKey={props.pageKey} 
+                        startUserInChattinggThunk={props.startUserInChattinggThunk}        
                     />
                 </div>
             )}

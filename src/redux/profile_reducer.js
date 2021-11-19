@@ -122,12 +122,14 @@ export const setIsLoadingSubscribe = (isLoadingSubscribe) => ({type: IS_LOADING_
 export const setIsFollowed = (isFollowed) => ({type: IS_FOLLOWED, isFollowed})
 export const setFullName = (fullName) => ({type: SET_FULL_NAME, fullName})
 
-export const getUserThunk = (userId) => {
+
+
+export const getUserThunk = (userId, currentPage) => {
     return (dispatch) => { 
         dispatch(isPreLoading(true))
         profileAPI.getUser(userId).then(data => {
             dispatch(setUserProfile(data))
-            dispatch(setIsFollowedThunk(userId, data.fullName))
+            dispatch(setIsFollowedThunk(userId, data.fullName, currentPage))
             dispatch(setFullName(data.fullName))
             dispatch(isPreLoading(false))
         })

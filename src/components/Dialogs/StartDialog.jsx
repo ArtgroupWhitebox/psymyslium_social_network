@@ -5,13 +5,13 @@ import { Link } from "react-router-dom"
 const StartDialog = (props) => {
 
     const customizMessages = () => { 
-        props.getUserThunk(props.userId)
+        props.startUserInChattinggThunk(props.userId)        
     }
     
     return <>
         <Link to={'/dialogs/' + props.userId} className={classes.startMessageLink} >
             <button className={classes.startMessageButton} 
-            onClick={props.pageKey !== 'ProfileInfo' ? customizMessages : undefined}
+            onClick={customizMessages}
             >
             Start chat </button> 
         </Link>

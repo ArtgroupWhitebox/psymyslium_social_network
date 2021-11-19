@@ -5,6 +5,7 @@
     grid-area: s;
     background-color: rgba(59, 59, 60, 1);
     padding: 20px;
+    height: 1500px;
 }
 
 .sidebar a {

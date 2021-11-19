@@ -113,12 +113,11 @@ export const setTurnByName = (turnByName) => ({ type: TURN_BY_NAME, turnByName})
 export const getUsersThunk = (page, pageSize, turnByName, isFriends) => {
     return (dispatch) => {
         dispatch(toggleIsPreloading(true))
-        dispatch(setCurrentPage(page))
-        usersAPI.getUsers(page, pageSize, turnByName, isFriends).then(data => {
-                dispatch(toggleIsPreloading(false))
+        usersAPI.getUsers(page, pageSize, turnByName, isFriends).then(data => {                
                 dispatch(setUsers(data.items))
                 dispatch(setTotalUsersCount(data.totalCount))
-                dispatch(setTurnByName(turnByName))               
+                dispatch(setTurnByName(turnByName))
+                dispatch(toggleIsPreloading(false))               
             }
         ) 
     }

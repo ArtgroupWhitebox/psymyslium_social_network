@@ -16,8 +16,6 @@ const Sidebar = ({pageKey, isDisabled}) => {
     const [currentPage, setCurrentPage] = useState(null)
     const [friendsTotalCount, setFriendsTotalCount] = useState(1)
     const [isLoading, setIsLoading] = useState(true)
-    
-    console.log('friends:', friends)
 
     useEffect(() => {
         setIsLoading(true)

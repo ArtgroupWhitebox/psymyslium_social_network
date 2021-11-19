@@ -102,51 +102,57 @@ const MyPostsWithHooks = () => {
         </button>
     }
 
-    return <>
-        <div className={classes.button_block}>
-            <Button onClick={activateIsAddPost} iconImage={iconAdd} label={'ADD POST'}/>
-        </div>
+    return <>        
         { isAddPost && 
-            <Formik initialValues={ {post: text} } onSubmit={ id === null ? addPostSubmit : updatePostSubmit }>
-                <Form > 
-                    <div className={classes.form}>
-                        <div className={classes.input_block}>
-                            { isLoadingFile ? <Preloading processingGif={imgLoader}/> 
-                            : <img alt='' src={image || iconFile} className={classes.image} />
-                            }
-                            <label className={classes.button_span}>
-                                <input className={classes.input} type='file' onChange={(event) => {onImageSelected(event)}} />
-                                <span className={classes.label}>SELECT FILE</span>
-                                <img alt='Add' src={iconAdd} className={classes.icon_span} />
-                            </label>                        
-                        </div>
-                        <div className={classes.field_block}>
-                            <Field name='post' component='textarea' placeholder='New post' className={classes.field} />
-                            <Button type={'submit'} iconImage={iconConfirm} />
-                            <Button onClick={deActivateIsAddPost} iconImage={iconClose} /> 
-                        </div>
-                    </div>                    
-                </Form>
-            </Formik> 
-        }
-        { isLoading && <Preloading processingGif={imgLoader} /> }
-        { posts && posts.map((item, index) => <div key={index} className={classes.post_block}>
-                <div className={classes.item_block}>
-                    {item.file && 
-                        <div>
-                            <img alt='' src={item.file} className={classes.imageFile} />                        
-                        </div>
-                    }
-                    {item.post && 
-                        <div >
-                            <div className={classes.text}> {item.post} </div>                        
-                        </div>
-                    }  
-                </div> 
-                <Button onClick={() => {activatePostEdit(item, item.id)}} iconImage={iconEdit} />
-                <Button onClick={() => {activatePostDelete(item.id)}} iconImage={iconTrash} />    
-            </div>).reverse()
-        }
+            <div className={classes.formModal}>
+                <Formik initialValues={ {post: text} } onSubmit={ id === null ? addPostSubmit : updatePostSubmit }>
+                    <Form > 
+                        <div className={classes.form}>
+                            <div className={classes.input_block}>
+                                { isLoadingFile ? <Preloading processingGif={imgLoader}/> 
+                                : <img alt='' src={image || iconFile} className={classes.image} />
+                                }
+                                <label className={classes.button_span}>
+                                    <input className={classes.input} type='file' onChange={(event) => {onImageSelected(event)}} />
+                                    <span className={classes.label}>SELECT FILE</span>
+                                    <img alt='Add' src={iconAdd} className={classes.icon_span} />
+                                </label>                        
+                            </div>
+                            <div className={classes.field_block}>
+                                <Field name='post' component='textarea' placeholder='New post' className={classes.field} />
+                                <Button type={'submit'} iconImage={iconConfirm} />
+                                <Button onClick={deActivateIsAddPost} iconImage={iconClose} /> 
+                            </div>
+                        </div>                    
+                    </Form>
+                </Formik> 
+            </div>}
+        <div className={classes.header_posts}>
+            <h1 className={classes.h1}>Posts</h1>
+            <div className={classes.button_block}>
+                <Button onClick={activateIsAddPost} iconImage={iconAdd} label={'ADD POST'}/>
+            </div>
+        </div>
+        <div className={classes.posts_band}>
+            { isLoading && <Preloading processingGif={imgLoader} /> }
+            { posts && posts.map((item, index) => <div key={index} className={classes.post_block}>
+                    <div className={classes.item_block}>
+                        {item.file && 
+                            <div>
+                                <img alt='' src={item.file} className={classes.imageFile} />                        
+                            </div>
+                        }
+                        {item.post && 
+                            <div >
+                                <div className={classes.text}> {item.post} </div>                        
+                            </div>
+                        }  
+                    </div> 
+                    <Button onClick={() => {activatePostEdit(item, item.id)}} iconImage={iconEdit} />
+                    <Button onClick={() => {activatePostDelete(item.id)}} iconImage={iconTrash} />    
+                </div>).reverse()
+            }
+        </div>
     </>     
 }
 

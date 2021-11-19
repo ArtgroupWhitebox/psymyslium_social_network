@@ -15,7 +15,7 @@ const ScanByNickname = ({pageKey}) => {
     const [isShowInput, setIsShowInput] = useState(false)
 
     useEffect(() => {
-        pageKey === 'Sidebar'
+        (pageKey === 'Sidebar' && isShowInput )
         ? usersAPI.getUsers(1, 10, nickname, true)
         .then(data => {
             setFriendsListScan(data.items)
