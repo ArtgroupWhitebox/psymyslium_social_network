@@ -15,9 +15,9 @@ const Header = (props) => {
                     <ButtonAqua onClick={props.logoutThunk} value={'Log out'} />
                 </div>
             </div>
-            : <span className={classes.login}>
-                <Link to={'/login/'}>Login</Link>
-            </span>
+            : <div>
+                <ButtonAqua onClick={props.onClickAuthorization} value={'Authorization'} />
+            </div>
         }
     </header>
 }

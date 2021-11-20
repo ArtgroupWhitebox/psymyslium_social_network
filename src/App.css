@@ -4,9 +4,8 @@
   'h h' 
   'n c'
   's c';
-  grid-template-rows: 80px 200px 10fr;
+  grid-template-rows: 50px 200px 10fr;
   grid-template-columns: 3fr 12fr;
-  /* grid-gap: 10px; */
 }
 
 .app_psymyslium-content {

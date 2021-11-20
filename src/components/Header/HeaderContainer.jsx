@@ -1,12 +1,17 @@
 import React from "react"
 import { connect } from "react-redux"
-import { logoutThunk } from "../../redux/authMe_reducer"
+import { logoutThunk, setIsLoginModal } from "../../redux/authMe_reducer"
 import Header from "./Header"
 
+
 class HeaderContainer extends React.Component {
+
+    onClickAuthorization = () => {
+        this.props.setIsLoginModal(true)
+    }
     
     render() {
-       return <Header {...this.props} />
+       return <Header {...this.props} onClickAuthorization={this.onClickAuthorization} />
     }
 }
 
@@ -19,5 +24,5 @@ const mapStateToProps = (state) => {
     }    
 } 
 
-export default connect(mapStateToProps, {logoutThunk})(HeaderContainer)
+export default connect(mapStateToProps, {logoutThunk, setIsLoginModal})(HeaderContainer)
 

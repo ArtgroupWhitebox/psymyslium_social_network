@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 import { compose } from 'redux'
 import { loginThunk, setIsLoginModal } from '../../../redux/authMe_reducer'
 import { LoginFormik } from './LoginPage'
