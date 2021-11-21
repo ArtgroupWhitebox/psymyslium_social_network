@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
 import { compose } from 'redux'
 import { loginThunk, setIsLoginModal } from '../../../redux/authMe_reducer'
 import { LoginFormik } from './LoginPage'
@@ -15,12 +14,12 @@ const LoginPageContainer = ({isLoginModal, loginThunk, setIsLoginModal}) => {
     useEffect(() => {
         setIsLoginModal(true)
     }, [])
-    
-    return <div className={isLoginModal ? classes.loginOverlay : classes.modalClose} 
-        onClick={ ()=>setIsLoginModal(false) }>
-        <div className={classes.loginForm}>
-            <h1 className={classes.h1}>Login</h1>
-            <LoginFormik hendleSubmit={hendleSubmit} />
+
+    return <div className={isLoginModal ? classes.loginOverlay : classes.modalClose}
+                id='modal_bg' onClick={(e) => e.target.getAttribute('id') === 'modal_bg' && setIsLoginModal(false) }>
+            <div className={classes.loginForm} id='form' >
+                <h1 className={classes.h1}>Login</h1>
+                <LoginFormik hendleSubmit={hendleSubmit} setIsLoginModal={setIsLoginModal}/>
         </div>
     </div>
 }
