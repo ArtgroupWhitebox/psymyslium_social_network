@@ -1,8 +1,9 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { loginThunk, setIsLoginModal } from '../../../redux/authMe_reducer'
-import { LoginFormik } from './LoginPage'
+import Modal from '../Modal/Modal'
+import LoginFormik from './LoginPage'
 import classes from './LoginPage.module.css'
 
 const LoginPageContainer = ({isLoginModal, loginThunk, setIsLoginModal}) => {
@@ -15,13 +16,13 @@ const LoginPageContainer = ({isLoginModal, loginThunk, setIsLoginModal}) => {
         setIsLoginModal(true)
     }, [])
 
-    return <div className={isLoginModal ? classes.loginOverlay : classes.modalClose}
-                id='modal_bg' onClick={(e) => e.target.getAttribute('id') === 'modal_bg' && setIsLoginModal(false) }>
-            <div className={classes.loginForm} id='form' >
-                <h1 className={classes.h1}>Login</h1>
-                <LoginFormik hendleSubmit={hendleSubmit} setIsLoginModal={setIsLoginModal}/>
-        </div>
-    </div>
+    return <>
+        <Modal className={isLoginModal ? classes.loginOverlay : classes.modalClose} onClickFn={setIsLoginModal}
+            argumentOnClickFn={false}>
+                <LoginFormik hendleSubmit={hendleSubmit} setIsLoginModal={setIsLoginModal} /> 
+        </Modal>
+    </>
+    
 }
 
 const mapStateToProps = (state) => ({

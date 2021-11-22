@@ -2,8 +2,9 @@ import { Formik, Field, Form } from 'formik'
 import { ButtonAqua, ButtonYellow } from '../../Button/Button'
 import classes from './LoginPage.module.css'
 
-export const LoginFormik = ({hendleSubmit, setIsLoginModal}) => {
-    return <div>
+const LoginFormik = ({hendleSubmit, setIsLoginModal}) => {
+    return <div className={classes.loginForm} >
+        <h1 className={classes.h1}>Login</h1>
         <Formik initialValues={{ email: '', password: '' }} onSubmit={hendleSubmit} >
                 <Form className={classes.form}>
                     <div className={classes.loginField}>
@@ -20,3 +21,5 @@ export const LoginFormik = ({hendleSubmit, setIsLoginModal}) => {
         </Formik>
     </div>
 }
+
+export default  LoginFormik

@@ -10,6 +10,7 @@ import iconClose from '../../../src/assets/images/icons8_close.png'
 import { postsAPI } from "../axiosAPI/api_crud"
 import Preloading from '../commons/Preloading'
 import imgLoader from '../../assets/images/imgLoader.gif'
+import Modal from "../commons/Modal/Modal"
 
 
 const MyPostsWithHooks = () => {
@@ -103,8 +104,8 @@ const MyPostsWithHooks = () => {
     }
 
     return <>        
-        { isAddPost && 
-            <div className={classes.formModal}>
+        { isAddPost &&
+            <Modal className={classes.formModal} onClickFn={deActivateIsAddPost} >
                 <Formik initialValues={ {post: text} } onSubmit={ id === null ? addPostSubmit : updatePostSubmit }>
                     <Form > 
                         <div className={classes.form}>
@@ -125,8 +126,8 @@ const MyPostsWithHooks = () => {
                             </div>
                         </div>                    
                     </Form>
-                </Formik> 
-            </div>}
+                </Formik>
+            </Modal>}
         <div className={classes.header_posts}>
             <h1 className={classes.h1}>Posts</h1>
             <div className={classes.button_block}>

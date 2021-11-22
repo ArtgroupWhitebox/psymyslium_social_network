@@ -19,7 +19,7 @@ const Paginator = (props) => {
         <div>
             {
                 partNumber > 1  && 
-                <button onClick={ () => { setPartNumber(partNumber - 1) }}> PREV </button>
+                <button onClick={ () => { setPartNumber(partNumber - 1) }}> Prev </button>
             }
             
             {
@@ -40,7 +40,7 @@ const Paginator = (props) => {
 
             {
                 partsCount > partNumber  && 
-                <button onClick={ () => { setPartNumber(partNumber + 1) }}> NEXT </button>
+                <button onClick={ () => { setPartNumber(partNumber + 1) }}> Next </button>
             }
         </div>
     </div>       
