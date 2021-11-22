@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/psymyslium-app/static/css/main.d1499881.chunk.css",
-    "main.js": "/psymyslium-app/static/js/main.fc754594.chunk.js",
-    "main.js.map": "/psymyslium-app/static/js/main.fc754594.chunk.js.map",
+    "main.css": "/psymyslium-app/static/css/main.02450e77.chunk.css",
+    "main.js": "/psymyslium-app/static/js/main.dc6dff0f.chunk.js",
+    "main.js.map": "/psymyslium-app/static/js/main.dc6dff0f.chunk.js.map",
     "runtime-main.js": "/psymyslium-app/static/js/runtime-main.2213d79c.js",
     "runtime-main.js.map": "/psymyslium-app/static/js/runtime-main.2213d79c.js.map",
     "static/js/2.ba2d9ae0.chunk.js": "/psymyslium-app/static/js/2.ba2d9ae0.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.7f02b4fe.chunk.js": "/psymyslium-app/static/js/3.7f02b4fe.chunk.js",
     "static/js/3.7f02b4fe.chunk.js.map": "/psymyslium-app/static/js/3.7f02b4fe.chunk.js.map",
     "index.html": "/psymyslium-app/index.html",
-    "static/css/main.d1499881.chunk.css.map": "/psymyslium-app/static/css/main.d1499881.chunk.css.map",
+    "static/css/main.02450e77.chunk.css.map": "/psymyslium-app/static/css/main.02450e77.chunk.css.map",
     "static/js/2.ba2d9ae0.chunk.js.LICENSE.txt": "/psymyslium-app/static/js/2.ba2d9ae0.chunk.js.LICENSE.txt",
     "static/media/Nastay.2ed4787d.jpg": "/psymyslium-app/static/media/Nastay.2ed4787d.jpg",
     "static/media/icon_scan.8237a905.png": "/psymyslium-app/static/media/icon_scan.8237a905.png",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.2213d79c.js",
     "static/js/2.ba2d9ae0.chunk.js",
-    "static/css/main.d1499881.chunk.css",
-    "static/js/main.fc754594.chunk.js"
+    "static/css/main.02450e77.chunk.css",
+    "static/js/main.dc6dff0f.chunk.js"
   ]
 }
