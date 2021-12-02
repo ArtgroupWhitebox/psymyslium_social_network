@@ -1,4 +1,30 @@
-# Getting Started with Create React App
+# psymyslium_social_network
+
+to site is published at [https://artgroupwhitebox.github.io/psymyslium_social_network/]
+
+![alt text](screenshots/1.png "preview")
+
+![alt text](screenshots/2.png "users/friends")
+
+![alt text](screenshots/3.png "profile")
+
+![alt text](screenshots/4.png "posts")
+
+![alt text](screenshots/5.png "post_editing")
+
+![alt text](screenshots/6.png "chats/messades")
+
+![alt text](screenshots/7.png "login")
+
+## Description
+
+This is a simple single page application. This is a social network.
+
+## Technology stack
+
+The project is written in React using the create-react-app packages. Separately used by babel to compile less files.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
