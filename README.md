@@ -4,21 +4,27 @@ to site is published at [https://artgroupwhitebox.github.io/psymyslium_social_ne
 
 ![alt text](screenshots/preview.png "preview")
 
-![alt text](screenshots/users.png "users/friends")
-
-![alt text](screenshots/profile.png "profile")
-
-![alt text](screenshots/posts.png "posts")
-
-![alt text](screenshots/post_editing.png "post_editing")
-
-![alt text](screenshots/chats.png "chats/messades")
-
-![alt text](screenshots/login.png "login")
-
 ## Description
 
-This is a simple single page application. This is a social network.
+This is a simple single page application. This is a social network, written as part of a training project - "The Way of the Samurai".
+
+##### User page and sidebar for friends list:
+![alt text](screenshots/users.png "users/friends")
+
+##### Profile edit page:
+![alt text](screenshots/profile.png "profile")
+
+##### Posts page:
+![alt text](screenshots/posts.png "posts")
+
+##### Modal window for editing post:
+![alt text](screenshots/post_editing.png "post_editing")
+
+##### Chats and messades pages:
+![alt text](screenshots/chats.png "chats/messades")
+
+##### Authorization modal window:
+![alt text](screenshots/login.png "login")
 
 ## Technology stack
 
