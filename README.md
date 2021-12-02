@@ -1,6 +1,6 @@
 # psymyslium_social_network
 
-to site is published at [https://artgroupwhitebox.github.io/psymyslium_social_network/]
+to site is published at [https://artgroupwhitebox.github.io/psymyslium_social_network/](https://artgroupwhitebox.github.io/psymyslium_social_network/)
 
 ![alt text](screenshots/1.png "preview")
 
