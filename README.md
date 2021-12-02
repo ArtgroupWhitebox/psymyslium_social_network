@@ -2,19 +2,19 @@
 
 to site is published at [https://artgroupwhitebox.github.io/psymyslium_social_network/](https://artgroupwhitebox.github.io/psymyslium_social_network/)
 
-![alt text](screenshots/1.png "preview")
+![alt text](screenshots/preview.png "preview")
 
-![alt text](screenshots/2.png "users/friends")
+![alt text](screenshots/users.png "users/friends")
 
-![alt text](screenshots/3.png "profile")
+![alt text](screenshots/profile.png "profile")
 
-![alt text](screenshots/4.png "posts")
+![alt text](screenshots/posts.png "posts")
 
-![alt text](screenshots/5.png "post_editing")
+![alt text](screenshots/post_editing.png "post_editing")
 
-![alt text](screenshots/6.png "chats/messades")
+![alt text](screenshots/chats.png "chats/messades")
 
-![alt text](screenshots/7.png "login")
+![alt text](screenshots/login.png "login")
 
 ## Description
 
